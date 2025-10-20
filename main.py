@@ -1,13 +1,15 @@
-import platform
 import sys
 
 from PySide6.QtWidgets import QApplication
-
-import static_info as s_info
 from design_ui.ui_main_script import MainWindow
 
-s_info.os = platform.system()
-s_info.platform = platform.platform()
+import methods.start_info as start_inf
+
+
+start_inf.check_system()
+start_inf.check_domain()
+start_inf.check_activate()
+start_inf.check_dhcp()
 
 app = QApplication(sys.argv)
 temp = MainWindow()
