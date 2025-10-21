@@ -67,7 +67,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"LAS SibSIU", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043c\u0435\u043d: ", None))
         self.lbl_domen.setText(QCoreApplication.translate("MainWindow", u"???", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0421:", None))

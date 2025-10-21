@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QMainWindow
 
 import static_info as stat_inf
+from design_ui.ui_ParamNet_script import DialogParamNet
 from design_ui.ui_main import Ui_MainWindow
 
 
@@ -15,3 +16,8 @@ class MainWindow(QMainWindow):
         self.ui.lbl_domen.setText(stat_inf.domain)
         self.ui.lbl_os_activate.setText(stat_inf.activate)
         self.ui.lbl_dhcp.setText(stat_inf.dhcp)
+        self.ui.btn_net_1.clicked.connect(self.parameters_net)
+
+    def parameters_net(self):
+        self.dialogParamNet = DialogParamNet()
+        self.dialogParamNet.show()

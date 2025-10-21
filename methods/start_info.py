@@ -3,6 +3,7 @@ import subprocess
 import winreg
 
 import static_info as stat_inf
+import key_phrases as k_phras
 
 
 def check_system():
@@ -63,7 +64,7 @@ def check_dhcp():
             line = line.strip()
 
             # Проверяем, начинается ли секция Ethernet адаптера
-            if "адаптер ethernet" in line.lower() or "ethernet adapter" in line.lower():
+            if k_phras.adapter_ethernet[0] in line.lower() or k_phras.adapter_ethernet[1] in line.lower():
                 in_ethernet_section = True
                 continue
 
