@@ -55,13 +55,26 @@ def check_activate():
 def check_dhcp():
     if stat_inf.os.lower() == "windows":
         result = subprocess.run(["ipconfig", "/all"], capture_output=True, text=True, encoding="cp866")
-
         lines = result.stdout.split('\n')
+
+        in_ethernet_section = False
 
         for line in lines:
             line = line.strip()
 
-            # Ищем строку с DHCP
-            if "DHCP включен" in line:
-                status = "включен" if "Да" in line else "выключен"
-                stat_inf.dhcp = status
+            # Проверяем, начинается ли секция Ethernet адаптера
+            if "адаптер ethernet" in line.lower() or "ethernet adapter" in line.lower():
+                in_ethernet_section = True
+                continue
+
+            # Если мы внутри секции Ethernet адаптера, ищем строку с DHCP
+            if in_ethernet_section:
+                # Если нашли DHCP - извлекаем статус
+                if "DHCP включен" in line:
+                    status = "включен" if "Да" in line else "выключен"
+                    stat_inf.dhcp = status
+                    break  # Прерываем цикл после нахождения статуса для Ethernet
+
+                # Если встречаем начало другого адаптера - выходим из секции Ethernet
+                if "адаптер" in line.lower() and "ethernet" not in line.lower():
+                    in_ethernet_section = False
