@@ -79,3 +79,6 @@ def check_dhcp():
                 # Если встречаем начало другого адаптера - выходим из секции Ethernet
                 if "адаптер" in line.lower() and "ethernet" not in line.lower():
                     in_ethernet_section = False
+
+def check_network():
+    pass

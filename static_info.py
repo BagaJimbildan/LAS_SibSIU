@@ -6,7 +6,7 @@ activate = "???"
 
 dhcp = "???"
 
-# Параметры сети (net - сокращение от internet)
+# Параметры сети (net - сокращение от network)
 net_ip_addr = "???"
 net_mask = "???"
 net_gateway = "???"
