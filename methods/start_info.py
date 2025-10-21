@@ -19,6 +19,9 @@ def check_domain():
     elif stat_inf.os.lower() == "linux":
         stat_inf.domain = "пока не знаю"
 
+    if stat_inf.domain == "":
+        stat_inf.domain = "нет"
+
 def check_activate():
     if stat_inf.os.lower() == "windows":
         # Открываем ключ реестра с основной информацией о системе
