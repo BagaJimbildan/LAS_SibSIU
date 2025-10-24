@@ -1,4 +1,5 @@
 import platform
+import re
 import subprocess
 import winreg
 
@@ -84,4 +85,53 @@ def check_dhcp():
                     in_ethernet_section = False
 
 def check_network():
-    pass
+    if stat_inf.os.lower() == "windows":
+        result = subprocess.run(["ipconfig", "/all"], capture_output=True, text=True, encoding="cp866")
+        lines = result.stdout.split('\n')
+
+        in_ethernet_section = False
+        in_dns_section = False
+
+        for line in lines:
+
+            if in_dns_section:
+                dns_matches = re.findall(r'(\d+\.\d+\.\d+\.\d+)', line)
+                if dns_matches:
+                    stat_inf.net_dns[1] = dns_matches[0]
+            in_dns_section = False
+            line = line.strip()
+
+            # Находим Ethernet адаптер
+            if k_phras.adapter_ethernet[0] in line.lower() or k_phras.adapter_ethernet[1] in line.lower():
+                in_ethernet_section = True
+                continue
+
+            if in_ethernet_section:
+                # IP адрес
+                if "ipv4-адрес" in line.lower():
+                    match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
+                    if match:
+                        stat_inf.net_ip_addr = match.group(1)
+
+                # Маска подсети
+                elif "маска подсети" in line.lower():
+                    match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
+                    if match:
+                        stat_inf.net_mask = match.group(1)
+
+                # Шлюз
+                elif "основной шлюз" in line.lower():
+                    match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
+                    if match:
+                        stat_inf.net_gateway = match.group(1)
+
+                # DNS
+                elif "dns-серверы" in line.lower():
+                    dns_matches = re.findall(r'(\d+\.\d+\.\d+\.\d+)', line)
+                    if dns_matches:
+                        stat_inf.net_dns[0] = dns_matches[0]
+                        in_dns_section = True
+
+                # Выходим при обнаружении другого адаптера
+                if "адаптер" in line.lower() and "ethernet" not in line.lower():
+                    break

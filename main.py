@@ -10,6 +10,8 @@ start_inf.check_system()
 start_inf.check_domain()
 start_inf.check_activate()
 start_inf.check_dhcp()
+start_inf.check_network()
+
 
 app = QApplication(sys.argv)
 temp = MainWindow()
