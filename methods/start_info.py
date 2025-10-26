@@ -108,25 +108,25 @@ def check_network():
 
             if in_ethernet_section:
                 # IP адрес
-                if "ipv4-адрес" in line.lower():
+                if "ipv4-адрес" in line.lower() and stat_inf.net_ip_addr == '???':
                     match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
                     if match:
                         stat_inf.net_ip_addr = match.group(1)
 
                 # Маска подсети
-                elif "маска подсети" in line.lower():
+                elif "маска подсети" in line.lower() and stat_inf.net_mask == '???':
                     match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
                     if match:
                         stat_inf.net_mask = match.group(1)
 
                 # Шлюз
-                elif "основной шлюз" in line.lower():
+                elif "основной шлюз" in line.lower() and stat_inf.net_gateway == '???':
                     match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
                     if match:
                         stat_inf.net_gateway = match.group(1)
 
                 # DNS
-                elif "dns-серверы" in line.lower():
+                elif "dns-серверы" in line.lower() and stat_inf.net_dns[0] == '???':
                     dns_matches = re.findall(r'(\d+\.\d+\.\d+\.\d+)', line)
                     if dns_matches:
                         stat_inf.net_dns[0] = dns_matches[0]
