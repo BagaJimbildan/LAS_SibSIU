@@ -11,6 +11,7 @@ start_inf.check_domain()
 start_inf.check_activate()
 start_inf.check_dhcp()
 start_inf.check_network()
+start_inf.check_admin_on()
 
 
 app = QApplication(sys.argv)

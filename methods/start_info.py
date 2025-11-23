@@ -102,7 +102,7 @@ def check_network():
             line = line.strip()
 
             # Находим Ethernet адаптер
-            if k_phras.adapter_ethernet[0] in line.lower() or k_phras.adapter_ethernet[1] in line.lower():
+            if k_phras.find_phras(line, k_phras.adapter_ethernet):
                 in_ethernet_section = True
                 continue
 
@@ -135,3 +135,21 @@ def check_network():
                 # Выходим при обнаружении другого адаптера
                 if "адаптер" in line.lower() and "ethernet" not in line.lower():
                     break
+
+def check_admin_on():
+    if stat_inf.os.lower() == "windows":
+        try:
+            result = subprocess.run(
+                ["net", "user", "Администратор"],
+                capture_output=True,
+                text=True,
+                encoding='cp866'
+            )
+            lines = result.stdout.split('\n')
+            for line in lines:
+                if "учетная запись активна" in line.lower():
+                    if k_phras.find_phras(line, k_phras.ans_yes): stat_inf.admin_active = "включена"
+                    elif k_phras.find_phras(line, k_phras.ans_no): stat_inf.admin_active = "выключена"
+                    else: "???"
+        except Exception as e:
+            print(f"Ошибка: {e}")

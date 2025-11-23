@@ -16,6 +16,8 @@ class MainWindow(QMainWindow):
         self.ui.lbl_domen.setText(stat_inf.domain)
         self.ui.lbl_os_activate.setText(stat_inf.activate)
         self.ui.lbl_dhcp.setText(stat_inf.dhcp)
+        self.ui.lbl_admin_active.setText(stat_inf.admin_active)
+
         self.ui.btn_net_1.clicked.connect(self.parameters_net)
 
     def parameters_net(self):

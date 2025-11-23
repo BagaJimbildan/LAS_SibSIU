@@ -52,6 +52,12 @@ class Ui_MainWindow(object):
         self.btn_net_1 = QPushButton(self.centralwidget)
         self.btn_net_1.setObjectName(u"btn_net_1")
         self.btn_net_1.setGeometry(QRect(10, 160, 111, 24))
+        self.lbl_admin_active = QLabel(self.centralwidget)
+        self.lbl_admin_active.setObjectName(u"lbl_admin_active")
+        self.lbl_admin_active.setGeometry(QRect(280, 210, 141, 16))
+        self.label_4 = QLabel(self.centralwidget)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(20, 210, 261, 16))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -77,5 +83,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"DHCP", None))
         self.lbl_dhcp.setText(QCoreApplication.translate("MainWindow", u"???", None))
         self.btn_net_1.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0441\u0435\u0442\u0438", None))
+        self.lbl_admin_active.setText(QCoreApplication.translate("MainWindow", u"???", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0441\u0442\u0440\u043e\u0435\u043d\u043d\u0430\u044f \u0443\u0447\u0435\u0442\u043d\u0430\u044f \u0437\u0430\u043f\u0438\u0441\u044c \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430:", None))
     # retranslateUi
 
