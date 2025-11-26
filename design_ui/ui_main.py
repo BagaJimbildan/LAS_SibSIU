@@ -58,6 +58,12 @@ class Ui_MainWindow(object):
         self.label_4 = QLabel(self.centralwidget)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(20, 210, 261, 16))
+        self.btn_enable_admin = QPushButton(self.centralwidget)
+        self.btn_enable_admin.setObjectName(u"btn_enable_admin")
+        self.btn_enable_admin.setGeometry(QRect(480, 200, 341, 24))
+        self.lbl_status_user = QLabel(self.centralwidget)
+        self.lbl_status_user.setObjectName(u"lbl_status_user")
+        self.lbl_status_user.setGeometry(QRect(30, 510, 511, 16))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -85,5 +91,7 @@ class Ui_MainWindow(object):
         self.btn_net_1.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0441\u0435\u0442\u0438", None))
         self.lbl_admin_active.setText(QCoreApplication.translate("MainWindow", u"???", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0441\u0442\u0440\u043e\u0435\u043d\u043d\u0430\u044f \u0443\u0447\u0435\u0442\u043d\u0430\u044f \u0437\u0430\u043f\u0438\u0441\u044c \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430:", None))
+        self.btn_enable_admin.setText(QCoreApplication.translate("MainWindow", u"\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0447\u0435\u0442\u043d\u0443\u044e \u0437\u0430\u043f\u0438\u0441\u044c \u0430\u0434\u043c\u0438\u043d\u0430", None))
+        self.lbl_status_user.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
     # retranslateUi
 

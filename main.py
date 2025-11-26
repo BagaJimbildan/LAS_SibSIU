@@ -13,6 +13,8 @@ start_inf.check_dhcp()
 start_inf.check_network()
 start_inf.check_admin_on()
 
+start_inf.check_status_current_user()
+
 
 app = QApplication(sys.argv)
 temp = MainWindow()
