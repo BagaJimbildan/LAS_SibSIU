@@ -23,3 +23,6 @@ def enable_admin(
 
     except subprocess.CalledProcessError as e:
         print(f"Ошибка: {e.stderr}")
+
+def pass_admin():
+    print("gf")

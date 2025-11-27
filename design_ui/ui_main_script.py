@@ -31,6 +31,7 @@ class MainWindow(QMainWindow):
 
         self.ui.btn_net_1.clicked.connect(self.parameters_net)
         self.ui.btn_enable_admin.clicked.connect(self.enable_admin_param)
+        self.ui.btn_pass_admin.clicked.connect(create_standart.pass_admin)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons()
