@@ -1,3 +1,3 @@
-import ctypes
-
-print(ctypes.windll.shell32.IsUserAnAdmin())
+a = "s"
+b = 's'
+print(a == b)
