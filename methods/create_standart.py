@@ -2,7 +2,9 @@ import subprocess
 
 from PyQt6.QtWidgets import QPushButton, QLabel
 
-import key_phrases
+import static_info as stat_inf
+
+import key_phrases as k_phras
 
 
 def enable_admin(
@@ -18,7 +20,8 @@ def enable_admin(
         )
 
         # Если успешно:
-        label_admin.setText(key_phrases.enabled[1])
+        label_admin.setText(k_phras.enabled[1])
+        stat_inf.admin_active = k_phras.enabled[1]
         btn_admin.setEnabled(False)
 
         return [0, 0]
@@ -39,3 +42,6 @@ def pass_admin(new_password):
 
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
+
+def rename_PC(new_name):
+    pass

@@ -5,6 +5,8 @@ enabled = ["включен", "включена"]
 enabled_no = ["выключен", "выключена"]
 activate_status = ["активировано"]
 activate_status_no = ["не активировано"]
+matching_yes = ["соответствует"]
+matching_no = ["не соответствует"]
 
 
 def find_phras(line: str, dictionary: []):

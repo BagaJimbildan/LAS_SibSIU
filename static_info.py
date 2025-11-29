@@ -12,6 +12,9 @@ net_mask = "???"
 net_gateway = "???"
 net_dns = ["???", "???"]
 
+# Имя ПК
+name_PC = "???"
+name_PC_standard = "???"
 # Включена ли встроенная учетная запись администратора
 admin_active = "???"
 

@@ -34,13 +34,13 @@ def check_activate():
         try:
             # Читаем значение DigitalProductId (если существует, обычно означает активацию)
             winreg.QueryValueEx(key, "DigitalProductId")
-            stat_inf.activate = key_phrases.activate_status[0]
+            stat_inf.activate = k_phras.activate_status[0]
 
         except:
             try:
                 # Читаем значение ProductId
                 winreg.QueryValueEx(key, "ProductId")
-                stat_inf.activate = key_phrases.activate_status[0]
+                stat_inf.activate = k_phras.activate_status[0]
             except:
                 try:
                     # Проверяем специальный ключ активации
@@ -50,9 +50,9 @@ def check_activate():
                     winreg.CloseKey(key_activation)
 
                     if activation_value == 1:
-                        stat_inf.activate = key_phrases.activate_status[0]
+                        stat_inf.activate = k_phras.activate_status[0]
                     else:
-                        stat_inf.activate = key_phrases.activate_status_no[0]
+                        stat_inf.activate = k_phras.activate_status_no[0]
                 except:
                     stat_inf.activate = "???"
 
@@ -78,7 +78,7 @@ def check_dhcp():
             if in_ethernet_section:
                 # Если нашли DHCP - извлекаем статус
                 if "DHCP включен" in line:
-                    status = key_phrases.enabled[0] if "Да" in line else key_phrases.enabled_no[0]
+                    status = k_phras.enabled[0] if "Да" in line else k_phras.enabled_no[0]
                     stat_inf.dhcp = status
                     break  # Прерываем цикл после нахождения статуса для Ethernet
 
@@ -150,8 +150,8 @@ def check_admin_on():
             lines = result.stdout.split('\n')
             for line in lines:
                 if "учетная запись активна" in line.lower():
-                    if k_phras.find_phras(line, k_phras.ans_yes): stat_inf.admin_active = key_phrases.enabled[1]
-                    elif k_phras.find_phras(line, k_phras.ans_no): stat_inf.admin_active = key_phrases.enabled_no[1]
+                    if k_phras.find_phras(line, k_phras.ans_yes): stat_inf.admin_active = k_phras.enabled[1]
+                    elif k_phras.find_phras(line, k_phras.ans_no): stat_inf.admin_active = k_phras.enabled_no[1]
                     else: "???"
         except Exception as e:
             print(f"Ошибка: {e}")
@@ -163,3 +163,12 @@ def check_status_current_user():
         stat_inf.admin_current_user =  ctypes.windll.shell32.IsUserAnAdmin()
     elif stat_inf.os.lower() == "linux":
         stat_inf.admin_current_user = "пока не знаю"
+
+def check_name():
+    if stat_inf.os.lower() == "windows":
+        stat_inf.name_PC = platform.node()
+
+def check_name_standard():
+    pattern = r'^[a-zA-Z0-9]+-\d{5}-[cCnNpP]$'
+    matching = bool(re.match(pattern, "h-7777X-p"))
+    stat_inf.name_PC_standard = k_phras.matching_yes[0] if matching else k_phras.matching_no[0]

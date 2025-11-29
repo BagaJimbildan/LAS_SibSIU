@@ -9,6 +9,8 @@ import methods.start_info as start_inf
 start_inf.check_system()
 start_inf.check_domain()
 start_inf.check_activate()
+start_inf.check_name()
+start_inf.check_name_standard()
 start_inf.check_dhcp()
 start_inf.check_network()
 start_inf.check_admin_on()

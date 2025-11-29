@@ -7,6 +7,7 @@ import methods.create_standart as create_standart
 from design_ui.ui_CreatePass_script import DialogCreatePass
 from design_ui.ui_Error_script import DialogError
 from design_ui.ui_ParamNet_script import DialogParamNet
+from design_ui.ui_StandardName_script import DialogStandardName
 from design_ui.ui_Success_script import DialogSuccess
 from design_ui.ui_main import Ui_MainWindow
 
@@ -32,10 +33,13 @@ class MainWindow(QMainWindow):
         self.ui.lbl_os_activate.setText(stat_inf.activate)
         self.ui.lbl_dhcp.setText(stat_inf.dhcp)
         self.ui.lbl_admin_active.setText(stat_inf.admin_active)
+        self.ui.lbl_name.setText(stat_inf.name_PC)
+        self.ui.lbl_name_is_standart.setText(stat_inf.name_PC_standard + " стандарту имен")
 
         self.ui.btn_net_1.clicked.connect(self.parameters_net)
         self.ui.btn_enable_admin.clicked.connect(self.enable_admin_param)
         self.ui.btn_pass_admin.clicked.connect(self.open_window_password)
+        self.ui.btn_edit_name.clicked.connect(self.dialog_edit_name_show)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons()
@@ -96,3 +100,7 @@ class MainWindow(QMainWindow):
         self.dialogSuccess = DialogSuccess()
         self.dialogSuccess.ui.lb_info.setText(text)
         self.dialogSuccess.show()
+
+    def dialog_edit_name_show(self):
+        self.dialogEditName = DialogStandardName()
+        self.dialogEditName.show()

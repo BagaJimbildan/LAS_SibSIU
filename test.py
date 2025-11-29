@@ -1,3 +1,3 @@
-a = "s"
-b = 's'
-print(a == b)
+import re
+
+pattern = r'^[a-zA-Zа-яА-Я0-9]+-\d{5}-[cCnNpP]$'
