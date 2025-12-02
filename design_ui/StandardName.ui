@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>692</width>
-    <height>217</height>
+    <width>837</width>
+    <height>188</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -82,24 +82,11 @@
     <string>Тип устройства</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>160</y>
-     <width>281</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Итоговое имя:</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btn_ok">
    <property name="geometry">
     <rect>
-     <x>588</x>
-     <y>190</y>
+     <x>390</x>
+     <y>160</y>
      <width>101</width>
      <height>24</height>
     </rect>
@@ -111,8 +98,8 @@
   <widget class="QPushButton" name="btn_cancel">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>190</y>
+     <x>280</x>
+     <y>160</y>
      <width>101</width>
      <height>24</height>
     </rect>
@@ -139,12 +126,12 @@
     <rect>
      <x>490</x>
      <y>60</y>
-     <width>201</width>
+     <width>341</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>необходимо заполнить</string>
    </property>
   </widget>
   <widget class="QLabel" name="lbl_error_num_inv">
@@ -152,12 +139,12 @@
     <rect>
      <x>490</x>
      <y>90</y>
-     <width>201</width>
+     <width>341</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>необходимо заполнить</string>
    </property>
   </widget>
  </widget>

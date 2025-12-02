@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QMainWindow
 
 import key_phrases
 import static_info as stat_inf
-import methods.create_standart as create_standart
+import methods.create_standart as create_standard
 from design_ui.ui_CreatePass_script import DialogCreatePass
 from design_ui.ui_Error_script import DialogError
 from design_ui.ui_ParamNet_script import DialogParamNet
@@ -25,7 +25,8 @@ class MainWindow(QMainWindow):
         self.buttons_admin = \
         [
             self.ui.btn_enable_admin,
-            self.ui.btn_pass_admin
+            self.ui.btn_pass_admin,
+            self.ui.btn_edit_name
         ]
 
         self.ui.lbl_os.setText(stat_inf.platform)
@@ -34,7 +35,7 @@ class MainWindow(QMainWindow):
         self.ui.lbl_dhcp.setText(stat_inf.dhcp)
         self.ui.lbl_admin_active.setText(stat_inf.admin_active)
         self.ui.lbl_name.setText(stat_inf.name_PC)
-        self.ui.lbl_name_is_standart.setText(stat_inf.name_PC_standard + " стандарту имен")
+        self.ui.lbl_name_is_standart.setText(stat_inf.name_PC_standard)
 
         self.ui.btn_net_1.clicked.connect(self.parameters_net)
         self.ui.btn_enable_admin.clicked.connect(self.enable_admin_param)
@@ -57,7 +58,7 @@ class MainWindow(QMainWindow):
         self.dialogParamNet.show()
 
     def enable_admin_param(self):
-        status = create_standart.enable_admin(self.ui.lbl_admin_active, self.ui.btn_enable_admin)
+        status = create_standard.enable_admin(self.ui.lbl_admin_active, self.ui.btn_enable_admin)
 
         if status[0] == 1:
             self.dialog_error_show(status[1])
@@ -81,7 +82,7 @@ class MainWindow(QMainWindow):
         pass2 = self.dialogPassAdmin.ui.tb_pass2.text()
 
         if pass1 == pass2:
-            status = create_standart.pass_admin(pass1)
+            status = create_standard.pass_admin(pass1)
             if status[0] == 1:
                 self.dialog_error_show(status[1])
             else:
@@ -91,16 +92,16 @@ class MainWindow(QMainWindow):
         else:
             self.dialog_error_show("Введеные пароли не совпадают")
 
-    def dialog_error_show(self, text):
+    def dialog_error_show(self, text: str):
         self.dialogError = DialogError()
         self.dialogError.ui.tb_error.setText(text)
         self.dialogError.show()
 
     def dialog_success_show(self, text: str):
         self.dialogSuccess = DialogSuccess()
-        self.dialogSuccess.ui.lb_info.setText(text)
+        self.dialogSuccess.ui.tb_info.setText(text)
         self.dialogSuccess.show()
 
     def dialog_edit_name_show(self):
-        self.dialogEditName = DialogStandardName()
+        self.dialogEditName = DialogStandardName(self.ui.lbl_name, self.ui.lbl_name_is_standart, self.dialog_success_show, self.dialog_error_show)
         self.dialogEditName.show()

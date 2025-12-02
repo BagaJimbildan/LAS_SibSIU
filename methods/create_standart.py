@@ -43,5 +43,18 @@ def pass_admin(new_password):
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
 
-def rename_PC(new_name):
-    pass
+def rename_PC(new_name):  # имя ПК в окне
+    try:
+        ps_script = f'Rename-Computer -NewName "{new_name}" -Force'
+
+        subprocess.run(
+            ["powershell", "-Command", ps_script],
+            check=True,
+            capture_output=True,
+            text=True,
+            encoding='cp866'
+        )
+        return [0, 0]
+
+    except subprocess.CalledProcessError as e:
+        return [1, e.stderr]

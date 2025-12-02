@@ -170,5 +170,5 @@ def check_name():
 
 def check_name_standard():
     pattern = r'^[a-zA-Z0-9]+-\d{5}-[cCnNpP]$'
-    matching = bool(re.match(pattern, "h-7777X-p"))
+    matching = bool(re.match(pattern, stat_inf.name_PC))
     stat_inf.name_PC_standard = k_phras.matching_yes[0] if matching else k_phras.matching_no[0]
