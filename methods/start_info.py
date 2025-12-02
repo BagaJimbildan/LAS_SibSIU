@@ -110,33 +110,30 @@ def check_network():
 
             if in_ethernet_section:
                 # IP адрес
-                if "ipv4-адрес" in line.lower() and stat_inf.net_ip_addr == '???':
+                if "ipv4-адрес" in line.lower() and stat_inf.net_ip_addr == stat_inf.do_not_know:
                     match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
                     if match:
                         stat_inf.net_ip_addr = match.group(1)
 
                 # Маска подсети
-                elif "маска подсети" in line.lower() and stat_inf.net_mask == '???':
+                elif "маска подсети" in line.lower() and stat_inf.net_mask == stat_inf.do_not_know:
                     match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
                     if match:
                         stat_inf.net_mask = match.group(1)
 
                 # Шлюз
-                elif "основной шлюз" in line.lower() and stat_inf.net_gateway == '???':
+                elif "основной шлюз" in line.lower() and stat_inf.net_gateway == stat_inf.do_not_know:
                     match = re.search(r'(\d+\.\d+\.\d+\.\d+)', line)
                     if match:
                         stat_inf.net_gateway = match.group(1)
 
                 # DNS
-                elif "dns-серверы" in line.lower() and stat_inf.net_dns[0] == '???':
+                elif "dns-серверы" in line.lower() and stat_inf.net_dns[0] == stat_inf.do_not_know:
                     dns_matches = re.findall(r'(\d+\.\d+\.\d+\.\d+)', line)
                     if dns_matches:
                         stat_inf.net_dns[0] = dns_matches[0]
                         in_dns_section = True
 
-                # Выходим при обнаружении другого адаптера
-                if "адаптер" in line.lower() and "ethernet" not in line.lower():
-                    break
 
 def check_admin_on():
     if stat_inf.os.lower() == "windows":

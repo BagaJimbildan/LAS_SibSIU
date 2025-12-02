@@ -116,10 +116,12 @@ class DialogStandardName(QDialog):
     def start_rename(self):
         status = create_standard.rename_PC(self.new_name)
         if status[0] == 0:
-            self.label_name.setText(self.new_name + " (требуется перезагрузка)")
             stat_inf.name_PC = self.new_name
+            self.label_name.setText(self.new_name + " (требуется перезагрузка)")
+
             stat_inf.name_PC_standard = k_phras.matching_yes[0]
             self.label_standard.setText(stat_inf.name_PC_standard)
+
             text = "Имя компьютера изменено на " + self.new_name + "\n"
             text += f"Требуется перезагрузка для применения изменений"
             self.message_box(text)

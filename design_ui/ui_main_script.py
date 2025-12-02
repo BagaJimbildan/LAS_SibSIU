@@ -5,6 +5,7 @@ import key_phrases
 import static_info as stat_inf
 import methods.create_standart as create_standard
 from design_ui.ui_CreatePass_script import DialogCreatePass
+from design_ui.ui_EditNetwork_script import DialogEditNetwork
 from design_ui.ui_Error_script import DialogError
 from design_ui.ui_ParamNet_script import DialogParamNet
 from design_ui.ui_StandardName_script import DialogStandardName
@@ -41,6 +42,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_enable_admin.clicked.connect(self.enable_admin_param)
         self.ui.btn_pass_admin.clicked.connect(self.open_window_password)
         self.ui.btn_edit_name.clicked.connect(self.dialog_edit_name_show)
+        self.ui.btn_edit_network.clicked.connect(self.dialog_edit_network_show)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons()
@@ -51,6 +53,7 @@ class MainWindow(QMainWindow):
         # Отключение кнопки "Включить учетную запись админа"
         if stat_inf.admin_active == key_phrases.enabled[1] and self.ui.btn_enable_admin.isEnabled():
             self.ui.btn_enable_admin.setEnabled(False)
+
 
 
     def parameters_net(self):
@@ -64,7 +67,6 @@ class MainWindow(QMainWindow):
             self.dialog_error_show(status[1])
         else:
             self.dialog_success_show("Учетная запись администратора успешно включена")
-
 
     def unenable_buttons(self):
         for i in self.buttons_admin:
@@ -105,3 +107,7 @@ class MainWindow(QMainWindow):
     def dialog_edit_name_show(self):
         self.dialogEditName = DialogStandardName(self.ui.lbl_name, self.ui.lbl_name_is_standart, self.dialog_success_show, self.dialog_error_show)
         self.dialogEditName.show()
+
+    def dialog_edit_network_show(self):
+        self.dialogEditNetwork = DialogEditNetwork(self.dialog_error_show, self.dialog_success_show)
+        self.dialogEditNetwork.show()

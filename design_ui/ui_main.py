@@ -79,6 +79,9 @@ class Ui_MainWindow(object):
         self.lbl_name_is_standart = QLabel(self.centralwidget)
         self.lbl_name_is_standart.setObjectName(u"lbl_name_is_standart")
         self.lbl_name_is_standart.setGeometry(QRect(620, 30, 361, 16))
+        self.btn_edit_network = QPushButton(self.centralwidget)
+        self.btn_edit_network.setObjectName(u"btn_edit_network")
+        self.btn_edit_network.setGeometry(QRect(130, 160, 181, 24))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -113,5 +116,6 @@ class Ui_MainWindow(object):
         self.lbl_name.setText(QCoreApplication.translate("MainWindow", u"???", None))
         self.btn_edit_name.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0438\u043c\u044f \u041f\u041a", None))
         self.lbl_name_is_standart.setText(QCoreApplication.translate("MainWindow", u"\u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0438\u043b\u0438 \u043d\u0435\u0442 \u0448\u0430\u0431\u043b\u043e\u043d\u0443", None))
+        self.btn_edit_network.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0441\u0435\u0442\u0438", None))
     # retranslateUi
 

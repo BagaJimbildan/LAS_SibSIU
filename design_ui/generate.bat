@@ -5,3 +5,4 @@ pyside6-uic Error.ui -o ui_Error.py
 pyside6-uic Success.ui -o ui_Success.py
 pyside6-uic StandardName.ui -o ui_StandardName.py
 pyside6-uic YesNo.ui -o ui_YesNo.py
+pyside6-uic EditNetwork.ui -o ui_EditNetwork.py

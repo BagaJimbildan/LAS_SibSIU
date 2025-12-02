@@ -8,6 +8,8 @@ activate_status_no = ["не активировано"]
 matching_yes = ["соответствует стандарту имен"]
 matching_no = ["не соответствует стандарту имен"]
 
+# надо днс сюда и маску
+
 
 def find_phras(line: str, dictionary: []):
     line = line.lower()
