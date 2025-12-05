@@ -27,7 +27,8 @@ class MainWindow(QMainWindow):
         [
             self.ui.btn_enable_admin,
             self.ui.btn_pass_admin,
-            self.ui.btn_edit_name
+            self.ui.btn_edit_name,
+            self.ui.btn_edit_network
         ]
 
         self.ui.lbl_os.setText(stat_inf.platform)

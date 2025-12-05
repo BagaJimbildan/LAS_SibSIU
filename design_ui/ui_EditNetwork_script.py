@@ -61,8 +61,12 @@ class DialogEditNetwork(QDialog):
             if status[0] == 1:
                 self.error(status[1])
             else:
-                # тут доделать надо
-                self.success("")
+                text = "Параметры сети успешно изменены:\n"
+                text += f"ip: {".".join(ip)}\n"
+                text += f"шлюз: {".".join(ip[0:-1]) + ".254"}\n"
+                text += "DNS: 10.252.253.1, 10.252.253.2"
+                self.success(text)
+                self.close()
 
 
 
