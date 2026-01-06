@@ -3,9 +3,14 @@ import platform
 import re
 import subprocess
 
+
 import key_phrases
 import static_info as stat_inf
 import key_phrases as k_phras
+
+if platform.system().lower() == "windows":
+    import winreg
+
 
 
 def check_system():
@@ -13,13 +18,12 @@ def check_system():
     stat_inf.os = platform.system()
     stat_inf.platform = platform.platform()
 
-    # Для Linux нет такого
-    if stat_inf.os.lower() == "Windows":
-        import winreg
+
 
 def check_domain():
     # Проверка домена
     if stat_inf.os.lower() == "windows":
+
         with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters") as key:
             stat_inf.domain, _ = winreg.QueryValueEx(key, "Domain")
     elif stat_inf.os.lower() == "linux":
