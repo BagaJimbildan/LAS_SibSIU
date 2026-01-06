@@ -2,7 +2,6 @@ import ctypes
 import platform
 import re
 import subprocess
-import winreg
 
 import key_phrases
 import static_info as stat_inf
@@ -14,13 +13,17 @@ def check_system():
     stat_inf.os = platform.system()
     stat_inf.platform = platform.platform()
 
+    # Для Linux нет такого
+    if stat_inf.os.lower() == "Windows":
+        import winreg
+
 def check_domain():
     # Проверка домена
     if stat_inf.os.lower() == "windows":
         with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\CurrentControlSet\Services\Tcpip\Parameters") as key:
             stat_inf.domain, _ = winreg.QueryValueEx(key, "Domain")
     elif stat_inf.os.lower() == "linux":
-        stat_inf.domain = "пока не знаю"
+        stat_inf.domain = "пока не знаю linux"
 
     if stat_inf.domain == "":
         stat_inf.domain = "нет"
@@ -59,6 +62,9 @@ def check_activate():
         # Закрываем основной ключ
         winreg.CloseKey(key)
 
+    elif stat_inf.os.lower() == "linux":
+        stat_inf.activate = stat_inf.os.lower()
+
 def check_dhcp():
     if stat_inf.os.lower() == "windows":
         result = subprocess.run(["ipconfig", "/all"], capture_output=True, text=True, encoding="cp866")
@@ -85,6 +91,9 @@ def check_dhcp():
                 # Если встречаем начало другого адаптера - выходим из секции Ethernet
                 if "адаптер" in line.lower() and "ethernet" not in line.lower():
                     in_ethernet_section = False
+
+    elif stat_inf.os.lower() == "linux":
+        stat_inf.dhcp = "не знаю linux"
 
 def check_network():
     if stat_inf.os.lower() == "windows":
@@ -153,13 +162,16 @@ def check_admin_on():
         except Exception as e:
             print(f"Ошибка: {e}")
 
+    elif stat_inf.os.lower() == "linux":
+        stat_inf.admin_active = "стандарт linux на администратора неизвестен"
+
 def check_status_current_user():
     # Возвращает от админа ли запущена программа: 1 - да, 0 - нет
 
     if stat_inf.os.lower() == "windows":
         stat_inf.admin_current_user =  ctypes.windll.shell32.IsUserAnAdmin()
     elif stat_inf.os.lower() == "linux":
-        stat_inf.admin_current_user = "пока не знаю"
+        stat_inf.admin_current_user = "пока не знаю linux"
 
 def check_name():
     if stat_inf.os.lower() == "windows":

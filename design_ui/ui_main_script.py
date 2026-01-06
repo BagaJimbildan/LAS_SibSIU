@@ -46,10 +46,13 @@ class MainWindow(QMainWindow):
         self.ui.btn_edit_network.clicked.connect(self.dialog_edit_network_show)
 
         if stat_inf.admin_current_user == 0:
-            self.unenable_buttons()
+            self.unenable_buttons_admin()
             self.ui.lbl_status_user.setText("Программа запущена НЕ от администратора")
         elif stat_inf.admin_current_user == 1:
             self.ui.lbl_status_user.setText("Программа запущена от администратора")
+
+        if stat_inf.os.lower() == "linux":
+            self.unenable_buttons_linux()
 
         # Отключение кнопки "Включить учетную запись админа"
         if stat_inf.admin_active == key_phrases.enabled[1] and self.ui.btn_enable_admin.isEnabled():
@@ -69,9 +72,17 @@ class MainWindow(QMainWindow):
         else:
             self.dialog_success_show("Учетная запись администратора успешно включена")
 
-    def unenable_buttons(self):
+
+    # Отключение кнопок которые не могут быть выполнены не админом
+    def unenable_buttons_admin(self):
         for i in self.buttons_admin:
             i.setEnabled(False)
+
+    # Отключение кнопок которые не нужно выполнять на Linux
+    # исходя из задач отдела
+    def unenable_buttons_linux(self):
+        self.ui.btn_enable_admin.setEnabled(False)
+        self.ui.btn_pass_admin.setEnabled(False)
 
     def open_window_password(self):
         self.dialogPassAdmin = DialogCreatePass()
