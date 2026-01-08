@@ -7,7 +7,6 @@ import static_info as stat_inf
 import key_phrases as k_phras
 
 import methods.create_standart as create_standard
-from design_ui.ui_Error_script import DialogError
 from design_ui.ui_StandardName import Ui_DialogStandardName
 from design_ui.ui_YesNo_script import DialogYesNo
 
@@ -55,7 +54,6 @@ class DialogStandardName(QDialog):
 
             self.dialog_yesno.show()
         else:
-            self.dialogError = DialogError()
 
             errors = []
             if test1[0] == 1:
@@ -66,9 +64,8 @@ class DialogStandardName(QDialog):
             if errors:
                 error_word = "ую ошибку" if len(errors) == 1 else "ие ошибки"
                 error_text = f"Исправьте следующ{error_word}:\n" + "\n".join(errors)
-                self.dialogError.ui.tb_error.setText(error_text)
+                self.error_box(error_text)
 
-            self.dialogError.show()
 
 
 

@@ -102,3 +102,17 @@ def edit_network(new_ip: list[str]):
     else:
         return [1, "не знаю пока как Linux"]
 
+def disable_user(username: str):
+    try:
+        subprocess.run(
+            ['net', 'user', username, '/active:no'],
+            capture_output=True,
+            text=True,
+            encoding='cp866',
+            check=True
+        )
+
+        return [0,0]
+
+    except subprocess.CalledProcessError as e:
+        return [1, e.stderr]
