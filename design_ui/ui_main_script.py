@@ -29,8 +29,16 @@ class MainWindow(QMainWindow):
             self.ui.btn_enable_admin,
             self.ui.btn_pass_admin,
             self.ui.btn_edit_name,
-            self.ui.btn_edit_network
+            self.ui.btn_edit_network,
+            self.ui.btn_disable_user
         ]
+
+        self.buttons_no_linux = \
+            [
+                self.ui.btn_enable_admin,
+                self.ui.btn_pass_admin,
+                self.ui.btn_disable_user
+            ]
 
         self.ui.lbl_os.setText(stat_inf.platform)
         self.ui.lbl_domen.setText(stat_inf.domain)
@@ -87,8 +95,8 @@ class MainWindow(QMainWindow):
     # Отключение кнопок которые не нужно выполнять на Linux
     # исходя из задач отдела
     def unenable_buttons_linux(self):
-        self.ui.btn_enable_admin.setEnabled(False)
-        self.ui.btn_pass_admin.setEnabled(False)
+        for i in self.buttons_no_linux:
+            i.setEnabled(False)
 
     def open_window_password(self):
         self.dialogPassAdmin = DialogCreatePass()
