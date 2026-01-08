@@ -85,6 +85,9 @@ class Ui_MainWindow(object):
         self.btn_disable_user = QPushButton(self.centralwidget)
         self.btn_disable_user.setObjectName(u"btn_disable_user")
         self.btn_disable_user.setGeometry(QRect(480, 300, 341, 24))
+        self.btn_domain = QPushButton(self.centralwidget)
+        self.btn_domain.setObjectName(u"btn_domain")
+        self.btn_domain.setGeometry(QRect(20, 300, 221, 26))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -121,5 +124,6 @@ class Ui_MainWindow(object):
         self.lbl_name_is_standart.setText(QCoreApplication.translate("MainWindow", u"\u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0438\u043b\u0438 \u043d\u0435\u0442 \u0448\u0430\u0431\u043b\u043e\u043d\u0443", None))
         self.btn_edit_network.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0441\u0435\u0442\u0438", None))
         self.btn_disable_user.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0441\u043e\u0437\u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043d\u0430\u0447\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430", None))
+        self.btn_domain.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0441\u0442\u0438 \u0432 \u0434\u043e\u043c\u0435\u043d", None))
     # retranslateUi
 

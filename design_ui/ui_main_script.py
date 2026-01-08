@@ -6,6 +6,7 @@ import static_info as stat_inf
 import methods.create_standart as create_standard
 from design_ui.ui_CreatePass_script import DialogCreatePass
 from design_ui.ui_DisableUser_script import DialogDisableUser
+from design_ui.ui_DomainName_script import DialogDomainName
 from design_ui.ui_EditNetwork_script import DialogEditNetwork
 from design_ui.ui_Error_script import DialogError
 from design_ui.ui_ParamNet_script import DialogParamNet
@@ -54,6 +55,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_edit_name.clicked.connect(self.dialog_edit_name_show)
         self.ui.btn_edit_network.clicked.connect(self.dialog_edit_network_show)
         self.ui.btn_disable_user.clicked.connect(self.disable_user)
+        self.ui.btn_domain.clicked.connect(self.enter_domain)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -69,6 +71,10 @@ class MainWindow(QMainWindow):
             self.ui.btn_enable_admin.setEnabled(False)
 
 
+
+    def enter_domain(self):
+        self.dialogDomainName = DialogDomainName(self.dialog_error_show, self.dialog_success_show)
+        self.dialogDomainName.show()
 
     def disable_user(self):
         self.dialogDisableUser = DialogDisableUser(self.dialog_error_show, self.dialog_success_show)

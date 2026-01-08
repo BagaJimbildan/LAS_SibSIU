@@ -7,3 +7,4 @@ pyside6-uic StandardName.ui -o ui_StandardName.py
 pyside6-uic YesNo.ui -o ui_YesNo.py
 pyside6-uic EditNetwork.ui -o ui_EditNetwork.py
 pyside6-uic DisableUser.ui -o ui_DisableUser.py
+pyside6-uic DomainName.ui -o ui_DomainName.py

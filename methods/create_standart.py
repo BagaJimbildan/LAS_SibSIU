@@ -116,3 +116,6 @@ def disable_user(username: str):
 
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
+
+def ping_domain(name_domain: str):
+    pass
