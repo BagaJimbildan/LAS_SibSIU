@@ -31,14 +31,16 @@ class MainWindow(QMainWindow):
             self.ui.btn_pass_admin,
             self.ui.btn_edit_name,
             self.ui.btn_edit_network,
-            self.ui.btn_disable_user
+            self.ui.btn_disable_user,
+            self.ui.btn_domain
         ]
 
         self.buttons_no_linux = \
             [
                 self.ui.btn_enable_admin,
                 self.ui.btn_pass_admin,
-                self.ui.btn_disable_user
+                self.ui.btn_disable_user,
+                self.ui.btn_domain
             ]
 
         self.ui.lbl_os.setText(stat_inf.platform)
@@ -73,7 +75,7 @@ class MainWindow(QMainWindow):
 
 
     def enter_domain(self):
-        self.dialogDomainName = DialogDomainName(self.dialog_error_show, self.dialog_success_show)
+        self.dialogDomainName = DialogDomainName(self.dialog_error_show, self.dialog_success_show, self.ui.lbl_domen)
         self.dialogDomainName.show()
 
     def disable_user(self):

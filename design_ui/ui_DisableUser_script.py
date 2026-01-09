@@ -20,7 +20,7 @@ class DialogDisableUser(QDialog):
     def check_name(self):
         name = self.ui.tb_name.text()
 
-        if name is None or name.strip() == "":
+        if create_standard.check_tb_null(name) == 1:
             self.dialogError("Введите имя пользователя администратора")
         else:
             status = create_standard.disable_user(name)

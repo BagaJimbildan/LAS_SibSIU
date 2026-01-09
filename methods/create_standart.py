@@ -1,6 +1,6 @@
 import subprocess
 
-from PyQt6.QtWidgets import QPushButton, QLabel
+from PyQt6.QtWidgets import QPushButton, QLabel, QLineEdit
 
 import static_info as stat_inf
 
@@ -117,5 +117,28 @@ def disable_user(username: str):
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
 
-def ping_domain(name_domain: str):
-    pass
+def connect_domain(domain_name: str, admin_user: str, admin_password: str):
+
+    powershell_command = (
+        f"Add-Computer -DomainName {domain_name} "
+        f"-Credential (New-Object System.Management.Automation.PSCredential "
+        f"('{admin_user}', (ConvertTo-SecureString '{admin_password}' -AsPlainText -Force))) "
+    )
+
+    try:
+        subprocess.run(
+            ["powershell", "-Command", powershell_command],
+            capture_output=True,
+            text=True,
+            encoding='cp866',
+            check=True
+        )
+        return [0, "Ввод в домен успешен + '\n' + Необходимо перезагрузить компьютер"]
+    except subprocess.CalledProcessError as e:
+        return [1, e.stderr]
+
+def check_tb_null(text: str):
+    if text is None or text.strip() == "":
+        return 1
+    else:
+        return 0

@@ -86,7 +86,7 @@ class DialogStandardName(QDialog):
     def check_num_cab_text(self):
         text = self.ui.tb_num_cab.text().strip()
 
-        if text is None or text == "":
+        if create_standard.check_tb_null(text) == 1:
             return [1, "необходимо заполнить"]
 
         if len(text) > 10:
@@ -101,7 +101,7 @@ class DialogStandardName(QDialog):
     def check_num_inv_text(self):
         text = self.ui.tb_num_inv.text().strip()
 
-        if text is None or text == "":
+        if create_standard.check_tb_null(text) == 1:
             return [1, "необходимо заполнить"]
 
         pattern = r'^\d{5}$'

@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QDialog
 
 import methods.create_standart as create_standard
 from design_ui.ui_EditNetwork import Ui_DialogEditNetwork
+import static_info as stat_inf
 
 
 class DialogEditNetwork(QDialog):
@@ -64,7 +65,13 @@ class DialogEditNetwork(QDialog):
                 text = "Параметры сети успешно изменены:\n"
                 text += f"ip: {".".join(ip)}\n"
                 text += f"шлюз: {".".join(ip[0:-1]) + ".254"}\n"
+                text += f"маска: 255.255.255.0\n"
                 text += "DNS: 10.252.253.1, 10.252.253.2"
+
+                stat_inf.net_ip_addr = f"{".".join(ip)}"
+                stat_inf.net_gateway = f"{".".join(ip[0:-1]) + ".254"}"
+                stat_inf.net_mask = "255.255.255.0"
+                stat_inf.net_dns = ["10.252.253.1", "10.252.253.2"]
                 self.success(text)
                 self.close()
 
