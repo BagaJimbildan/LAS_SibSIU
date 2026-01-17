@@ -3,6 +3,9 @@ from PySide6.QtWidgets import QMainWindow
 
 import key_phrases
 import static_info as stat_inf
+import file_master as file_m
+import app_info as app_inf
+
 import methods.create_standart as create_standard
 from design_ui.ui_CreatePass_script import DialogCreatePass
 from design_ui.ui_DisableUser_script import DialogDisableUser
@@ -12,6 +15,7 @@ from design_ui.ui_Error_script import DialogError
 from design_ui.ui_ParamNet_script import DialogParamNet
 from design_ui.ui_StandardName_script import DialogStandardName
 from design_ui.ui_Success_script import DialogSuccess
+from design_ui.ui_WriteServer_script import DialogWriteServer
 from design_ui.ui_main import Ui_MainWindow
 
 
@@ -72,7 +76,15 @@ class MainWindow(QMainWindow):
         if stat_inf.admin_active == key_phrases.enabled[1] and self.ui.btn_enable_admin.isEnabled():
             self.ui.btn_enable_admin.setEnabled(False)
 
+        if app_inf.asking_write:
+            self.write_server_asking()
 
+
+
+    def write_server_asking(self):
+        self.dialogWriteServer = DialogWriteServer()
+        self.dialogWriteServer.setModal(True)
+        self.dialogWriteServer.exec()
 
     def enter_domain(self):
         self.dialogDomainName = DialogDomainName(self.dialog_error_show, self.dialog_success_show, self.ui.lbl_domen)
