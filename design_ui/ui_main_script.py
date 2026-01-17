@@ -15,7 +15,7 @@ from design_ui.ui_Error_script import DialogError
 from design_ui.ui_ParamNet_script import DialogParamNet
 from design_ui.ui_StandardName_script import DialogStandardName
 from design_ui.ui_Success_script import DialogSuccess
-from design_ui.ui_WriteServer_script import DialogWriteServer
+from design_ui.ui_YesNo_script import DialogYesNo
 from design_ui.ui_main import Ui_MainWindow
 
 
@@ -76,14 +76,17 @@ class MainWindow(QMainWindow):
         if stat_inf.admin_active == key_phrases.enabled[1] and self.ui.btn_enable_admin.isEnabled():
             self.ui.btn_enable_admin.setEnabled(False)
 
-        if app_inf.asking_write:
-            self.write_server_asking()
+        self.write_server_asking()
 
 
 
     def write_server_asking(self):
-        self.dialogWriteServer = DialogWriteServer()
+        self.dialogWriteServer = DialogYesNo()
         self.dialogWriteServer.setModal(True)
+        self.dialogWriteServer.setWindowTitle("Фиксировать изменения")
+        self.dialogWriteServer.ui.tb_text.setText("Записывать изменения на сервере")
+        self.dialogWriteServer.ui.btn_ok.setText("Да")
+        self.dialogWriteServer.ui.btn_close.setText("Нет")
         self.dialogWriteServer.exec()
 
     def enter_domain(self):

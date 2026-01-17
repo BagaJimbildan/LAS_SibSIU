@@ -8,4 +8,3 @@ pyside6-uic YesNo.ui -o ui_YesNo.py
 pyside6-uic EditNetwork.ui -o ui_EditNetwork.py
 pyside6-uic DisableUser.ui -o ui_DisableUser.py
 pyside6-uic DomainName.ui -o ui_DomainName.py
-pyside6-uic WriteServer.ui -o ui_WriteServer.py

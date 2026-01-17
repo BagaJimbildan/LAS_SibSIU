@@ -1,6 +1,7 @@
 import os
 import sys
 import static_info as stat_inf
+import user_info as user_inf
 
 
 data_file = "app_info.data"
@@ -21,8 +22,9 @@ def check_info_app():
     return os.path.exists(data_path)
 
 def create_info_app():
-    with open(data_path, 'w', encoding='utf-8'):
-        pass
+    with open(data_path, 'w', encoding='utf-8') as f:
+        f.write(user_inf.username[0]+"="+'\n')
+        f.write(user_inf.ip_server[0] + "=" + '\n')
 
 
 def read_info_app():
