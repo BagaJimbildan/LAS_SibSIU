@@ -1,7 +1,7 @@
 import static_info as stat_inf
 
 
-username = ["user", ""]  # имя фамилия того, кто работает с программой
+username = ["user", ""]  # логин того, кто работает с программой
 ip_server = ["server", ""]  # сервер, где хранится файл-отчет с записанными действиями
 
 ticket = stat_inf.do_not_know  # номер заявки по которой работает

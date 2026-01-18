@@ -8,8 +8,9 @@ def start_info_app(data_path):  # чтение информации и смен�
     with open(data_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
-    user_inf.username[1] = get_value(lines[0])
-    user_inf.ip_server[1] = get_value(lines[1])
+    user_inf.ip_server[1] = get_value(lines[0])
+    user_inf.username[1] = get_value(lines[1])
+
 
 
 def get_value(line):

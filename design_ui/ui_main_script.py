@@ -5,9 +5,11 @@ import key_phrases
 import static_info as stat_inf
 import file_master as file_m
 import app_info as app_inf
+import user_info as user_inf
 
 import methods.create_standart as create_standard
 from design_ui.ui_CreatePass_script import DialogCreatePass
+from design_ui.ui_DataServer_script import DialogDataServer
 from design_ui.ui_DisableUser_script import DialogDisableUser
 from design_ui.ui_DomainName_script import DialogDomainName
 from design_ui.ui_EditNetwork_script import DialogEditNetwork
@@ -81,10 +83,15 @@ class MainWindow(QMainWindow):
     def select_write_server_yes(self):
         app_inf.write_server = True
         self.dialogWriteServer.close()
+        self.dialogDataServer = DialogDataServer()
+
+        self.dialogDataServer.ui.tb_server.setText(user_inf.ip_server[1])
+        self.dialogDataServer.ui.tb_username.setText(user_inf.username[1])
+
+        self.dialogDataServer.exec()
 
     def write_server_asking(self):
         self.dialogWriteServer = DialogYesNo()
-        self.dialogWriteServer.setModal(True)
         self.dialogWriteServer.setWindowTitle("Фиксировать изменения")
         self.dialogWriteServer.ui.tb_text.setText("Записывать изменения на сервере?")
         self.dialogWriteServer.ui.btn_ok.setText("Да")
