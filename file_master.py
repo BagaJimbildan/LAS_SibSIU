@@ -31,7 +31,16 @@ def read_info_app():
     pass
 
 def write_info_app(field: str, value: str):
-    print(field, value)
+    lines = ""
+    newlines = ""
+    with open(data_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    for i in lines:
+        i = i.replace("\n","")
+        if i.split("=")[0] == field:
+            newlines +=field+"="+value+"\n"
+        else:
+            newlines+=i+"\n"
 
-    with open(data_path, 'a', encoding='utf-8') as f:
-        f.write(field+"="+value+"\n")
+    with open(data_path, 'w', encoding='utf-8') as f:
+        f.write(newlines)

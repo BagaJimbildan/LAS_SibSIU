@@ -24,7 +24,7 @@ file_m.get_current_dir()  # определение директории прог
 
 if file_m.check_info_app():  # если есть файл с информацией о данном экземпляре программы
     app_inf.is_first = False
-    app_inf.start_info_app()  # определение информации о данном экземпляре программы
+    app_inf.start_info_app(file_m.data_path)  # определение информации о данном экземпляре программы
 else:
     app_inf.is_first = True
     file_m.create_info_app()  # создание файла с информацией

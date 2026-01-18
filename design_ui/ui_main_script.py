@@ -78,15 +78,18 @@ class MainWindow(QMainWindow):
 
         self.write_server_asking()
 
-
+    def select_write_server_yes(self):
+        app_inf.write_server = True
+        self.dialogWriteServer.close()
 
     def write_server_asking(self):
         self.dialogWriteServer = DialogYesNo()
         self.dialogWriteServer.setModal(True)
         self.dialogWriteServer.setWindowTitle("Фиксировать изменения")
-        self.dialogWriteServer.ui.tb_text.setText("Записывать изменения на сервере")
+        self.dialogWriteServer.ui.tb_text.setText("Записывать изменения на сервере?")
         self.dialogWriteServer.ui.btn_ok.setText("Да")
         self.dialogWriteServer.ui.btn_close.setText("Нет")
+        self.dialogWriteServer.ui.btn_ok.clicked.connect(self.select_write_server_yes)
         self.dialogWriteServer.exec()
 
     def enter_domain(self):
