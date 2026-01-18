@@ -287,6 +287,32 @@
      <string>Ввести в домен</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_programs">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>370</y>
+      <width>131</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Программы</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_drivers">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>400</y>
+      <width>131</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Драйвера</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

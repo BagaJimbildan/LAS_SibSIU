@@ -15,6 +15,7 @@ from design_ui.ui_DomainName_script import DialogDomainName
 from design_ui.ui_EditNetwork_script import DialogEditNetwork
 from design_ui.ui_Error_script import DialogError
 from design_ui.ui_ParamNet_script import DialogParamNet
+from design_ui.ui_Programs_script import DialogPrograms
 from design_ui.ui_StandardName_script import DialogStandardName
 from design_ui.ui_Success_script import DialogSuccess
 from design_ui.ui_YesNo_script import DialogYesNo
@@ -38,7 +39,9 @@ class MainWindow(QMainWindow):
             self.ui.btn_edit_name,
             self.ui.btn_edit_network,
             self.ui.btn_disable_user,
-            self.ui.btn_domain
+            self.ui.btn_domain,
+            self.ui.btn_programs,
+            self.ui.btn_drivers
         ]
 
         self.buttons_no_linux = \
@@ -46,7 +49,9 @@ class MainWindow(QMainWindow):
                 self.ui.btn_enable_admin,
                 self.ui.btn_pass_admin,
                 self.ui.btn_disable_user,
-                self.ui.btn_domain
+                self.ui.btn_domain,
+                self.ui.btn_programs,
+                self.ui.btn_drivers
             ]
 
         self.ui.lbl_os.setText(stat_inf.platform)
@@ -64,6 +69,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_edit_network.clicked.connect(self.dialog_edit_network_show)
         self.ui.btn_disable_user.clicked.connect(self.disable_user)
         self.ui.btn_domain.clicked.connect(self.enter_domain)
+        self.ui.btn_programs.clicked.connect(self.programs)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -98,6 +104,10 @@ class MainWindow(QMainWindow):
         self.dialogWriteServer.ui.btn_close.setText("Нет")
         self.dialogWriteServer.ui.btn_ok.clicked.connect(self.select_write_server_yes)
         self.dialogWriteServer.exec()
+
+    def programs(self):
+        self.dialogPrograms = DialogPrograms()
+        self.dialogPrograms.show()
 
     def enter_domain(self):
         self.dialogDomainName = DialogDomainName(self.dialog_error_show, self.dialog_success_show, self.ui.lbl_domen)
