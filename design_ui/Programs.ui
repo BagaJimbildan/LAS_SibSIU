@@ -169,6 +169,19 @@
     <string>установить</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btn_ok">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>320</y>
+     <width>91</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ОК</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

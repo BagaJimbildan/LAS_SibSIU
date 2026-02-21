@@ -59,6 +59,9 @@ class Ui_DialogPrograms(object):
         self.btn_ar = QPushButton(DialogPrograms)
         self.btn_ar.setObjectName(u"btn_ar")
         self.btn_ar.setGeometry(QRect(160, 180, 91, 26))
+        self.btn_ok = QPushButton(DialogPrograms)
+        self.btn_ok.setObjectName(u"btn_ok")
+        self.btn_ok.setGeometry(QRect(490, 320, 91, 26))
 
         self.retranslateUi(DialogPrograms)
 
@@ -79,5 +82,6 @@ class Ui_DialogPrograms(object):
         self.btn_fr.setText(QCoreApplication.translate("DialogPrograms", u"\u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c", None))
         self.btn_7z.setText(QCoreApplication.translate("DialogPrograms", u"\u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c", None))
         self.btn_ar.setText(QCoreApplication.translate("DialogPrograms", u"\u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c", None))
+        self.btn_ok.setText(QCoreApplication.translate("DialogPrograms", u"\u041e\u041a", None))
     # retranslateUi
 

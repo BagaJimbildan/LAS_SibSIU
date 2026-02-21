@@ -8,3 +8,5 @@ class DialogPrograms(QDialog):
         super().__init__()
         self.ui = Ui_DialogPrograms()
         self.ui.setupUi(self)
+
+        self.ui.btn_ok.clicked.connect(self.close)

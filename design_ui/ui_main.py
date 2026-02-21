@@ -31,6 +31,8 @@ class Ui_MainWindow(object):
         self.action_2.setObjectName(u"action_2")
         self.action_3 = QAction(MainWindow)
         self.action_3.setObjectName(u"action_3")
+        self.add_path = QAction(MainWindow)
+        self.add_path.setObjectName(u"add_path")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.label = QLabel(self.centralwidget)
@@ -106,17 +108,15 @@ class Ui_MainWindow(object):
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 1051, 33))
-        self.menu = QMenu(self.menubar)
-        self.menu.setObjectName(u"menu")
+        self.menu_programm = QMenu(self.menubar)
+        self.menu_programm.setObjectName(u"menu_programm")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        self.menubar.addAction(self.menu.menuAction())
-        self.menu.addAction(self.action)
-        self.menu.addAction(self.action_2)
-        self.menu.addAction(self.action_3)
+        self.menubar.addAction(self.menu_programm.menuAction())
+        self.menu_programm.addAction(self.add_path)
 
         self.retranslateUi(MainWindow)
 
@@ -128,6 +128,7 @@ class Ui_MainWindow(object):
         self.action.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0432\u0435\u0434\u0435\u043d\u0438\u044f \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f", None))
         self.action_2.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435", None))
         self.action_3.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435", None))
+        self.add_path.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0441\u0441\u044b\u043b\u043a\u0438", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043c\u0435\u043d: ", None))
         self.lbl_domen.setText(QCoreApplication.translate("MainWindow", u"???", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0421:", None))
@@ -151,6 +152,6 @@ class Ui_MainWindow(object):
         self.btn_domain.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0432\u0435\u0441\u0442\u0438 \u0432 \u0434\u043e\u043c\u0435\u043d", None))
         self.btn_programs.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b", None))
         self.btn_drivers.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0440\u0430\u0439\u0432\u0435\u0440\u0430", None))
-        self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435", None))
+        self.menu_programm.setTitle(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430", None))
     # retranslateUi
 

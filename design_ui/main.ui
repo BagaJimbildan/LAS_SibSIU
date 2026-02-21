@@ -323,15 +323,13 @@
      <height>33</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
+   <widget class="QMenu" name="menu_programm">
     <property name="title">
-     <string>Подключение</string>
+     <string>Программа</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
+    <addaction name="add_path"/>
    </widget>
-   <addaction name="menu"/>
+   <addaction name="menu_programm"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action">
@@ -347,6 +345,11 @@
   <action name="action_3">
    <property name="text">
     <string>Отключить подключение</string>
+   </property>
+  </action>
+  <action name="add_path">
+   <property name="text">
+    <string>Добавить ссылки</string>
    </property>
   </action>
  </widget>

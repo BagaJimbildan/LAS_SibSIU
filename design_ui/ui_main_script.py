@@ -1,8 +1,12 @@
+import os
+import subprocess
+
 from PyQt6.QtWidgets import QPushButton
 from PySide6.QtWidgets import QMainWindow
 
 import key_phrases
 import static_info as stat_inf
+import methods.program_setup as prog_set
 import file_master as file_m
 import app_info as app_inf
 import user_info as user_inf
@@ -13,6 +17,7 @@ from design_ui.ui_DataServer_script import DialogDataServer
 from design_ui.ui_DisableUser_script import DialogDisableUser
 from design_ui.ui_DomainName_script import DialogDomainName
 from design_ui.ui_EditNetwork_script import DialogEditNetwork
+from design_ui.ui_EditPath_script import DialogEditPath
 from design_ui.ui_Error_script import DialogError
 from design_ui.ui_ParamNet_script import DialogParamNet
 from design_ui.ui_Programs_script import DialogPrograms
@@ -71,6 +76,10 @@ class MainWindow(QMainWindow):
         self.ui.btn_domain.clicked.connect(self.enter_domain)
         self.ui.btn_programs.clicked.connect(self.programs)
 
+        self.ui.btn_drivers.clicked.connect(self.setup_driver_pack)
+
+        self.ui.add_path.triggered.connect(self.addPath_window)
+
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
             self.ui.lbl_status_user.setText("Программа запущена НЕ от администратора")
@@ -85,6 +94,14 @@ class MainWindow(QMainWindow):
             self.ui.btn_enable_admin.setEnabled(False)
 
         self.write_server_asking()
+
+    def setup_driver_pack(self):
+        prog_set.setup_program(self, "Драйвер пак", stat_inf.path_drivers)
+
+    def addPath_window(self):
+        self.dialog_path_window = DialogEditPath()
+        self.dialog_path_window.show()
+
 
     def select_write_server_yes(self):
         app_inf.write_server = True
