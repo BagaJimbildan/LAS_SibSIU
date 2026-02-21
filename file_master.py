@@ -26,9 +26,10 @@ def create_info_app():
         f.write(user_inf.ip_server[0]+"="+'\n')
         f.write(user_inf.username[0] + "=" + '\n')
 
+        for i in stat_inf.path_program:
+            f.write(i[0] + "=" + '\n')
 
-def read_info_app():
-    pass
+
 
 def write_info_app(field: str, value: str):
     lines = ""

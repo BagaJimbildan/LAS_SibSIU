@@ -349,7 +349,7 @@
   </action>
   <action name="add_path">
    <property name="text">
-    <string>Добавить ссылки</string>
+    <string>Изменить пути установщиков</string>
    </property>
   </action>
  </widget>

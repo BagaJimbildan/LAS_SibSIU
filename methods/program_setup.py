@@ -4,7 +4,7 @@ import subprocess
 import static_info as stat_inf
 
 def setup_program(parent, name, stat_inf_ref):
-    path = stat_inf_ref
+    path = stat_inf_ref[1]
 
     # Папка, где лежит программа
     program_dir = os.path.dirname(path)

@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from PyQt6.QtWidgets import QPushButton
+from PySide6.QtWidgets import QPushButton
 from PySide6.QtWidgets import QMainWindow
 
 import key_phrases
@@ -123,7 +123,7 @@ class MainWindow(QMainWindow):
         self.dialogWriteServer.exec()
 
     def programs(self):
-        self.dialogPrograms = DialogPrograms()
+        self.dialogPrograms = DialogPrograms(self)
         self.dialogPrograms.show()
 
     def enter_domain(self):

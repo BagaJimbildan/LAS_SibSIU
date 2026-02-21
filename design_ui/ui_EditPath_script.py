@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QDialog, QFileDialog
 
 from design_ui.ui_EditPath import Ui_DialogEditPath
 import static_info as stat_inf
+import file_master as file_m
 
 
 class DialogEditPath(QDialog):
@@ -27,44 +28,51 @@ class DialogEditPath(QDialog):
     def path_driver(self):
         result = self.open_explorer()
         if result is not None and result != "":
-            stat_inf.path_drivers = result
+            stat_inf.path_drivers[1] = result
             self.ui.lbl_path_driver.setText(result)
+            file_m.write_info_app(stat_inf.path_drivers[0],stat_inf.path_drivers[1])
 
     def path_office2010(self):
         result = self.open_explorer()
         if result is not None and result != "":
-            stat_inf.path_office2010 = result
+            stat_inf.path_office2010[1] = result
             self.ui.lbl_path_of10.setText(result)
+            file_m.write_info_app(stat_inf.path_office2010[0], stat_inf.path_office2010[1])
 
     def path_office2010A(self):
         result = self.open_explorer()
         if result is not None and result != "":
-            stat_inf.path_office2010A = result
+            stat_inf.path_office2010A[1] = result
             self.ui.lbl_path_of10A.setText(result)
+            file_m.write_info_app(stat_inf.path_office2010A[0], stat_inf.path_office2010A[1])
 
     def path_office2016(self):
         result = self.open_explorer()
         if result is not None and result != "":
-            stat_inf.path_office2016 = result
+            stat_inf.path_office2016[1] = result
             self.ui.lbl_path_of16.setText(result)
+            file_m.write_info_app(stat_inf.path_office2016[0], stat_inf.path_office2016[1])
 
     def path_acrobat_reader(self):
         result = self.open_explorer()
         if result is not None and result != "":
-            stat_inf.path_AcrobatReader = result
+            stat_inf.path_AcrobatReader[1] = result
             self.ui.lbl_path_ar.setText(result)
+            file_m.write_info_app(stat_inf.path_AcrobatReader[0], stat_inf.path_AcrobatReader[1])
 
     def path_fine_reader(self):
         result = self.open_explorer()
         if result is not None and result != "":
-            stat_inf.path_fineReader = result
+            stat_inf.path_fineReader[1] = result
             self.ui.lbl_path_fr.setText(result)
+            file_m.write_info_app(stat_inf.path_fineReader[0], stat_inf.path_fineReader[1])
 
     def path_7zip(self):
         result = self.open_explorer()
         if result is not None and result != "":
-            stat_inf.path_7zip = result
+            stat_inf.path_7zip[1] = result
             self.ui.lbl_path_7z.setText(result)
+            file_m.write_info_app(stat_inf.path_7zip[0], stat_inf.path_7zip[1])
 
     def open_explorer(self):
         self.file_path = QFileDialog.getOpenFileName(
@@ -76,11 +84,11 @@ class DialogEditPath(QDialog):
         return self.file_path[0]
 
     def write_path(self):
-        self.ui.lbl_path_driver.setText(stat_inf.path_drivers)
+        self.ui.lbl_path_driver.setText(stat_inf.path_drivers[1])
 
-        self.ui.lbl_path_of10.setText(stat_inf.path_office2010)
-        self.ui.lbl_path_of10A.setText(stat_inf.path_office2010A)
-        self.ui.lbl_path_of16.setText(stat_inf.path_office2016)
-        self.ui.lbl_path_fr.setText(stat_inf.path_fineReader)
-        self.ui.lbl_path_ar.setText(stat_inf.path_AcrobatReader)
-        self.ui.lbl_path_7z.setText(stat_inf.path_7zip)
+        self.ui.lbl_path_of10.setText(stat_inf.path_office2010[1])
+        self.ui.lbl_path_of10A.setText(stat_inf.path_office2010A[1])
+        self.ui.lbl_path_of16.setText(stat_inf.path_office2016[1])
+        self.ui.lbl_path_fr.setText(stat_inf.path_fineReader[1])
+        self.ui.lbl_path_ar.setText(stat_inf.path_AcrobatReader[1])
+        self.ui.lbl_path_7z.setText(stat_inf.path_7zip[1])

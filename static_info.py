@@ -30,10 +30,18 @@ admin_active = do_not_know
 admin_current_user = do_not_know
 
 # Пути установщиков программ и драйверов
-path_office2010 = not_selected
-path_office2010A = not_selected
-path_office2016 = not_selected
-path_fineReader = not_selected
-path_7zip = not_selected
-path_AcrobatReader = not_selected
-path_drivers = not_selected
+path_office2010 = ["path_office2010",not_selected]
+path_office2010A = ["path_office2010A",not_selected]
+path_office2016 = ["path_office2016",not_selected]
+path_fineReader = ["path_fineReader",not_selected]
+path_7zip = ["path_7zip",not_selected]
+path_AcrobatReader = ["path_AcrobatReader",not_selected]
+path_drivers = ["path_drivers",not_selected]
+
+path_program = [path_office2010,
+                path_office2010A,
+                path_office2016,
+                path_fineReader,
+                path_7zip,
+                path_AcrobatReader,
+                path_drivers]
