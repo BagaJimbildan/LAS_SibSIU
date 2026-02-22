@@ -10,6 +10,7 @@ import methods.program_setup as prog_set
 import file_master as file_m
 import app_info as app_inf
 import user_info as user_inf
+import server_setting as serv_set
 
 import methods.create_standart as create_standard
 from design_ui.ui_CreatePass_script import DialogCreatePass
@@ -106,7 +107,45 @@ class MainWindow(QMainWindow):
         if not app_inf.write_server:
             self.dialog_error_show("Запись на сервер отключена")
         else:
-            pass
+            self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show)
+            self.dialogDataServer.setWindowTitle("Информация о соединении")
+
+
+
+            self.dialogDataServer.ui.tb_server.setReadOnly(True)
+            self.dialogDataServer.ui.tb_file_server.setReadOnly(True)
+            self.dialogDataServer.ui.tb_username.setReadOnly(True)
+            self.dialogDataServer.ui.tb_pass.setEnabled(False)
+            self.dialogDataServer.ui.label_8.setEnabled(False)
+
+            self.dialogDataServer.ui.tb_ticket.setReadOnly(True)
+            self.dialogDataServer.ui.tb_subdivision.setReadOnly(True)
+            self.dialogDataServer.ui.tb_owner.setReadOnly(True)
+            self.dialogDataServer.ui.tb_room.setReadOnly(True)
+            self.dialogDataServer.ui.tb_current_room.setReadOnly(True)
+
+            self.dialogDataServer.ui.tb_ticket.setText(user_inf.ticket)
+            self.dialogDataServer.ui.tb_subdivision.setText(user_inf.subdivision)
+            self.dialogDataServer.ui.tb_owner.setText(user_inf.owner)
+            self.dialogDataServer.ui.tb_room.setText(user_inf.room)
+            self.dialogDataServer.ui.tb_current_room.setText(user_inf.current_room)
+
+
+            self.dialogDataServer.ui.btn_ok.clicked.disconnect()
+            self.dialogDataServer.ui.btn_cancel.clicked.disconnect()
+
+            self.dialogDataServer.ui.btn_ok.clicked.connect(self.dialogDataServer.close)
+            self.dialogDataServer.ui.btn_cancel.clicked.connect(self.disconnect_server)
+            self.dialogDataServer.ui.btn_cancel.clicked.connect(self.dialogDataServer.close)
+            self.dialogDataServer.ui.btn_cancel.setText("Отключиться")
+
+            self.dialogDataServer.show()
+
+    def disconnect_server(self):
+        serv_set.disconnect_server()
+        app_inf.write_server = False
+        self.ui.disconnect.setText("Подключиться")
+        self.dialog_success_show("Запись на сервер отключена")
 
     def setup_driver_pack(self):
         prog_set.setup_program(self, "Драйвер пак", stat_inf.path_drivers)
@@ -119,10 +158,6 @@ class MainWindow(QMainWindow):
     def select_write_server_yes(self):
         self.dialogWriteServer.close()
         self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show)
-
-        self.dialogDataServer.ui.tb_server.setText(user_inf.ip_server[1])
-        self.dialogDataServer.ui.tb_username.setText(user_inf.username[1])
-        self.dialogDataServer.ui.tb_file_server.setText(user_inf.file_server[1])
 
         self.dialogDataServer.exec()
 

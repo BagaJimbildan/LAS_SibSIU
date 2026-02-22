@@ -8,6 +8,7 @@ from design_ui.ui_main_script import MainWindow
 import methods.start_info as start_inf
 import file_master as file_m
 import app_info as app_inf
+import server_setting as serv_set
 
 
 start_inf.check_system()
@@ -32,7 +33,7 @@ else:
 
 def cleanup():
     if app_inf.write_server:
-        subprocess.run(f'net use Z: /delete', shell=True)
+        serv_set.disconnect_server()
 
 app = QApplication(sys.argv)
 app.aboutToQuit.connect(cleanup)

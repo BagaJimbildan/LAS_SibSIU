@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QDialog
 import file_master as file_m
 import user_info as user_inf
 import app_info as app_inf
+import server_setting as serv_set
 
 from design_ui.ui_DataServer import Ui_DialogDataServer
 import methods.create_standart as create_standard
@@ -18,6 +19,10 @@ class DialogDataServer(QDialog):
 
         self.ui.btn_cancel.clicked.connect(self.close)
         self.ui.btn_ok.clicked.connect(self.try_connect)
+
+        self.ui.tb_server.setText(user_inf.ip_server[1])
+        self.ui.tb_username.setText(user_inf.username[1])
+        self.ui.tb_file_server.setText(user_inf.file_server[1])
 
         self.dialogError = dialogError
         self.dialogSuccess = dialogSuccess
@@ -55,7 +60,7 @@ class DialogDataServer(QDialog):
         password = self.ui.tb_pass.text().strip()
 
         fields = [
-            ("сервер", server),
+            ("сетевая папка", server),
             ("файл на сервере", file_server),
             ("имя пользователя", username),
             ("пароль", password)
@@ -93,9 +98,9 @@ class DialogDataServer(QDialog):
                     self.dialogError("Тип файла должен быть электронной таблицей" + "\n"+
                                      "доступные типы: "+"\n"+
                                      "(.xls', '.xlsx', '.xlsm', '.xlsb)")
-                    subprocess.run(f'net use Z: /delete', shell=True)
+                    serv_set.disconnect_server()
             else:
                 self.dialogError("Файл не найден")
-                subprocess.run(f'net use Z: /delete', shell=True)
+                serv_set.disconnect_server()
 
 

@@ -58,7 +58,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Сервер</string>
+     <string>Сетевая папка</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="tb_username">

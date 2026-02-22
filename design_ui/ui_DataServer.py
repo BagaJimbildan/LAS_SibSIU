@@ -100,7 +100,7 @@ class Ui_DialogDataServer(object):
         DialogDataServer.setWindowTitle(QCoreApplication.translate("DialogDataServer", u"\u0417\u0430\u043f\u043e\u043b\u043d\u0438\u0442\u0435 \u0434\u0430\u043d\u043d\u044b\u0435", None))
         self.groupBox.setTitle(QCoreApplication.translate("DialogDataServer", u"\u0421\u0435\u0440\u0432\u0435\u0440", None))
         self.label_2.setText(QCoreApplication.translate("DialogDataServer", u"\u041b\u043e\u0433\u0438\u043d \u0434\u043b\u044f \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f", None))
-        self.label.setText(QCoreApplication.translate("DialogDataServer", u"\u0421\u0435\u0440\u0432\u0435\u0440", None))
+        self.label.setText(QCoreApplication.translate("DialogDataServer", u"\u0421\u0435\u0442\u0435\u0432\u0430\u044f \u043f\u0430\u043f\u043a\u0430", None))
         self.label_8.setText(QCoreApplication.translate("DialogDataServer", u"\u041f\u0430\u0440\u043e\u043b\u044c", None))
         self.label_9.setText(QCoreApplication.translate("DialogDataServer", u"\u041f\u0443\u0442\u044c \u043a \u0444\u0430\u0439\u043b\u0443", None))
         self.btn_ok.setText(QCoreApplication.translate("DialogDataServer", u"OK", None))
