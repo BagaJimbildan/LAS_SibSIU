@@ -329,7 +329,16 @@
     </property>
     <addaction name="add_path"/>
    </widget>
+   <widget class="QMenu" name="menu_server">
+    <property name="title">
+     <string>Сервер</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="info_server"/>
+    <addaction name="disconnect"/>
+   </widget>
    <addaction name="menu_programm"/>
+   <addaction name="menu_server"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action">
@@ -350,6 +359,16 @@
   <action name="add_path">
    <property name="text">
     <string>Изменить пути установщиков</string>
+   </property>
+  </action>
+  <action name="info_server">
+   <property name="text">
+    <string>Сведение о подключении</string>
+   </property>
+  </action>
+  <action name="disconnect">
+   <property name="text">
+    <string>Отключиться</string>
    </property>
   </action>
  </widget>

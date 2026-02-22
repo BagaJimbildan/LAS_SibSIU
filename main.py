@@ -31,8 +31,8 @@ else:
     file_m.create_info_app()  # создание файла с информацией
 
 def cleanup():
-    subprocess.run(f'net use Z: /delete', shell=True)
-    print("he")
+    if app_inf.write_server:
+        subprocess.run(f'net use Z: /delete', shell=True)
 
 app = QApplication(sys.argv)
 app.aboutToQuit.connect(cleanup)

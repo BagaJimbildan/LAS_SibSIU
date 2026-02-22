@@ -79,6 +79,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_drivers.clicked.connect(self.setup_driver_pack)
 
         self.ui.add_path.triggered.connect(self.addPath_window)
+        self.ui.info_server.triggered.connect(self.status_connect_server_show)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -97,6 +98,15 @@ class MainWindow(QMainWindow):
         if stat_inf.os.lower() == "windows":
             self.write_server_asking()
 
+        if not app_inf.write_server:
+            self.ui.disconnect.setText("Подключиться")
+
+
+    def status_connect_server_show(self):
+        if not app_inf.write_server:
+            self.dialog_error_show("Запись на сервер отключена")
+        else:
+            pass
 
     def setup_driver_pack(self):
         prog_set.setup_program(self, "Драйвер пак", stat_inf.path_drivers)
@@ -107,7 +117,6 @@ class MainWindow(QMainWindow):
 
 
     def select_write_server_yes(self):
-        app_inf.write_server = True
         self.dialogWriteServer.close()
         self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show)
 

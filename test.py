@@ -1,15 +1,14 @@
-import subprocess
+from pathlib import Path
 
-def mount_share_windows(drive_letter, share_path, username, password):
-    cmd = f'net use {drive_letter}: {share_path} /user:{username} {password} /persistent:no'
-    result = subprocess.run(cmd, shell=True, capture_output=True, text=True,  encoding ='cp866')
-    if result.returncode == 0:
-        print(f"Папка {share_path} подключена как диск {drive_letter}:")
-        # После подключения можно работать с файлами через drive_letter:
-        # os.listdir(f"{drive_letter}:\\")
-    else:
-        print("Ошибка подключения:", result.stderr)
+file_path = Path("C:/Users/Baga/Downloads/rufus-4.12p.xls")
 
-# Пример использования
-mount_share_windows('Z', r'\\ad1\share', 'hihi', '111111')
-subprocess.run(f'net use Z: /delete',  text=True)
+
+if file_path.exists():
+    print("Путь существует")
+
+if file_path.is_file():
+    print("Это файл")
+
+extension = file_path.suffix.lower()
+if extension in ('.xls', '.xlsx', '.xlsm', '.xlsb'):
+    print("Это файл Excel")

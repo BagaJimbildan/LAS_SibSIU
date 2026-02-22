@@ -1,8 +1,10 @@
 import subprocess
+from pathlib import Path
 
 from PySide6.QtWidgets import QDialog
 import file_master as file_m
 import user_info as user_inf
+import app_info as app_inf
 
 from design_ui.ui_DataServer import Ui_DialogDataServer
 import methods.create_standart as create_standard
@@ -21,9 +23,21 @@ class DialogDataServer(QDialog):
         self.dialogSuccess = dialogSuccess
 
     def save_server(self):
-        file_m.write_info_app(user_inf.ip_server[0], self.ui.tb_server.text())
-        file_m.write_info_app(user_inf.username[0], self.ui.tb_username.text())
-        file_m.write_info_app(user_inf.file_server[0], self.ui.tb_file_server.text())
+        file_m.write_info_app(user_inf.ip_server[0], self.ui.tb_server.text().strip())
+        file_m.write_info_app(user_inf.username[0], self.ui.tb_username.text().strip())
+        file_m.write_info_app(user_inf.file_server[0], self.ui.tb_file_server.text().strip())
+
+    def write_user_info(self):
+        user_inf.ip_server[1] = self.ui.tb_server.text().strip()
+        user_inf.username[1] = self.ui.tb_username.text().strip()
+        user_inf.file_server[1] = self.ui.tb_file_server.text().strip()
+
+        user_inf.ticket = self.ui.tb_ticket.text().strip()
+        user_inf.owner = self.ui.tb_owner.text().strip()
+        user_inf.current_room = self.ui.tb_current_room.text().strip()
+        user_inf.room = self.ui.tb_room.text().strip()
+        user_inf.subdivision = self.ui.tb_subdivision.text().strip()
+
 
     def mount_share_windows(self, drive_letter, share_path, username, password):
         cmd = f'net use {drive_letter}: {share_path} /user:{username} {password} /persistent:no'
@@ -58,3 +72,30 @@ class DialogDataServer(QDialog):
             status1 = self.mount_share_windows("Z", server, username, password)
             if status1[0] == 1:
                 self.dialogError(status1[1])
+                return
+
+            file_server_path = Path("Z:/"+file_server)
+            extension = file_server_path.suffix.lower()
+
+            if file_server_path.exists() and file_server_path.is_file():
+                if extension in ('.xls', '.xlsx', '.xlsm', '.xlsb'):
+                    app_inf.write_server = True
+
+                    # Сохранить при успехе
+                    self.save_server()
+
+                    # Записать в текущие данные о подключении
+                    self.write_user_info()
+
+                    self.close()
+
+                else:
+                    self.dialogError("Тип файла должен быть электронной таблицей" + "\n"+
+                                     "доступные типы: "+"\n"+
+                                     "(.xls', '.xlsx', '.xlsm', '.xlsb)")
+                    subprocess.run(f'net use Z: /delete', shell=True)
+            else:
+                self.dialogError("Файл не найден")
+                subprocess.run(f'net use Z: /delete', shell=True)
+
+
