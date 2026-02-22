@@ -93,7 +93,10 @@ class MainWindow(QMainWindow):
         if stat_inf.admin_active == key_phrases.enabled[1] and self.ui.btn_enable_admin.isEnabled():
             self.ui.btn_enable_admin.setEnabled(False)
 
-        self.write_server_asking()
+        # Записываем логи на сервер только если ОС windows
+        if stat_inf.os.lower() == "windows":
+            self.write_server_asking()
+
 
     def setup_driver_pack(self):
         prog_set.setup_program(self, "Драйвер пак", stat_inf.path_drivers)
@@ -106,10 +109,11 @@ class MainWindow(QMainWindow):
     def select_write_server_yes(self):
         app_inf.write_server = True
         self.dialogWriteServer.close()
-        self.dialogDataServer = DialogDataServer()
+        self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show)
 
         self.dialogDataServer.ui.tb_server.setText(user_inf.ip_server[1])
         self.dialogDataServer.ui.tb_username.setText(user_inf.username[1])
+        self.dialogDataServer.ui.tb_file_server.setText(user_inf.file_server[1])
 
         self.dialogDataServer.exec()
 
@@ -183,7 +187,7 @@ class MainWindow(QMainWindow):
     def dialog_error_show(self, text: str):
         self.dialogError = DialogError()
         self.dialogError.ui.tb_error.setText(text)
-        self.dialogError.show()
+        self.dialogError.exec()
 
     def dialog_success_show(self, text: str):
         self.dialogSuccess = DialogSuccess()

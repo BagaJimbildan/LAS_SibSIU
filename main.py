@@ -1,4 +1,5 @@
 import os
+import subprocess
 import sys
 
 from PySide6.QtWidgets import QApplication
@@ -29,8 +30,12 @@ else:
     app_inf.is_first = True
     file_m.create_info_app()  # создание файла с информацией
 
+def cleanup():
+    subprocess.run(f'net use Z: /delete', shell=True)
+    print("he")
 
 app = QApplication(sys.argv)
+app.aboutToQuit.connect(cleanup)
 temp = MainWindow()
 temp.show()
 sys.exit(app.exec())

@@ -24,7 +24,9 @@ def check_info_app():
 def create_info_app():
     with open(data_path, 'w', encoding='utf-8') as f:
         f.write(user_inf.ip_server[0]+"="+'\n')
+        f.write(user_inf.file_server[0] + "=" + '\n')
         f.write(user_inf.username[0] + "=" + '\n')
+
 
         for i in stat_inf.path_program:
             f.write(i[0] + "=" + '\n')
