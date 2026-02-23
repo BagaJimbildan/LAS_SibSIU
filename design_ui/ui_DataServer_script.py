@@ -91,7 +91,7 @@ class DialogDataServer(QDialog):
                 if extension in ('.xls', '.xlsx', '.xlsm', '.xlsb'):
 
                     serv_log.path_log = Path("Z:/" + file_server)
-                    try_write = serv_log.write_excel(["hihi", "1"], "hjk")
+                    try_write = serv_log.test_open_excel()
                     if try_write[0] == 1:
                         self.dialogError("Подключение прервано" + "\n" + str(try_write[1]))
                         serv_log.path_log = None
@@ -110,7 +110,9 @@ class DialogDataServer(QDialog):
                     if self.button_connect_disconnect is not None:
                         self.button_connect_disconnect.setText("Отключиться")
 
-                    # запись о подключении сделать
+                    status = serv_log.write_excel("Подключение к файлу с логами")
+                    if status[0] == 1:
+                        self.dialogError("Ошибка записи"+"\n"+ str(status[1]))
 
                     self.close()
 
