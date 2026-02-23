@@ -1,6 +1,8 @@
 import subprocess
 from pathlib import Path
 
+import methods.server_logs as serv_log
+
 from PyQt6.QtGui import QAction
 from PySide6.QtWidgets import QDialog
 import file_master as file_m
@@ -87,6 +89,16 @@ class DialogDataServer(QDialog):
 
             if file_server_path.exists() and file_server_path.is_file():
                 if extension in ('.xls', '.xlsx', '.xlsm', '.xlsb'):
+
+                    serv_log.path_log = Path("Z:/" + file_server)
+                    try_write = serv_log.write_excel(["hihi", "1"], "hjk")
+                    if try_write[0] == 1:
+                        self.dialogError("Подключение прервано" + "\n" + str(try_write[1]))
+                        serv_log.path_log = None
+                        serv_set.disconnect_server()
+                        return
+
+
                     app_inf.write_server = True
 
                     # Сохранить при успехе
@@ -98,7 +110,10 @@ class DialogDataServer(QDialog):
                     if self.button_connect_disconnect is not None:
                         self.button_connect_disconnect.setText("Отключиться")
 
+                    # запись о подключении сделать
+
                     self.close()
+
 
                 else:
                     self.dialogError("Тип файла должен быть электронной таблицей" + "\n"+
