@@ -1,6 +1,7 @@
 import subprocess
 from pathlib import Path
 
+from PyQt6.QtGui import QAction
 from PySide6.QtWidgets import QDialog
 import file_master as file_m
 import user_info as user_inf
@@ -12,7 +13,7 @@ import methods.create_standart as create_standard
 
 
 class DialogDataServer(QDialog):
-    def __init__(self,dialogError, dialogSuccess):
+    def __init__(self,dialogError, dialogSuccess, button_connect_disconnect: QAction = None):
         super().__init__()
         self.ui = Ui_DialogDataServer()
         self.ui.setupUi(self)
@@ -23,6 +24,8 @@ class DialogDataServer(QDialog):
         self.ui.tb_server.setText(user_inf.ip_server[1])
         self.ui.tb_username.setText(user_inf.username[1])
         self.ui.tb_file_server.setText(user_inf.file_server[1])
+
+        self.button_connect_disconnect = button_connect_disconnect
 
         self.dialogError = dialogError
         self.dialogSuccess = dialogSuccess
@@ -91,6 +94,9 @@ class DialogDataServer(QDialog):
 
                     # Записать в текущие данные о подключении
                     self.write_user_info()
+
+                    if self.button_connect_disconnect is not None:
+                        self.button_connect_disconnect.setText("Отключиться")
 
                     self.close()
 

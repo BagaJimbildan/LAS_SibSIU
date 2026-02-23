@@ -313,6 +313,32 @@
      <string>Драйвера</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_activate_windows">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>370</y>
+      <width>171</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Активировать Windows</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_activate_office">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>400</y>
+      <width>171</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Активировать Office</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -47,7 +47,9 @@ class MainWindow(QMainWindow):
             self.ui.btn_disable_user,
             self.ui.btn_domain,
             self.ui.btn_programs,
-            self.ui.btn_drivers
+            self.ui.btn_drivers,
+            self.ui.btn_activate_windows,
+            self.ui.btn_activate_office
         ]
 
         self.buttons_no_linux = \
@@ -57,7 +59,12 @@ class MainWindow(QMainWindow):
                 self.ui.btn_disable_user,
                 self.ui.btn_domain,
                 self.ui.btn_programs,
-                self.ui.btn_drivers
+                self.ui.btn_drivers,
+                self.ui.add_path,
+                self.ui.disconnect,
+                self.ui.info_server,
+                self.ui.btn_activate_windows,
+                self.ui.btn_activate_office
             ]
 
         self.ui.lbl_os.setText(stat_inf.platform)
@@ -79,8 +86,10 @@ class MainWindow(QMainWindow):
 
         self.ui.btn_drivers.clicked.connect(self.setup_driver_pack)
 
+
         self.ui.add_path.triggered.connect(self.addPath_window)
         self.ui.info_server.triggered.connect(self.status_connect_server_show)
+        self.ui.disconnect.triggered.connect(self.connect_disconnect)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -102,6 +111,25 @@ class MainWindow(QMainWindow):
         if not app_inf.write_server:
             self.ui.disconnect.setText("Подключиться")
 
+
+    def connect_disconnect(self):
+        if not app_inf.write_server:
+            self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show, self.ui.disconnect)
+
+            fields = ['ticket', 'subdivision', 'owner', 'room', 'current_room']
+
+            for field in fields:
+                value = getattr(user_inf, field)
+                if value != stat_inf.do_not_know:
+                    widget = getattr(self.dialogDataServer.ui, f'tb_{field}')
+                    widget.setText(value)
+
+            self.dialogDataServer.ui.btn_cancel.setText("Отмена")
+
+
+            self.dialogDataServer.show()
+        else:
+            self.disconnect_server()
 
     def status_connect_server_show(self):
         if not app_inf.write_server:
@@ -146,6 +174,7 @@ class MainWindow(QMainWindow):
         app_inf.write_server = False
         self.ui.disconnect.setText("Подключиться")
         self.dialog_success_show("Запись на сервер отключена")
+
 
     def setup_driver_pack(self):
         prog_set.setup_program(self, "Драйвер пак", stat_inf.path_drivers)
