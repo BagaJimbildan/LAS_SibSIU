@@ -1,14 +1,5 @@
-from openpyxl import load_workbook
+import subprocess
 
-wb = load_workbook(r"C:\Users\Baga\Desktop\Пример.xlsx")
-ws = wb['Лист1']
-
-last_row = ws.max_row
-free_row = last_row + 1
-
-
-for col, value in enumerate(["huh"], start=1):
-    ws.cell(row=free_row, column=col, value=value)
-
-wb.save(r"C:\Users\Baga\Desktop\Пример.xlsx")
-wb.close()
+subprocess.run('slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX', shell=True)
+subprocess.run('slmgr.vbs /skms lic.sibsiu.ru', shell=True)
+subprocess.run('slmgr.vbs /ato', shell=True)

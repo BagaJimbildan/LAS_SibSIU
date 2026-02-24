@@ -137,6 +137,16 @@ def connect_domain(domain_name: str, admin_user: str, admin_password: str):
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
 
+def activate_windows():
+    subprocess.run(r'slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX', shell=True)
+    subprocess.run(r'slmgr.vbs /skms lic.sibsiu.ru', shell=True)
+    subprocess.run(r'slmgr.vbs /ato', shell=True)
+
+def activate_office():
+    subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /sethst:10.252.253.10', shell=True)
+    subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /act"', shell=True)
+    subprocess.run(r'pause', shell=True)
+
 def check_tb_null(text: str):
     if text is None or text.strip() == "":
         return 1

@@ -86,6 +86,9 @@ class MainWindow(QMainWindow):
 
         self.ui.btn_drivers.clicked.connect(self.setup_driver_pack)
 
+        self.ui.btn_activate_windows.clicked.connect(create_standard.activate_windows)
+        self.ui.btn_activate_office.clicked.connect(create_standard.activate_office)
+
 
         self.ui.add_path.triggered.connect(self.addPath_window)
         self.ui.info_server.triggered.connect(self.status_connect_server_show)
