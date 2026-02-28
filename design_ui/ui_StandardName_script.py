@@ -16,7 +16,8 @@ class DialogStandardName(QDialog):
                  label_name: QLabel,  # label для отображения имени в окне
                  label_standard: QLabel, # label для отображения соответствия стандарта имени
                  message_box,  # метод вызова окна для отображения информации
-                 error_box):  # метод вызова окна для отображения ошибки
+                 error_box,  # метод вызова окна для отображения ошибки
+                 dialog_error_server_show):  # метод вызова окна для отображения ошибки записи логов на сервер
         super().__init__()
         self.ui = Ui_DialogStandardName()
         self.ui.setupUi(self)
@@ -25,6 +26,7 @@ class DialogStandardName(QDialog):
         self.label_standard = label_standard
         self.message_box = message_box
         self.error_box = error_box
+        self.dialog_error_server_show = dialog_error_server_show
 
         self.ui.btn_cancel.clicked.connect(self.close)
         self.ui.btn_ok.clicked.connect(self.check_rename_name)
@@ -111,7 +113,7 @@ class DialogStandardName(QDialog):
         return [0, 0]
 
     def start_rename(self):
-        status = create_standard.rename_PC(self.new_name)
+        status = create_standard.rename_PC(self.new_name, self.dialog_error_server_show)
         if status[0] == 0:
             stat_inf.name_PC = self.new_name
             self.label_name.setText(self.new_name + " (требуется перезагрузка)")

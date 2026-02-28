@@ -29,6 +29,8 @@ admin_active = do_not_know
 
 admin_current_user = do_not_know
 
+default_note = "нет"
+
 # Пути установщиков программ и драйверов
 path_office2010 = ["path_office2010",not_selected]
 path_office2010A = ["path_office2010A",not_selected]

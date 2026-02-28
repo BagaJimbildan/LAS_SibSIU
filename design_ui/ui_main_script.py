@@ -86,8 +86,8 @@ class MainWindow(QMainWindow):
 
         self.ui.btn_drivers.clicked.connect(self.setup_driver_pack)
 
-        self.ui.btn_activate_windows.clicked.connect(create_standard.activate_windows)
-        self.ui.btn_activate_office.clicked.connect(create_standard.activate_office)
+        self.ui.btn_activate_windows.clicked.connect(self.activate_windows)
+        self.ui.btn_activate_office.clicked.connect(self.activate_office)
 
 
         self.ui.add_path.triggered.connect(self.addPath_window)
@@ -115,9 +115,14 @@ class MainWindow(QMainWindow):
             self.ui.disconnect.setText("Подключиться")
 
 
+    def activate_windows(self):
+        create_standard.activate_windows(self.dialog_error_server_show)
+    def activate_office(self):
+        create_standard.activate_office(self.dialog_error_server_show)
+
     def connect_disconnect(self):
         if not app_inf.write_server:
-            self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show, self.ui.disconnect)
+            self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show, self.ui.disconnect)
 
             fields = ['ticket', 'subdivision', 'owner', 'room', 'current_room']
 
@@ -138,7 +143,7 @@ class MainWindow(QMainWindow):
         if not app_inf.write_server:
             self.dialog_error_show("Запись на сервер отключена")
         else:
-            self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show)
+            self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show)
             self.dialogDataServer.setWindowTitle("Информация о соединении")
 
 
@@ -172,11 +177,12 @@ class MainWindow(QMainWindow):
 
             self.dialogDataServer.show()
 
-    def disconnect_server(self):
+    def disconnect_server(self, force = False):
         serv_set.disconnect_server()
         app_inf.write_server = False
         self.ui.disconnect.setText("Подключиться")
-        self.dialog_success_show("Запись на сервер отключена")
+        if not force:
+            self.dialog_success_show("Запись на сервер отключена")
 
 
     def setup_driver_pack(self):
@@ -189,7 +195,7 @@ class MainWindow(QMainWindow):
 
     def select_write_server_yes(self):
         self.dialogWriteServer.close()
-        self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show)
+        self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show)
 
         self.dialogDataServer.exec()
 
@@ -207,11 +213,11 @@ class MainWindow(QMainWindow):
         self.dialogPrograms.show()
 
     def enter_domain(self):
-        self.dialogDomainName = DialogDomainName(self.dialog_error_show, self.dialog_success_show, self.ui.lbl_domen)
+        self.dialogDomainName = DialogDomainName(self.dialog_error_show, self.dialog_success_show, self.ui.lbl_domen, self.dialog_error_server_show)
         self.dialogDomainName.show()
 
     def disable_user(self):
-        self.dialogDisableUser = DialogDisableUser(self.dialog_error_show, self.dialog_success_show)
+        self.dialogDisableUser = DialogDisableUser(self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show)
         self.dialogDisableUser.show()
 
     def parameters_net(self):
@@ -219,7 +225,7 @@ class MainWindow(QMainWindow):
         self.dialogParamNet.show()
 
     def enable_admin_param(self):
-        status = create_standard.enable_admin(self.ui.lbl_admin_active, self.ui.btn_enable_admin)
+        status = create_standard.enable_admin(self.ui.lbl_admin_active, self.ui.btn_enable_admin, self.dialog_error_server_show)
 
         if status[0] == 1:
             self.dialog_error_show(status[1])
@@ -250,7 +256,7 @@ class MainWindow(QMainWindow):
         pass2 = self.dialogPassAdmin.ui.tb_pass2.text()
 
         if pass1 == pass2:
-            status = create_standard.pass_admin(pass1)
+            status = create_standard.pass_admin(pass1, self.dialog_error_server_show)
             if status[0] == 1:
                 self.dialog_error_show(status[1])
             else:
@@ -265,15 +271,23 @@ class MainWindow(QMainWindow):
         self.dialogError.ui.tb_error.setText(text)
         self.dialogError.exec()
 
+    def dialog_error_server_show(self, text):
+        self.dialogError = DialogError()
+        self.dialogError.setWindowTitle("Предупреждение")
+        self.dialogError.ui.tb_error.setText("Ошибка записи информации на сервер" + "\n"+
+                                             "Соединение с сервером разорвано" + "\n" + str(text))
+        self.disconnect_server(True)
+        self.dialogError.exec()
+
     def dialog_success_show(self, text: str):
         self.dialogSuccess = DialogSuccess()
         self.dialogSuccess.ui.tb_info.setText(text)
         self.dialogSuccess.show()
 
     def dialog_edit_name_show(self):
-        self.dialogEditName = DialogStandardName(self.ui.lbl_name, self.ui.lbl_name_is_standart, self.dialog_success_show, self.dialog_error_show)
+        self.dialogEditName = DialogStandardName(self.ui.lbl_name, self.ui.lbl_name_is_standart, self.dialog_success_show, self.dialog_error_show, self.dialog_error_server_show)
         self.dialogEditName.show()
 
     def dialog_edit_network_show(self):
-        self.dialogEditNetwork = DialogEditNetwork(self.dialog_error_show, self.dialog_success_show)
+        self.dialogEditNetwork = DialogEditNetwork(self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show)
         self.dialogEditNetwork.show()

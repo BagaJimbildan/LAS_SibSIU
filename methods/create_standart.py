@@ -3,13 +3,15 @@ import subprocess
 from PyQt6.QtWidgets import QPushButton, QLabel, QLineEdit
 
 import static_info as stat_inf
-
+import methods.server_logs as serv_log
+import app_info as app_inf
 import key_phrases as k_phras
 
 
 def enable_admin(
         label_admin: QLabel , # информация в окне включена ли учетная запись админа
-        btn_admin : QPushButton): # кнопка включения админки
+        btn_admin : QPushButton,  # кнопка включения админки
+        error_server_show):
 
     try:
         subprocess.run(
@@ -25,12 +27,14 @@ def enable_admin(
         stat_inf.admin_active = k_phras.enabled[1]
         btn_admin.setEnabled(False)
 
+        try_write_server(error_server_show, "включение учетной записи администратора")
+
         return [0, 0]
 
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
 
-def pass_admin(new_password):
+def pass_admin(new_password, error_server_show):
     try:
         subprocess.run(
             ["net", "user", "Администратор", new_password],
@@ -39,12 +43,16 @@ def pass_admin(new_password):
             text=True,
             encoding='cp866'
         )
+
+        try_write_server(error_server_show, "изменение пароля администратора")
+
         return [0,0]
 
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
 
-def rename_PC(new_name):  # имя ПК в окне
+def rename_PC(new_name,  # имя ПК в окне
+              error_server_show):
 
     if stat_inf.os.lower() == "windows":
         try:
@@ -57,6 +65,9 @@ def rename_PC(new_name):  # имя ПК в окне
                 text=True,
                 encoding='cp866'
             )
+
+            try_write_server(error_server_show, "изменение имени ПК", new_name)
+
             return [0, 0]
 
         except subprocess.CalledProcessError as e:
@@ -64,7 +75,7 @@ def rename_PC(new_name):  # имя ПК в окне
     else:
         return [1, "не знаю пока как Linux"]
 
-def edit_network(new_ip: list[str]):
+def edit_network(new_ip: list[str], error_server_show):
     if stat_inf.os.lower() == "windows":
         try:
             cmd_ip = [
@@ -95,6 +106,8 @@ def edit_network(new_ip: list[str]):
             subprocess.run(cmd_dns1, check=True, capture_output=True)
             subprocess.run(cmd_dns2, check=True, capture_output=True)
 
+            try_write_server(error_server_show, "изменение сети ПК", f"{".".join(new_ip)}")
+
             return [0,0]
 
         except subprocess.CalledProcessError as e:
@@ -102,7 +115,7 @@ def edit_network(new_ip: list[str]):
     else:
         return [1, "не знаю пока как Linux"]
 
-def disable_user(username: str):
+def disable_user(username: str, error_server_show):
     try:
         subprocess.run(
             ['net', 'user', username, '/active:no'],
@@ -112,12 +125,14 @@ def disable_user(username: str):
             check=True
         )
 
+        try_write_server(error_server_show, "отключение начального администратора", username)
+
         return [0,0]
 
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
 
-def connect_domain(domain_name: str, admin_user: str, admin_password: str):
+def connect_domain(domain_name: str, admin_user: str, admin_password: str, error_server_show):
 
     powershell_command = (
         f"Add-Computer -DomainName {domain_name} "
@@ -133,22 +148,36 @@ def connect_domain(domain_name: str, admin_user: str, admin_password: str):
             encoding='cp866',
             check=True
         )
+
+        try_write_server(error_server_show, "отключение начального администратора", "domain: "+domain_name+", user: "+admin_user)
+
         return [0, "Ввод в домен успешен + '\n' + Необходимо перезагрузить компьютер"]
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
 
-def activate_windows():
+def activate_windows(error_server_show):
     subprocess.run(r'slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX', shell=True)
     subprocess.run(r'slmgr.vbs /skms lic.sibsiu.ru', shell=True)
     subprocess.run(r'slmgr.vbs /ato', shell=True)
 
-def activate_office():
+    try_write_server(error_server_show, "активация Windows")
+
+def activate_office(error_server_show):
     subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /sethst:10.252.253.10', shell=True)
     subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /act"', shell=True)
     subprocess.run(r'pause', shell=True)
+
+    try_write_server(error_server_show, "активация Office")
 
 def check_tb_null(text: str):
     if text is None or text.strip() == "":
         return 1
     else:
         return 0
+
+def try_write_server(dialog_error_server_show, action: str, note = None):
+    if app_inf.write_server:
+        status = serv_log.write_excel(action, note)
+
+        if status[0] == 2:
+            dialog_error_server_show(status[1])

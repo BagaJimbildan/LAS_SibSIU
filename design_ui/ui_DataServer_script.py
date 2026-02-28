@@ -15,7 +15,7 @@ import methods.create_standart as create_standard
 
 
 class DialogDataServer(QDialog):
-    def __init__(self,dialogError, dialogSuccess, button_connect_disconnect: QAction = None):
+    def __init__(self,dialogError, dialogSuccess, dialogErrorServer, button_connect_disconnect: QAction = None):
         super().__init__()
         self.ui = Ui_DialogDataServer()
         self.ui.setupUi(self)
@@ -31,6 +31,7 @@ class DialogDataServer(QDialog):
 
         self.dialogError = dialogError
         self.dialogSuccess = dialogSuccess
+        self.dialogErrorServer = dialogErrorServer
 
     def save_server(self):
         file_m.write_info_app(user_inf.ip_server[0], self.ui.tb_server.text().strip())
@@ -110,9 +111,9 @@ class DialogDataServer(QDialog):
                     if self.button_connect_disconnect is not None:
                         self.button_connect_disconnect.setText("Отключиться")
 
-                    status = serv_log.write_excel("Подключение к файлу с логами")
-                    if status[0] == 1:
-                        self.dialogError("Ошибка записи"+"\n"+ str(status[1]))
+                    status = serv_log.write_excel("подключение к файлу с логами")
+                    if status[0] == 2:
+                        self.dialogErrorServer(status[1])
 
                     self.close()
 

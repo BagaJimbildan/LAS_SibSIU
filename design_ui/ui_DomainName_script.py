@@ -10,13 +10,15 @@ class DialogDomainName(QDialog):
     def __init__(self,
                  dialogError,
                  dialogSuccess,
-                 lbl_domain: QLabel):  # текущий домен на главном окне
+                 lbl_domain: QLabel,  # текущий домен на главном окне
+                 dialog_error_server_show):
         super().__init__()
         self.ui = Ui_DialogDomainName()
         self.ui.setupUi(self)
 
         self.dialogError = dialogError
         self.dialogSuccess = dialogSuccess
+        self.dialog_error_server_show = dialog_error_server_show
         self.lbl_domain = lbl_domain
 
         self.ui.btn_cancel.clicked.connect(self.close)
@@ -44,7 +46,7 @@ class DialogDomainName(QDialog):
             self.dialogError("\n".join(errors))
         else:
             # Попытка ввода в домен
-            status = create_standard.connect_domain(domain, user, password)
+            status = create_standard.connect_domain(domain, user, password, self.dialog_error_server_show)
             if status[0] == 0:
                 self.lbl_domain.setText(domain + " (требуется перезагрузка")
                 stat_inf.domain = domain

@@ -10,13 +10,15 @@ import static_info as stat_inf
 class DialogEditNetwork(QDialog):
     def __init__(self,
                  error,  # метод вызова окна ошибки
-                 success):  # метод вызова окна успеха
+                 success,  # метод вызова окна успеха
+                 error_server):  # метод вызова окна ошибки отправки логов на сервер
         super().__init__()
         self.ui = Ui_DialogEditNetwork()
         self.ui.setupUi(self)
 
         self.error = error
         self.success = success
+        self.error_server = error_server
         validator = QIntValidator(0, 255)
         self.set_standart_tb(self.ui.tb_ip1, validator)
         self.set_standart_tb(self.ui.tb_ip2, validator)
@@ -58,7 +60,7 @@ class DialogEditNetwork(QDialog):
         else:
             ip = [self.ui.tb_ip1.text().strip(), self.ui.tb_ip2.text().strip(),
                   self.ui.tb_ip3.text().strip(), self.ui.tb_ip4.text().strip()]
-            status = create_standard.edit_network(ip)
+            status = create_standard.edit_network(ip, self.error_server)
             if status[0] == 1:
                 self.error(status[1])
             else:
