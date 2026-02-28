@@ -162,6 +162,7 @@ def activate_windows(error_server_show):
 
     try_write_server(error_server_show, "активация Windows")
 
+
 def activate_office(error_server_show):
     subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /sethst:10.252.253.10', shell=True)
     subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /act"', shell=True)

@@ -4,7 +4,7 @@ import re
 import subprocess
 
 
-import key_phrases
+
 import static_info as stat_inf
 import key_phrases as k_phras
 

@@ -4,12 +4,14 @@ import subprocess
 from PySide6.QtWidgets import QPushButton
 from PySide6.QtWidgets import QMainWindow
 
+import methods.start_info as start_inf
 import key_phrases
 import static_info as stat_inf
 import methods.program_setup as prog_set
 import file_master as file_m
 import app_info as app_inf
 import user_info as user_inf
+import key_phrases as k_phras
 import server_setting as serv_set
 
 import methods.create_standart as create_standard
@@ -103,6 +105,9 @@ class MainWindow(QMainWindow):
         if stat_inf.os.lower() == "linux":
             self.unenable_buttons_linux()
 
+        if stat_inf.activate == k_phras.activate_status[0]:
+            self.ui.btn_activate_windows.setEnabled(False)
+
         # Отключение кнопки "Включить учетную запись админа"
         if stat_inf.admin_active == key_phrases.enabled[1] and self.ui.btn_enable_admin.isEnabled():
             self.ui.btn_enable_admin.setEnabled(False)
@@ -117,6 +122,13 @@ class MainWindow(QMainWindow):
 
     def activate_windows(self):
         create_standard.activate_windows(self.dialog_error_server_show)
+        start_inf.check_activate()
+
+        self.ui.lbl_os_activate.setText(stat_inf.activate)
+
+        if stat_inf.activate == k_phras.activate_status[0]:
+            self.ui.btn_activate_windows.setEnabled(False)
+
     def activate_office(self):
         create_standard.activate_office(self.dialog_error_server_show)
 
