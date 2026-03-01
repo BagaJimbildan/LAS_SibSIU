@@ -101,6 +101,7 @@ class MainWindow(QMainWindow):
         self.ui.info_server.triggered.connect(self.status_connect_server_show)
         self.ui.disconnect.triggered.connect(self.connect_disconnect)
         self.ui.test_write.triggered.connect(self.send_test_write_server)
+        self.ui.open_logs_server.triggered.connect(self.open_server_file_logs)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -152,13 +153,22 @@ class MainWindow(QMainWindow):
 
     def send_test_write_server(self):
         if not app_inf.write_server:
-            self.dialog_error_show("Запись на сервер отключена")
+            self.dialog_error_show(stat_inf.write_not_active)
         else:
             status = serv_log.test_open_excel()
             if status[0] == 1:
                 self.dialog_error_show("Проверка записи на сервер завершена с ошибкой:" + "\n"+ str(status[1]))
             else:
                 self.dialog_success_show("Проверка записи на сервер завершена успешно")
+
+    def open_server_file_logs(self):
+        if not app_inf.write_server:
+            self.dialog_error_show(stat_inf.write_not_active)
+        else:
+            try:
+                os.startfile(serv_log.path_log)
+            except Exception as e:
+                self.dialog_error_show(str(e))
 
     def connect_disconnect(self):
         if not app_inf.write_server:
@@ -181,7 +191,7 @@ class MainWindow(QMainWindow):
 
     def status_connect_server_show(self):
         if not app_inf.write_server:
-            self.dialog_error_show("Запись на сервер отключена")
+            self.dialog_error_show(stat_inf.write_not_active)
         else:
             self.dialogDataServer = DialogDataServer(self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show)
             self.dialogDataServer.setWindowTitle("Информация о соединении")

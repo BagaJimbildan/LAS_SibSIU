@@ -182,3 +182,6 @@ def try_write_server(dialog_error_server_show, action: str, note = None):
 
         if status[0] == 2:
             dialog_error_server_show(status[1])
+
+    # Запись в локальные логи текущей сессии
+    pass

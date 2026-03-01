@@ -49,7 +49,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>ABBYY FineRaeder</string>
+    <string>ABBYY FineReader</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">

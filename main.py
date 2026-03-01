@@ -22,6 +22,7 @@ start_inf.check_admin_on()
 
 start_inf.check_status_current_user()
 
+
 file_m.get_current_dir()  # определение директории программы
 
 if file_m.check_info_app():  # если есть файл с информацией о данном экземпляре программы
@@ -30,6 +31,8 @@ if file_m.check_info_app():  # если есть файл с информаци�
 else:
     app_inf.is_first = True
     file_m.create_info_app()  # создание файла с информацией
+
+start_inf.ping("ya.ru")
 
 def cleanup():
     if app_inf.write_server:

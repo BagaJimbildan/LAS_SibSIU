@@ -31,6 +31,9 @@ def create_info_app():
         for i in stat_inf.path_program:
             f.write(i[0] + "=" + '\n')
 
+        f.write(user_inf.ping_global[0] + "=" + '\n')
+        f.write(user_inf.ping_local[0] + "=" + '\n')
+
 
 
 def write_info_app(field: str, value: str):

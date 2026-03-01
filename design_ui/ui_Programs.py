@@ -72,7 +72,7 @@ class Ui_DialogPrograms(object):
         DialogPrograms.setWindowTitle(QCoreApplication.translate("DialogPrograms", u"\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c", None))
         self.label.setText(QCoreApplication.translate("DialogPrograms", u"MS Office 2010", None))
         self.label_2.setText(QCoreApplication.translate("DialogPrograms", u"MS Office 2010 + Access", None))
-        self.label_3.setText(QCoreApplication.translate("DialogPrograms", u"ABBYY FineRaeder", None))
+        self.label_3.setText(QCoreApplication.translate("DialogPrograms", u"ABBYY FineReader", None))
         self.label_4.setText(QCoreApplication.translate("DialogPrograms", u"7Zip", None))
         self.label_5.setText(QCoreApplication.translate("DialogPrograms", u"Acrobat Reader", None))
         self.label_6.setText(QCoreApplication.translate("DialogPrograms", u"MS Office 2016", None))

@@ -1,5 +1,6 @@
 do_not_know = "???"
 not_selected = "не указан"
+write_not_active = "Запись на сервер отключена"
 
 os = do_not_know
 platform = do_not_know
