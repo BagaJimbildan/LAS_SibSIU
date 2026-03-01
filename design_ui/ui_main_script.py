@@ -106,6 +106,8 @@ class MainWindow(QMainWindow):
         self.ui.disconnect.triggered.connect(self.connect_disconnect)
         self.ui.test_write.triggered.connect(self.send_test_write_server)
         self.ui.open_logs_server.triggered.connect(self.open_server_file_logs)
+        self.ui.test_global.triggered.connect(lambda: self.change_host_ping(False))
+        self.ui.test_local.triggered.connect(lambda: self.change_host_ping(True))
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -135,6 +137,9 @@ class MainWindow(QMainWindow):
         self.update_network_status_local(True)
 
 
+
+    def change_host_ping(self, local: bool):
+        print(str(local))
 
     def update_network_status(self, name_label, time_label, status_label, address):
         name_label.setText(address)

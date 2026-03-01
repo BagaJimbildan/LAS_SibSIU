@@ -497,6 +497,8 @@
      <string>Программа</string>
     </property>
     <addaction name="add_path"/>
+    <addaction name="test_global"/>
+    <addaction name="test_local"/>
    </widget>
    <widget class="QMenu" name="menu_server">
     <property name="title">
@@ -550,6 +552,16 @@
   <action name="open_logs_server">
    <property name="text">
     <string>Открыть файл логов сервера</string>
+   </property>
+  </action>
+  <action name="test_global">
+   <property name="text">
+    <string>Изменить проверочный адрес глобальной сети</string>
+   </property>
+  </action>
+  <action name="test_local">
+   <property name="text">
+    <string>Изменить проверочный адрес локальной сети</string>
    </property>
   </action>
  </widget>
