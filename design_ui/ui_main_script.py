@@ -12,6 +12,7 @@ import app_info as app_inf
 import user_info as user_inf
 import key_phrases as k_phras
 import server_setting as serv_set
+import methods.server_logs as serv_log
 
 import methods.create_standart as create_standard
 from design_ui.ui_CreatePass_script import DialogCreatePass
@@ -99,6 +100,7 @@ class MainWindow(QMainWindow):
         self.ui.add_path.triggered.connect(self.addPath_window)
         self.ui.info_server.triggered.connect(self.status_connect_server_show)
         self.ui.disconnect.triggered.connect(self.connect_disconnect)
+        self.ui.test_write.triggered.connect(self.send_test_write_server)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -146,6 +148,17 @@ class MainWindow(QMainWindow):
                                               self.enter_domain,
                                               self.dialog_edit_network_show)
         self.dialog_loop.show()
+
+
+    def send_test_write_server(self):
+        if not app_inf.write_server:
+            self.dialog_error_show("Запись на сервер отключена")
+        else:
+            status = serv_log.test_open_excel()
+            if status[0] == 1:
+                self.dialog_error_show("Проверка записи на сервер завершена с ошибкой:" + "\n"+ str(status[1]))
+            else:
+                self.dialog_success_show("Проверка записи на сервер завершена успешно")
 
     def connect_disconnect(self):
         if not app_inf.write_server:

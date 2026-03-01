@@ -375,6 +375,7 @@
     <addaction name="separator"/>
     <addaction name="info_server"/>
     <addaction name="disconnect"/>
+    <addaction name="test_write"/>
    </widget>
    <addaction name="menu_programm"/>
    <addaction name="menu_server"/>
@@ -408,6 +409,11 @@
   <action name="disconnect">
    <property name="text">
     <string>Отключиться</string>
+   </property>
+  </action>
+  <action name="test_write">
+   <property name="text">
+    <string>Проверка записи</string>
    </property>
   </action>
  </widget>

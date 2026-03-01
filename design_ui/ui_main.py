@@ -37,6 +37,8 @@ class Ui_MainWindow(object):
         self.info_server.setObjectName(u"info_server")
         self.disconnect = QAction(MainWindow)
         self.disconnect.setObjectName(u"disconnect")
+        self.test_write = QAction(MainWindow)
+        self.test_write.setObjectName(u"test_write")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.label = QLabel(self.centralwidget)
@@ -136,6 +138,7 @@ class Ui_MainWindow(object):
         self.menu_server.addSeparator()
         self.menu_server.addAction(self.info_server)
         self.menu_server.addAction(self.disconnect)
+        self.menu_server.addAction(self.test_write)
 
         self.retranslateUi(MainWindow)
 
@@ -150,6 +153,7 @@ class Ui_MainWindow(object):
         self.add_path.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u0443\u0442\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0449\u0438\u043a\u043e\u0432", None))
         self.info_server.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u043e \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0438", None))
         self.disconnect.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c\u0441\u044f", None))
+        self.test_write.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0437\u0430\u043f\u0438\u0441\u0438", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043c\u0435\u043d: ", None))
         self.lbl_domen.setText(QCoreApplication.translate("MainWindow", u"???", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0421:", None))
