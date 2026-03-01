@@ -316,5 +316,5 @@ class MainWindow(QMainWindow):
         self.dialogEditName.exec()
 
     def dialog_edit_network_show(self):
-        self.dialogEditNetwork = DialogEditNetwork(self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show)
+        self.dialogEditNetwork = DialogEditNetwork(self.ui.lbl_dhcp, self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show)
         self.dialogEditNetwork.exec()

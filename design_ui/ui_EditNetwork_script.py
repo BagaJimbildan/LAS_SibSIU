@@ -1,7 +1,8 @@
 from PyQt6.QtWidgets import QLineEdit
 from PySide6.QtGui import QIntValidator
-from PySide6.QtWidgets import QDialog
+from PySide6.QtWidgets import QDialog, QLabel
 
+import key_phrases as k_phras
 import methods.create_standart as create_standard
 from design_ui.ui_EditNetwork import Ui_DialogEditNetwork
 import static_info as stat_inf
@@ -9,6 +10,7 @@ import static_info as stat_inf
 
 class DialogEditNetwork(QDialog):
     def __init__(self,
+                 lbl_dhcp: QLabel,  # текст состояния DHCP
                  error,  # метод вызова окна ошибки
                  success,  # метод вызова окна успеха
                  error_server):  # метод вызова окна ошибки отправки логов на сервер
@@ -16,6 +18,7 @@ class DialogEditNetwork(QDialog):
         self.ui = Ui_DialogEditNetwork()
         self.ui.setupUi(self)
 
+        self.lbl_dhcp = lbl_dhcp
         self.error = error
         self.success = success
         self.error_server = error_server
@@ -74,6 +77,8 @@ class DialogEditNetwork(QDialog):
                 stat_inf.net_gateway = f"{".".join(ip[0:-1]) + ".254"}"
                 stat_inf.net_mask = "255.255.255.0"
                 stat_inf.net_dns = ["10.252.253.1", "10.252.253.2"]
+                stat_inf.dhcp = k_phras.enabled_no[0]
+                self.lbl_dhcp.setText(stat_inf.dhcp)
                 self.success(text)
                 self.close()
 
