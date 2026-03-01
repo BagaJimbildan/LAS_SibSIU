@@ -19,9 +19,13 @@ def start_info_app(data_path):  # чтение информации и смен�
         if path != "":
             stat_inf.path_program[i-3][1] = path
 
+    a = get_value(lines[k-2])
+    if a != "":
+        user_inf.ping_global[1] = a
+    a = get_value(lines[k - 1])
+    if a != "":
+        user_inf.ping_local[1] = a
 
-    user_inf.ping_global[1] = get_value(lines[k-2])
-    user_inf.ping_local[1] = get_value(lines[k-1])
 
 
 

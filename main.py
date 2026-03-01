@@ -32,7 +32,6 @@ else:
     app_inf.is_first = True
     file_m.create_info_app()  # создание файла с информацией
 
-start_inf.ping("ya.ru")
 
 def cleanup():
     if app_inf.write_server:

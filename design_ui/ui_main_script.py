@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import subprocess
 
@@ -13,6 +14,7 @@ import user_info as user_inf
 import key_phrases as k_phras
 import server_setting as serv_set
 import methods.server_logs as serv_log
+import methods.other as other
 
 import methods.create_standart as create_standard
 from design_ui.ui_CreatePass_script import DialogCreatePass
@@ -96,6 +98,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_activate_windows.clicked.connect(self.activate_windows)
         self.ui.btn_activate_office.clicked.connect(self.activate_office)
 
+        self.ui.btn_ping_global.clicked.connect(self.update_network_status_global)
+        self.ui.btn_ping_local.clicked.connect(self.update_network_status_local)
 
         self.ui.add_path.triggered.connect(self.addPath_window)
         self.ui.info_server.triggered.connect(self.status_connect_server_show)
@@ -125,6 +129,42 @@ class MainWindow(QMainWindow):
 
         if not app_inf.write_server:
             self.ui.disconnect.setText("Подключиться")
+
+        # Проверка соединения
+        self.update_network_status_global(True)
+        self.update_network_status_local(True)
+
+
+
+    def update_network_status(self, name_label, time_label, status_label, address):
+        name_label.setText(address)
+        if address == stat_inf.not_selected:
+            time_label.setText(stat_inf.default_note)
+            status_label.setText(stat_inf.default_note)
+        else:
+            status = other.ping(address)
+            time_label.setText(datetime.now().strftime("%H:%M:%S"))
+            status_label.setText(stat_inf.success if status else stat_inf.fail)
+
+    def update_network_status_global(self, start = False):
+        if not start:
+            if user_inf.ping_global[1] == stat_inf.not_selected:
+                self.dialog_error_show("Глобальный адрес не указан")
+                return
+        self.update_network_status(self.ui.lbl_global_net_name,
+                                   self.ui.lbl_global_net_time,
+                                   self.ui.lbl_global_net_status,
+                                   user_inf.ping_global[1])
+
+    def update_network_status_local(self, start = False):
+        if not start:
+            if user_inf.ping_local[1] == stat_inf.not_selected:
+                self.dialog_error_show("Локальный адрес не указан")
+                return
+        self.update_network_status(self.ui.lbl_local_net_name,
+                                   self.ui.lbl_local_net_time,
+                                   self.ui.lbl_local_net_status,
+                                   user_inf.ping_local[1])
 
 
     def activate_windows(self):
