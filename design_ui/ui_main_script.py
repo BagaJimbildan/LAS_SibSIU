@@ -23,6 +23,7 @@ from design_ui.ui_DisableUser_script import DialogDisableUser
 from design_ui.ui_DomainName_script import DialogDomainName
 from design_ui.ui_EditNetwork_script import DialogEditNetwork
 from design_ui.ui_EditPath_script import DialogEditPath
+from design_ui.ui_EditPing_script import DialogEditPing
 from design_ui.ui_Error_script import DialogError
 from design_ui.ui_LoopFunction_script import DialogLoopFunction
 from design_ui.ui_ParamNet_script import DialogParamNet
@@ -139,7 +140,16 @@ class MainWindow(QMainWindow):
 
 
     def change_host_ping(self, local: bool):
-        print(str(local))
+        if local: param = [self.ui.lbl_local_net_name, self.ui.lbl_local_net_time, self.ui.lbl_local_net_status]
+        else: param = [self.ui.lbl_global_net_name, self.ui.lbl_global_net_time, self.ui.lbl_global_net_status]
+
+        self.dialog_edit_ping = DialogEditPing(local, param[0], param[1], param[2])
+
+        name_net = "локальной" if local else "глобальной"
+        self.dialog_edit_ping.setWindowTitle("Изменение " + name_net+ " сети")
+        self.dialog_edit_ping.ui.lbl_name_net.setText(name_net + " сети:")
+
+        self.dialog_edit_ping.show()
 
     def update_network_status(self, name_label, time_label, status_label, address):
         name_label.setText(address)
