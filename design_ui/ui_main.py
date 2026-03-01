@@ -114,6 +114,9 @@ class Ui_MainWindow(object):
         self.btn_activate_office = QPushButton(self.centralwidget)
         self.btn_activate_office.setObjectName(u"btn_activate_office")
         self.btn_activate_office.setGeometry(QRect(430, 400, 171, 24))
+        self.btn_loop = QPushButton(self.centralwidget)
+        self.btn_loop.setObjectName(u"btn_loop")
+        self.btn_loop.setGeometry(QRect(620, 500, 221, 26))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -172,6 +175,7 @@ class Ui_MainWindow(object):
         self.btn_drivers.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0440\u0430\u0439\u0432\u0435\u0440\u0430", None))
         self.btn_activate_windows.setText(QCoreApplication.translate("MainWindow", u"\u0410\u043a\u0442\u0438\u0432\u0438\u0440\u043e\u0432\u0430\u0442\u044c Windows", None))
         self.btn_activate_office.setText(QCoreApplication.translate("MainWindow", u"\u0410\u043a\u0442\u0438\u0432\u0438\u0440\u043e\u0432\u0430\u0442\u044c Office", None))
+        self.btn_loop.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u043f\u043e\u043b\u043d\u0438\u0442\u044c \u0446\u0438\u043a\u043b \u0444\u0443\u043d\u043a\u0446\u0438\u0439", None))
         self.menu_programm.setTitle(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430", None))
         self.menu_server.setTitle(QCoreApplication.translate("MainWindow", u"\u0421\u0435\u0440\u0432\u0435\u0440", None))
     # retranslateUi

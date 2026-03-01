@@ -54,7 +54,7 @@ class DialogStandardName(QDialog):
             self.dialog_yesno.ui.btn_ok.clicked.connect(self.start_rename)
             self.dialog_yesno.ui.tb_text.setText(text)
 
-            self.dialog_yesno.show()
+            self.dialog_yesno.exec()
         else:
 
             errors = []

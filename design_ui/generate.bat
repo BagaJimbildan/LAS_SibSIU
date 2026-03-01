@@ -12,3 +12,4 @@ pyside6-uic DomainName.ui -o ui_DomainName.py
 pyside6-uic DataServer.ui -o ui_DataServer.py
 pyside6-uic Programs.ui -o ui_Programs.py
 pyside6-uic EditPath.ui -o ui_EditPath.py
+pyside6-uic LoopFunction.ui -o ui_LoopFunction.py

@@ -339,6 +339,19 @@
      <string>Активировать Office</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_loop">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>500</y>
+      <width>221</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Выполнить цикл функций</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -5,7 +5,6 @@ from PySide6.QtWidgets import QPushButton
 from PySide6.QtWidgets import QMainWindow
 
 import methods.start_info as start_inf
-import key_phrases
 import static_info as stat_inf
 import methods.program_setup as prog_set
 import file_master as file_m
@@ -22,6 +21,7 @@ from design_ui.ui_DomainName_script import DialogDomainName
 from design_ui.ui_EditNetwork_script import DialogEditNetwork
 from design_ui.ui_EditPath_script import DialogEditPath
 from design_ui.ui_Error_script import DialogError
+from design_ui.ui_LoopFunction_script import DialogLoopFunction
 from design_ui.ui_ParamNet_script import DialogParamNet
 from design_ui.ui_Programs_script import DialogPrograms
 from design_ui.ui_StandardName_script import DialogStandardName
@@ -51,7 +51,8 @@ class MainWindow(QMainWindow):
             self.ui.btn_programs,
             self.ui.btn_drivers,
             self.ui.btn_activate_windows,
-            self.ui.btn_activate_office
+            self.ui.btn_activate_office,
+            self.ui.btn_loop
         ]
 
         self.buttons_no_linux = \
@@ -66,7 +67,8 @@ class MainWindow(QMainWindow):
                 self.ui.disconnect,
                 self.ui.info_server,
                 self.ui.btn_activate_windows,
-                self.ui.btn_activate_office
+                self.ui.btn_activate_office,
+                self.ui.btn_loop
             ]
 
         self.ui.lbl_os.setText(stat_inf.platform)
@@ -85,6 +87,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_disable_user.clicked.connect(self.disable_user)
         self.ui.btn_domain.clicked.connect(self.enter_domain)
         self.ui.btn_programs.clicked.connect(self.programs)
+
+        self.ui.btn_loop.clicked.connect(self.loop_function_show)
 
         self.ui.btn_drivers.clicked.connect(self.setup_driver_pack)
 
@@ -109,7 +113,7 @@ class MainWindow(QMainWindow):
             self.ui.btn_activate_windows.setEnabled(False)
 
         # Отключение кнопки "Включить учетную запись админа"
-        if stat_inf.admin_active == key_phrases.enabled[1] and self.ui.btn_enable_admin.isEnabled():
+        if stat_inf.admin_active == k_phras.enabled[1] and self.ui.btn_enable_admin.isEnabled():
             self.ui.btn_enable_admin.setEnabled(False)
 
         # Записываем логи на сервер только если ОС windows
@@ -131,6 +135,17 @@ class MainWindow(QMainWindow):
 
     def activate_office(self):
         create_standard.activate_office(self.dialog_error_server_show)
+
+    def loop_function_show(self):
+        self.dialog_loop = DialogLoopFunction(self.enable_admin_param,
+                                              self.open_window_password,
+                                              self.disable_user,
+                                              self.activate_windows,
+                                              self.activate_office,
+                                              self.dialog_edit_name_show,
+                                              self.enter_domain,
+                                              self.dialog_edit_network_show)
+        self.dialog_loop.show()
 
     def connect_disconnect(self):
         if not app_inf.write_server:
@@ -226,11 +241,11 @@ class MainWindow(QMainWindow):
 
     def enter_domain(self):
         self.dialogDomainName = DialogDomainName(self.dialog_error_show, self.dialog_success_show, self.ui.lbl_domen, self.dialog_error_server_show)
-        self.dialogDomainName.show()
+        self.dialogDomainName.exec()
 
     def disable_user(self):
         self.dialogDisableUser = DialogDisableUser(self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show)
-        self.dialogDisableUser.show()
+        self.dialogDisableUser.exec()
 
     def parameters_net(self):
         self.dialogParamNet = DialogParamNet()
@@ -261,7 +276,7 @@ class MainWindow(QMainWindow):
         self.dialogPassAdmin.ui.btn_ok.clicked.connect(self.start_change_pass)
         self.dialogPassAdmin.setWindowTitle("Задать пароль администратора")
         self.dialogPassAdmin.ui.lb_info.setText("Введите и подтвердите пароль встроенной учетной записи администратора")
-        self.dialogPassAdmin.show()
+        self.dialogPassAdmin.exec()
 
     def start_change_pass(self):
         pass1 = self.dialogPassAdmin.ui.tb_pass1.text()
@@ -294,12 +309,12 @@ class MainWindow(QMainWindow):
     def dialog_success_show(self, text: str):
         self.dialogSuccess = DialogSuccess()
         self.dialogSuccess.ui.tb_info.setText(text)
-        self.dialogSuccess.show()
+        self.dialogSuccess.exec()
 
     def dialog_edit_name_show(self):
         self.dialogEditName = DialogStandardName(self.ui.lbl_name, self.ui.lbl_name_is_standart, self.dialog_success_show, self.dialog_error_show, self.dialog_error_server_show)
-        self.dialogEditName.show()
+        self.dialogEditName.exec()
 
     def dialog_edit_network_show(self):
         self.dialogEditNetwork = DialogEditNetwork(self.dialog_error_show, self.dialog_success_show, self.dialog_error_server_show)
-        self.dialogEditNetwork.show()
+        self.dialogEditNetwork.exec()
