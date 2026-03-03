@@ -379,12 +379,15 @@ class MainWindow(QMainWindow):
         self.dialogError.ui.tb_error.setText(text)
         self.dialogError.exec()
 
-    def dialog_error_server_show(self, text):
+    def dialog_error_server_show(self, text, local = False):
         self.dialogError = DialogError()
         self.dialogError.setWindowTitle("Предупреждение")
-        self.dialogError.ui.tb_error.setText("Ошибка записи информации на сервер" + "\n"+
-                                             "Соединение с сервером разорвано" + "\n" + str(text))
-        self.disconnect_server(True)
+        if not local:
+            self.dialogError.ui.tb_error.setText("Ошибка записи информации на сервер" + "\n"+
+                                                 "Соединение с сервером разорвано" + "\n" + str(text))
+            self.disconnect_server(True)
+        else:
+            self.dialogError.ui.tb_error.setText("Ошибка записи информации в логи текущей сессии" + "\n" + str(text))
         self.dialogError.exec()
 
     def dialog_success_show(self, text: str):

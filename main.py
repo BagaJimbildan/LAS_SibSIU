@@ -32,6 +32,8 @@ else:
     app_inf.is_first = True
     file_m.create_info_app()  # создание файла с информацией
 
+# Создание файлы логов текущей сессии
+file_m.create_or_replace_excel()
 
 def cleanup():
     if app_inf.write_server:

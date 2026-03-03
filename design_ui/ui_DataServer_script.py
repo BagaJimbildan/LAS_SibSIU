@@ -115,6 +115,10 @@ class DialogDataServer(QDialog):
                     if status[0] == 2:
                         self.dialogErrorServer(status[1])
 
+                    status2 = serv_log.write_excel("подключение к файлу с логами", is_local_log=True)
+                    if status2[0] == 2:
+                        self.dialogErrorServer(status2[1], True)
+
                     self.close()
 
 

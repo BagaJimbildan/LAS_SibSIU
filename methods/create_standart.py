@@ -183,4 +183,6 @@ def try_write_server(dialog_error_server_show, action: str, note = None):
             dialog_error_server_show(status[1])
 
     # Запись в локальные логи текущей сессии
-    pass
+    status2 = serv_log.write_excel(action, note, True)
+    if status2[0] == 2:
+        dialog_error_server_show(status2[1], True)

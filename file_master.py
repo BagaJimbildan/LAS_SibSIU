@@ -1,22 +1,31 @@
 import os
 import sys
+
+from openpyxl import Workbook
+
 import static_info as stat_inf
 import user_info as user_inf
+import app_info as app_inf
 
 
 data_file = "app_info.data"
 dir_path = stat_inf.do_not_know
 data_path = stat_inf.do_not_know
 
+excel_log = "currents_logs.xlsx"
+excel_file = stat_inf.do_not_know
+
 # Узнаем путь, откуда запущена программа и создаем пути
 def get_current_dir():
-    global dir_path, data_path
+    global dir_path, data_path, excel_file, excel_log
     if getattr(sys, 'frozen', False):
         dir_path = os.path.dirname(os.path.abspath(sys.executable))
     else:
         dir_path = os.path.dirname(os.path.abspath(__file__))
 
     data_path = os.path.join(dir_path, data_file)
+    excel_file = os.path.join(dir_path, excel_log)
+    app_inf.local_log_path = excel_file
 
 def check_info_app():
     return os.path.exists(data_path)
@@ -50,3 +59,16 @@ def write_info_app(field: str, value: str):
 
     with open(data_path, 'w', encoding='utf-8') as f:
         f.write(newlines)
+
+
+def create_or_replace_excel():
+    if os.path.exists(excel_file):
+        os.remove(excel_file)
+
+    # Создаём новую книгу и сохраняем
+    wb = Workbook()
+
+    sheet = wb.active
+    sheet.title = "Лист1"
+
+    wb.save(excel_file)
