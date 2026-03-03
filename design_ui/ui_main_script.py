@@ -145,7 +145,8 @@ class MainWindow(QMainWindow):
 
         self.dialog_edit_ping = DialogEditPing(local, param[0], param[1], param[2],
                                                self.update_network_status_local if local
-                                               else self.update_network_status_global)
+                                               else self.update_network_status_global,
+                                               self.dialog_error_show)
 
         name_net = "локальной" if local else "глобальной"
         self.dialog_edit_ping.setWindowTitle("Изменение " + name_net+ " сети")

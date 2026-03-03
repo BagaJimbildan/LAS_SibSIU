@@ -1,3 +1,6 @@
+import ipaddress
+import re
+
 from PyQt6.QtWidgets import QLabel
 from PySide6.QtWidgets import QDialog
 import file_master as file_m
@@ -8,7 +11,7 @@ from design_ui.ui_EditPing import Ui_DialogEditPing
 
 
 class DialogEditPing(QDialog):
-    def __init__(self, local, lbl_name: QLabel, lbl_time: QLabel, lbl_status: QLabel, method_update):
+    def __init__(self, local, lbl_name: QLabel, lbl_time: QLabel, lbl_status: QLabel, method_update, show_error):
         super().__init__()
         self.ui = Ui_DialogEditPing()
         self.ui.setupUi(self)
@@ -19,6 +22,7 @@ class DialogEditPing(QDialog):
         self.lbl_time = lbl_time
         self.lbl_status = lbl_status
         self.method_update = method_update
+        self.show_error = show_error
 
         if (user_inf.ping_local[1] != stat_inf.not_selected and local) or (user_inf.ping_global[1] != stat_inf.not_selected and not local):
             self.ui.tb_hostname.setText(user_inf.ping_local[1] if local else user_inf.ping_global[1])
@@ -42,7 +46,31 @@ class DialogEditPing(QDialog):
         self.lbl_time.setText(stat_inf.default_note)
 
     def check_ping(self):
-        return [0,0]  # сделать проверку
+        hostname = self.ui.tb_hostname.text().strip()
+        error = [1, "Введите корректное имя хоста или ip-адрес"]
+        # Проверка на IP-адрес
+        try:
+            ipaddress.ip_address(hostname)
+            return True
+        except ValueError:
+            pass
+
+
+        try:
+            ascii_hostname = hostname.encode('idna').decode('ascii')
+        except (UnicodeError, AttributeError):
+            # Если преобразование не удалось — невалидное доменное имя
+            return error
+
+        if len(ascii_hostname) > 255:
+            return error
+
+        label_pattern = re.compile(r'^(?!-)[A-Za-z0-9-]{1,63}(?<!-)$')
+        labels = ascii_hostname.split('.')
+        for label in labels:
+            if not label_pattern.match(label):
+                return error
+        return [0,0]
 
     def btn_save(self, update = False):
         status = self.check_ping()
@@ -51,7 +79,7 @@ class DialogEditPing(QDialog):
             if update: self.method_update()
             self.close()
         else:
-            pass #окно с ошибкой надо
+            self.show_error(status[1])
 
     def btn_save_update(self):
         self.btn_save(True)
