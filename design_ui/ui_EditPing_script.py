@@ -8,7 +8,7 @@ from design_ui.ui_EditPing import Ui_DialogEditPing
 
 
 class DialogEditPing(QDialog):
-    def __init__(self, local, lbl_name: QLabel, lbl_time: QLabel, lbl_status: QLabel):
+    def __init__(self, local, lbl_name: QLabel, lbl_time: QLabel, lbl_status: QLabel, method_update):
         super().__init__()
         self.ui = Ui_DialogEditPing()
         self.ui.setupUi(self)
@@ -19,10 +19,12 @@ class DialogEditPing(QDialog):
         self.lbl_time = lbl_time
         self.lbl_status = lbl_status
 
-        self.ui.tb_hostname.setText(user_inf.ping_local[1] if local else user_inf.ping_global[1])
+        if (user_inf.ping_local[1] != stat_inf.not_selected and local) or (user_inf.ping_global[1] != stat_inf.not_selected and not local):
+            self.ui.tb_hostname.setText(user_inf.ping_local[1] if local else user_inf.ping_global[1])
 
         self.ui.btn_cancel.clicked.connect(self.close)
-        self.ui.btn_save.clicked.connect(self.save_hosts)
+        self.ui.btn_save.clicked.connect(self.btn_save)
+        self.ui.btn_save_ping.clicked.connect(self.btn_save_update)
         # Сделать проверку записи и кнопку сохранить и проверить, а потом еще закрыть надо
 
 
@@ -37,4 +39,13 @@ class DialogEditPing(QDialog):
         self.lbl_name.setText(self.ui.tb_hostname.text().strip())
         self.lbl_status.setText(stat_inf.default_note)
         self.lbl_time.setText(stat_inf.default_note)
+
+    def check_ping(self):
+        pass
+
+    def btn_save(self):
+        pass
+
+    def btn_save_update(self):
+        pass
 
