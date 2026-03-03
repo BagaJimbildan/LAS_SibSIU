@@ -83,6 +83,7 @@ class DialogDataServer(QDialog):
             status1 = self.mount_share_windows("Z", server, username, password)
             if status1[0] == 1:
                 self.dialogError(status1[1])
+                serv_log.path_log = None
                 return
 
             file_server_path = Path("Z:/"+file_server)
@@ -126,9 +127,11 @@ class DialogDataServer(QDialog):
                     self.dialogError("Тип файла должен быть электронной таблицей" + "\n"+
                                      "доступные типы: "+"\n"+
                                      "(.xls', '.xlsx', '.xlsm', '.xlsb)")
+                    serv_log.path_log = None
                     serv_set.disconnect_server()
             else:
                 self.dialogError("Файл не найден")
+                serv_log.path_log = None
                 serv_set.disconnect_server()
 
 

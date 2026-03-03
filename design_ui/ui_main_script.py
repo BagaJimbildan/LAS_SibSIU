@@ -245,6 +245,7 @@ class MainWindow(QMainWindow):
 
             self.dialogDataServer.show()
         else:
+            serv_log.path_log = None
             self.disconnect_server()
 
     def status_connect_server_show(self):
@@ -287,6 +288,7 @@ class MainWindow(QMainWindow):
 
     def disconnect_server(self, force = False):
         serv_set.disconnect_server()
+        serv_log.path_log = None
         app_inf.write_server = False
         self.ui.disconnect.setText("Подключиться")
         if not force:
