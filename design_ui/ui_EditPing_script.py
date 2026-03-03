@@ -18,6 +18,7 @@ class DialogEditPing(QDialog):
         self.lbl_name = lbl_name
         self.lbl_time = lbl_time
         self.lbl_status = lbl_status
+        self.method_update = method_update
 
         if (user_inf.ping_local[1] != stat_inf.not_selected and local) or (user_inf.ping_global[1] != stat_inf.not_selected and not local):
             self.ui.tb_hostname.setText(user_inf.ping_local[1] if local else user_inf.ping_global[1])
@@ -28,7 +29,7 @@ class DialogEditPing(QDialog):
         # Сделать проверку записи и кнопку сохранить и проверить, а потом еще закрыть надо
 
 
-    def save_hosts(self):
+    def save_hosts(self, update = False):
         if self.local:
             user_inf.ping_local[1] = self.ui.tb_hostname.text().strip()
             file_m.write_info_app(user_inf.ping_local[0], user_inf.ping_local[1])
@@ -41,11 +42,17 @@ class DialogEditPing(QDialog):
         self.lbl_time.setText(stat_inf.default_note)
 
     def check_ping(self):
-        pass
+        return [0,0]  # сделать проверку
 
-    def btn_save(self):
-        pass
+    def btn_save(self, update = False):
+        status = self.check_ping()
+        if status[0] == 0:
+            self.save_hosts()
+            if update: self.method_update()
+            self.close()
+        else:
+            pass #окно с ошибкой надо
 
     def btn_save_update(self):
-        pass
+        self.btn_save(True)
 
