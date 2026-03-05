@@ -3,7 +3,6 @@ import static_info as stat_inf
 
 is_first = True  # первый ли запуск данного экземпляра программы
 write_server = False  # записывать ли на сервер
-local_log_path = None
 
 def start_info_app(data_path):  # чтение информации и смена параметров
     lines = ""

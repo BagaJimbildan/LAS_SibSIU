@@ -2,6 +2,7 @@ from openpyxl import load_workbook
 from datetime import datetime
 import user_info as user_inf
 import static_info as stat_inf
+import file_master as file_m
 import app_info as app_inf
 
 path_log = None
@@ -16,19 +17,22 @@ def write_excel(action: str, note = None, is_local_log=False):
             last_row = ws.max_row
             free_row = last_row + 1
 
-            data = [user_inf.ticket,
-                    user_inf.username[1],
-                    user_inf.current_room,
-                    user_inf.room,
-                    user_inf.owner,
-                    user_inf.subdivision]
+            if app_inf.write_server:
+                data = [user_inf.ticket,
+                        user_inf.username[1],
+                        user_inf.current_room,
+                        user_inf.room,
+                        user_inf.owner,
+                        user_inf.subdivision]
+            else:
+                data = [stat_inf.do_not_know]*6
 
 
             for col, value in enumerate(data+[str(datetime.now()), action, note if note is not None else stat_inf.default_note], start=1):
                 ws.cell(row=free_row, column=col, value=value)
 
             if not is_local_log: wb.save(path_log)
-            else: wb.save(app_inf.local_log_path)
+            else: wb.save(file_m.excel_file)
             wb.close()
 
         else:
