@@ -1,4 +1,5 @@
 import ctypes
+import os
 import platform
 import re
 import subprocess
@@ -185,5 +186,49 @@ def check_name_standard():
     pattern = r'^[a-zA-Z0-9]+-\d{5}-[cCnNpP]$'
     matching = bool(re.match(pattern, stat_inf.name_PC))
     stat_inf.name_PC_standard = k_phras.matching_yes[0] if matching else k_phras.matching_no[0]
+
+def check_activate_office():
+    if stat_inf.os.lower() == "windows":
+        possible_paths = [
+            r"C:\Program Files\Microsoft Office\Office16\ospp.vbs",
+            r"C:\Program Files\Microsoft Office\Office15\ospp.vbs",
+            r"C:\Program Files\Microsoft Office\Office14\ospp.vbs",
+            r"C:\Program Files (x86)\Microsoft Office\Office16\ospp.vbs",
+            r"C:\Program Files (x86)\Microsoft Office\Office15\ospp.vbs",
+            r"C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs",
+        ]
+        ospp_path = None
+        for path in possible_paths:
+            if os.path.exists(path):
+                ospp_path = path
+
+        if ospp_path is None:
+            stat_inf.activate_office = "Office не найден (или версия не поддерживается)"
+            return
+
+        result = subprocess.run(
+            ["cscript", ospp_path, "/dstatus"],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="ignore"
+        )
+        output = result.stdout + result.stderr
+        output_lower = output.lower()
+
+        if "---licensed---" in output_lower:
+            stat_inf.activate_office = k_phras.activate_status[0]
+            return
+        elif "---oob grace---" in output_lower or "---grace---" in output_lower:
+            stat_inf.activate_office = "office в пробном периоде (не активирован)"
+            return
+        elif "---notifications---" in output_lower:
+            stat_inf.activate_office = "office требует активации (уведомления)"
+            return
+        elif "---unlicensed---" in output_lower:
+            stat_inf.activate_office = "office не лицензирован"
+            return
+        else:
+            stat_inf.activate_office = "не удалось определить статус активации"
 
 

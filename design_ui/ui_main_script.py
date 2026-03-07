@@ -82,6 +82,7 @@ class MainWindow(QMainWindow):
         self.ui.lbl_admin_active.setText(stat_inf.admin_active)
         self.ui.lbl_name.setText(stat_inf.name_PC)
         self.ui.lbl_name_is_standart.setText(stat_inf.name_PC_standard)
+        self.ui.lbl_os_activate_office.setText(stat_inf.activate_office)
 
         self.ui.btn_net_1.clicked.connect(self.parameters_net)
         self.ui.btn_enable_admin.clicked.connect(self.enable_admin_param)

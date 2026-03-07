@@ -1,3 +1,5 @@
+from key_phrases import activate_status
+
 do_not_know = "???"
 not_selected = "не указан"
 write_not_active = "Запись на сервер отключена"
@@ -7,6 +9,7 @@ platform = do_not_know
 
 domain = do_not_know
 activate = do_not_know # Активирована ли ОС (если windows)
+activate_office = do_not_know # Активирован ли MS Office в Windows 10
 
 dhcp = do_not_know
 

@@ -71,18 +71,18 @@
      <rect>
       <x>20</x>
       <y>50</y>
-      <width>71</width>
+      <width>91</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Активация:</string>
+     <string>Активация ОС:</string>
     </property>
    </widget>
    <widget class="QLabel" name="lbl_os_activate">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>130</x>
       <y>50</y>
       <width>181</width>
       <height>16</height>
@@ -480,6 +480,32 @@
     </property>
     <property name="text">
      <string>время 2</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_os_activate_office">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>400</y>
+      <width>251</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>???</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>400</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Активация офиса:</string>
     </property>
    </widget>
   </widget>
