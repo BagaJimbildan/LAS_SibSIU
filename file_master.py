@@ -70,5 +70,10 @@ def create_or_replace_excel():
 
     sheet = wb.active
     sheet.title = "Лист1"
+    ws = wb['Лист1']
+
+    for col, value in enumerate(["Заявка", "Исполнитель", "Текущий кабинет ПК", "Целевой кабинет ПК", "Владелец ПК",
+                                 "Подразделение", "Дата", "Действие", "Примечание"], start=1):
+        ws.cell(row=1, column=col, value=value)
 
     wb.save(excel_file)

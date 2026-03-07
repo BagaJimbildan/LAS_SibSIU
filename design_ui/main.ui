@@ -499,6 +499,7 @@
     <addaction name="add_path"/>
     <addaction name="test_global"/>
     <addaction name="test_local"/>
+    <addaction name="btn_open_local_logs"/>
    </widget>
    <widget class="QMenu" name="menu_server">
     <property name="title">
@@ -562,6 +563,11 @@
   <action name="test_local">
    <property name="text">
     <string>Изменить проверочный адрес локальной сети</string>
+   </property>
+  </action>
+  <action name="btn_open_local_logs">
+   <property name="text">
+    <string>Открыть локальный файл логов</string>
    </property>
   </action>
  </widget>

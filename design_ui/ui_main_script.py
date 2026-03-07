@@ -109,6 +109,7 @@ class MainWindow(QMainWindow):
         self.ui.open_logs_server.triggered.connect(self.open_server_file_logs)
         self.ui.test_global.triggered.connect(lambda: self.change_host_ping(False))
         self.ui.test_local.triggered.connect(lambda: self.change_host_ping(True))
+        self.ui.btn_open_local_logs.triggered.connect(self.open_local_file_logs)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -227,6 +228,12 @@ class MainWindow(QMainWindow):
                 os.startfile(serv_log.path_log)
             except Exception as e:
                 self.dialog_error_show(str(e))
+
+    def open_local_file_logs(self):
+        try:
+            os.startfile(file_m.excel_file)
+        except Exception as e:
+            self.dialog_error_show(str(e))
 
     def connect_disconnect(self):
         if not app_inf.write_server:
