@@ -1,4 +1,5 @@
 import subprocess
+import threading
 
 from PyQt6.QtWidgets import QPushButton, QLabel, QLineEdit
 
@@ -155,20 +156,26 @@ def connect_domain(domain_name: str, admin_user: str, admin_password: str, error
     except subprocess.CalledProcessError as e:
         return [1, e.stderr]
 
-def activate_windows(error_server_show):
+def activate_windows(error_server_show, method_update, lbl_update: QLabel):
     subprocess.run(r'slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX', shell=True)
     subprocess.run(r'slmgr.vbs /skms lic.sibsiu.ru', shell=True)
     subprocess.run(r'slmgr.vbs /ato', shell=True)
 
-    try_write_server(error_server_show, "активация Windows")
+    threading.Timer(10.0,
+                    lambda: update_info_activation(error_server_show, method_update, False)).start()
+    lbl_update.setText("проверка активации, 10 секунд")
 
 
-def activate_office(error_server_show):
+
+def activate_office(error_server_show, method_update, lbl_update):
     if stat_inf.office_installed:
         subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /sethst:10.252.253.10', shell=True)
         subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /act"', shell=True)
 
-        try_write_server(error_server_show, "активация Office")
+        threading.Timer(10.0,
+                        lambda: update_info_activation(error_server_show, method_update, True)).start()
+        lbl_update.setText("проверка активации, 10 секунд")
+
 
 def check_tb_null(text: str):
     if text is None or text.strip() == "":
@@ -187,3 +194,7 @@ def try_write_server(dialog_error_server_show, action: str, note = None):
     status2 = serv_log.write_excel(action, note, True)
     if status2[0] == 2:
         dialog_error_server_show(status2[1], True)
+
+def update_info_activation(error_server_show, method_update, is_office):
+    method_update()
+    try_write_server(error_server_show, "активация Office" if is_office else "активация Windows")

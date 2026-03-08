@@ -4,6 +4,7 @@ import subprocess
 
 from PySide6.QtWidgets import QPushButton
 from PySide6.QtWidgets import QMainWindow
+from openpyxl.pivot.fields import Boolean
 
 import methods.start_info as start_inf
 import static_info as stat_inf
@@ -190,16 +191,27 @@ class MainWindow(QMainWindow):
 
 
     def activate_windows(self):
-        create_standard.activate_windows(self.dialog_error_server_show)
-        start_inf.check_activate()
+        create_standard.activate_windows(self.dialog_error_server_show, lambda: self.update_info_activation(False),
+                                         self.ui.lbl_os_activate)
 
-        self.ui.lbl_os_activate.setText(stat_inf.activate)
-
-        if stat_inf.activate == k_phras.activate_status[0]:
-            self.ui.btn_activate_windows.setEnabled(False)
 
     def activate_office(self):
-        create_standard.activate_office(self.dialog_error_server_show)
+        create_standard.activate_office(self.dialog_error_server_show, lambda: self.update_info_activation(True),
+                                        self.ui.lbl_os_activate_office)
+
+    def update_info_activation(self, is_office: bool):
+        if is_office:
+            start_inf.check_activate_office()
+            self.ui.lbl_os_activate_office.setText(stat_inf.activate_office)
+
+            if stat_inf.activate_office == k_phras.activate_status[0]:
+                self.ui.btn_activate_office.setEnabled(False)
+        else:
+            start_inf.check_activate()
+            self.ui.lbl_os_activate.setText(stat_inf.activate)
+
+            if stat_inf.activate == k_phras.activate_status[0]:
+                self.ui.btn_activate_windows.setEnabled(False)
 
     def loop_function_show(self):
         self.dialog_loop = DialogLoopFunction(self.enable_admin_param,
