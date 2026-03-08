@@ -22,16 +22,19 @@ class Ui_DialogSuccess(object):
     def setupUi(self, DialogSuccess):
         if not DialogSuccess.objectName():
             DialogSuccess.setObjectName(u"DialogSuccess")
-        DialogSuccess.resize(340, 143)
+        DialogSuccess.resize(344, 156)
         self.btn_close = QPushButton(DialogSuccess)
         self.btn_close.setObjectName(u"btn_close")
-        self.btn_close.setGeometry(QRect(240, 110, 91, 31))
+        self.btn_close.setGeometry(QRect(220, 110, 91, 31))
         self.tb_info = QTextEdit(DialogSuccess)
         self.tb_info.setObjectName(u"tb_info")
         self.tb_info.setGeometry(QRect(10, 10, 321, 91))
         self.tb_info.setReadOnly(True)
 
         self.retranslateUi(DialogSuccess)
+
+        self.btn_close.setDefault(True)
+
 
         QMetaObject.connectSlotsByName(DialogSuccess)
     # setupUi

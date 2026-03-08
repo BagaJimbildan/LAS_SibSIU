@@ -22,7 +22,7 @@ class Ui_DialogEditNetwork(object):
     def setupUi(self, DialogEditNetwork):
         if not DialogEditNetwork.objectName():
             DialogEditNetwork.setObjectName(u"DialogEditNetwork")
-        DialogEditNetwork.resize(355, 141)
+        DialogEditNetwork.resize(363, 155)
         self.lbl_name_is_standart = QLabel(DialogEditNetwork)
         self.lbl_name_is_standart.setObjectName(u"lbl_name_is_standart")
         self.lbl_name_is_standart.setGeometry(QRect(110, 10, 141, 16))
@@ -32,13 +32,13 @@ class Ui_DialogEditNetwork(object):
         self.tb_ip1.setMaxLength(3)
         self.lbl_name_is_standart_2 = QLabel(DialogEditNetwork)
         self.lbl_name_is_standart_2.setObjectName(u"lbl_name_is_standart_2")
-        self.lbl_name_is_standart_2.setGeometry(QRect(80, 30, 21, 41))
+        self.lbl_name_is_standart_2.setGeometry(QRect(80, 40, 21, 41))
         font = QFont()
-        font.setPointSize(26)
+        font.setFamilies([u"Roboto"])
         self.lbl_name_is_standart_2.setFont(font)
         self.lbl_name_is_standart_3 = QLabel(DialogEditNetwork)
         self.lbl_name_is_standart_3.setObjectName(u"lbl_name_is_standart_3")
-        self.lbl_name_is_standart_3.setGeometry(QRect(170, 30, 21, 41))
+        self.lbl_name_is_standart_3.setGeometry(QRect(170, 40, 21, 41))
         self.lbl_name_is_standart_3.setFont(font)
         self.tb_ip2 = QLineEdit(DialogEditNetwork)
         self.tb_ip2.setObjectName(u"tb_ip2")
@@ -46,7 +46,7 @@ class Ui_DialogEditNetwork(object):
         self.tb_ip2.setMaxLength(3)
         self.lbl_name_is_standart_4 = QLabel(DialogEditNetwork)
         self.lbl_name_is_standart_4.setObjectName(u"lbl_name_is_standart_4")
-        self.lbl_name_is_standart_4.setGeometry(QRect(260, 30, 21, 41))
+        self.lbl_name_is_standart_4.setGeometry(QRect(260, 40, 21, 41))
         self.lbl_name_is_standart_4.setFont(font)
         self.tb_ip3 = QLineEdit(DialogEditNetwork)
         self.tb_ip3.setObjectName(u"tb_ip3")
@@ -58,15 +58,18 @@ class Ui_DialogEditNetwork(object):
         self.tb_ip4.setMaxLength(3)
         self.btn_ok = QPushButton(DialogEditNetwork)
         self.btn_ok.setObjectName(u"btn_ok")
-        self.btn_ok.setGeometry(QRect(260, 110, 91, 24))
+        self.btn_ok.setGeometry(QRect(220, 120, 131, 24))
         self.btn_cancel = QPushButton(DialogEditNetwork)
         self.btn_cancel.setObjectName(u"btn_cancel")
-        self.btn_cancel.setGeometry(QRect(160, 110, 91, 24))
+        self.btn_cancel.setGeometry(QRect(120, 120, 91, 24))
         self.lbl_name_is_standart_5 = QLabel(DialogEditNetwork)
         self.lbl_name_is_standart_5.setObjectName(u"lbl_name_is_standart_5")
         self.lbl_name_is_standart_5.setGeometry(QRect(40, 80, 301, 20))
 
         self.retranslateUi(DialogEditNetwork)
+
+        self.btn_ok.setDefault(True)
+
 
         QMetaObject.connectSlotsByName(DialogEditNetwork)
     # setupUi

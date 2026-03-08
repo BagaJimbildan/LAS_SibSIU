@@ -15,44 +15,47 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QLabel, QSizePolicy,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QDialog, QLabel, QPushButton,
+    QSizePolicy, QWidget)
 
 class Ui_DialogParamNet(object):
     def setupUi(self, DialogParamNet):
         if not DialogParamNet.objectName():
             DialogParamNet.setObjectName(u"DialogParamNet")
-        DialogParamNet.resize(239, 110)
+        DialogParamNet.resize(277, 161)
         self.label = QLabel(DialogParamNet)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(20, 10, 51, 16))
+        self.label.setGeometry(QRect(20, 10, 61, 20))
         self.lbl_ip = QLabel(DialogParamNet)
         self.lbl_ip.setObjectName(u"lbl_ip")
-        self.lbl_ip.setGeometry(QRect(120, 10, 91, 16))
+        self.lbl_ip.setGeometry(QRect(130, 10, 141, 16))
         self.lbl_mask = QLabel(DialogParamNet)
         self.lbl_mask.setObjectName(u"lbl_mask")
-        self.lbl_mask.setGeometry(QRect(120, 30, 91, 16))
+        self.lbl_mask.setGeometry(QRect(130, 30, 141, 16))
         self.label_2 = QLabel(DialogParamNet)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(20, 30, 91, 16))
+        self.label_2.setGeometry(QRect(20, 30, 101, 20))
         self.label_3 = QLabel(DialogParamNet)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(20, 50, 91, 16))
+        self.label_3.setGeometry(QRect(20, 50, 101, 20))
         self.lbl_gateway = QLabel(DialogParamNet)
         self.lbl_gateway.setObjectName(u"lbl_gateway")
-        self.lbl_gateway.setGeometry(QRect(120, 50, 91, 16))
+        self.lbl_gateway.setGeometry(QRect(130, 50, 141, 16))
         self.label_4 = QLabel(DialogParamNet)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(20, 70, 91, 16))
+        self.label_4.setGeometry(QRect(20, 70, 101, 20))
         self.lbl_dns1 = QLabel(DialogParamNet)
         self.lbl_dns1.setObjectName(u"lbl_dns1")
-        self.lbl_dns1.setGeometry(QRect(120, 70, 91, 16))
+        self.lbl_dns1.setGeometry(QRect(130, 70, 141, 16))
         self.lbl_dns2 = QLabel(DialogParamNet)
         self.lbl_dns2.setObjectName(u"lbl_dns2")
-        self.lbl_dns2.setGeometry(QRect(120, 90, 91, 16))
+        self.lbl_dns2.setGeometry(QRect(130, 90, 141, 16))
         self.label_5 = QLabel(DialogParamNet)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(20, 90, 91, 16))
+        self.label_5.setGeometry(QRect(20, 90, 101, 20))
+        self.btn_ok = QPushButton(DialogParamNet)
+        self.btn_ok.setObjectName(u"btn_ok")
+        self.btn_ok.setGeometry(QRect(185, 120, 81, 31))
 
         self.retranslateUi(DialogParamNet)
 
@@ -71,5 +74,6 @@ class Ui_DialogParamNet(object):
         self.lbl_dns1.setText(QCoreApplication.translate("DialogParamNet", u"???", None))
         self.lbl_dns2.setText(QCoreApplication.translate("DialogParamNet", u"???", None))
         self.label_5.setText(QCoreApplication.translate("DialogParamNet", u"DNS_2:", None))
+        self.btn_ok.setText(QCoreApplication.translate("DialogParamNet", u"\u041e\u041a", None))
     # retranslateUi
 

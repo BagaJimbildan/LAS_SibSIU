@@ -21,6 +21,7 @@ class DialogEditPath(QDialog):
         self.ui.btn_ar.clicked.connect(self.path_acrobat_reader)
         self.ui.btn_fr.clicked.connect(self.path_fine_reader)
         self.ui.btn_7z.clicked.connect(self.path_7zip)
+        self.ui.btn_ok.setFocus()
 
         self.write_path()
 

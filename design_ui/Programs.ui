@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>589</width>
-    <height>349</height>
+    <width>479</width>
+    <height>258</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,7 +31,7 @@
     <rect>
      <x>10</x>
      <y>70</y>
-     <width>141</width>
+     <width>161</width>
      <height>16</height>
     </rect>
    </property>
@@ -94,9 +94,9 @@
   <widget class="QPushButton" name="btn_of10">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>190</x>
      <y>30</y>
-     <width>91</width>
+     <width>121</width>
      <height>26</height>
     </rect>
    </property>
@@ -107,9 +107,9 @@
   <widget class="QPushButton" name="btn_of10A">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>190</x>
      <y>60</y>
-     <width>91</width>
+     <width>121</width>
      <height>26</height>
     </rect>
    </property>
@@ -120,9 +120,9 @@
   <widget class="QPushButton" name="btn_of16">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>190</x>
      <y>90</y>
-     <width>91</width>
+     <width>121</width>
      <height>26</height>
     </rect>
    </property>
@@ -133,9 +133,9 @@
   <widget class="QPushButton" name="btn_fr">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>190</x>
      <y>120</y>
-     <width>91</width>
+     <width>121</width>
      <height>26</height>
     </rect>
    </property>
@@ -146,9 +146,9 @@
   <widget class="QPushButton" name="btn_7z">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>190</x>
      <y>150</y>
-     <width>91</width>
+     <width>121</width>
      <height>26</height>
     </rect>
    </property>
@@ -159,9 +159,9 @@
   <widget class="QPushButton" name="btn_ar">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>190</x>
      <y>180</y>
-     <width>91</width>
+     <width>121</width>
      <height>26</height>
     </rect>
    </property>
@@ -172,8 +172,8 @@
   <widget class="QPushButton" name="btn_ok">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>320</y>
+     <x>370</x>
+     <y>220</y>
      <width>91</width>
      <height>26</height>
     </rect>
@@ -181,8 +181,20 @@
    <property name="text">
     <string>ОК</string>
    </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>btn_ok</tabstop>
+  <tabstop>btn_of10</tabstop>
+  <tabstop>btn_of10A</tabstop>
+  <tabstop>btn_of16</tabstop>
+  <tabstop>btn_fr</tabstop>
+  <tabstop>btn_7z</tabstop>
+  <tabstop>btn_ar</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

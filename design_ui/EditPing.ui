@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>533</width>
-    <height>99</height>
+    <width>570</width>
+    <height>125</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>240</x>
      <y>30</y>
-     <width>281</width>
+     <width>311</width>
      <height>22</height>
     </rect>
    </property>
@@ -26,22 +26,25 @@
   <widget class="QPushButton" name="btn_save_ping">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>70</y>
-     <width>221</width>
+     <x>270</x>
+     <y>90</y>
+     <width>291</width>
      <height>26</height>
     </rect>
    </property>
    <property name="text">
     <string>Сохранить и проверить соединение</string>
    </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="btn_save">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>70</y>
-     <width>91</width>
+     <x>270</x>
+     <y>60</y>
+     <width>131</width>
      <height>26</height>
     </rect>
    </property>
@@ -52,8 +55,8 @@
   <widget class="QPushButton" name="btn_cancel">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>70</y>
+     <x>170</x>
+     <y>80</y>
      <width>91</width>
      <height>26</height>
     </rect>
@@ -67,7 +70,7 @@
     <rect>
      <x>30</x>
      <y>10</y>
-     <width>171</width>
+     <width>181</width>
      <height>20</height>
     </rect>
    </property>
@@ -80,7 +83,7 @@
     <rect>
      <x>100</x>
      <y>30</y>
-     <width>101</width>
+     <width>121</width>
      <height>20</height>
     </rect>
    </property>
@@ -89,6 +92,12 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>tb_hostname</tabstop>
+  <tabstop>btn_save</tabstop>
+  <tabstop>btn_save_ping</tabstop>
+  <tabstop>btn_cancel</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

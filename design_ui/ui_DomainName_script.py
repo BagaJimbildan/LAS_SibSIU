@@ -23,6 +23,7 @@ class DialogDomainName(QDialog):
 
         self.ui.btn_cancel.clicked.connect(self.close)
         self.ui.btn_ok.clicked.connect(self.trying_connect)
+        self.ui.tb_domain.setFocus()
 
     def trying_connect(self):
 

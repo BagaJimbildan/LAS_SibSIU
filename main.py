@@ -4,6 +4,7 @@ import sys
 
 from PySide6.QtWidgets import QApplication
 from design_ui.ui_main_script import MainWindow
+from qt_material import apply_stylesheet
 
 import methods.start_info as start_inf
 import file_master as file_m
@@ -41,6 +42,9 @@ def cleanup():
         serv_set.disconnect_server()
 
 app = QApplication(sys.argv)
+
+apply_stylesheet(app, 'dark_teal.xml')
+
 app.aboutToQuit.connect(cleanup)
 temp = MainWindow()
 temp.show()

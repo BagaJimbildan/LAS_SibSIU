@@ -15,4 +15,10 @@ class DialogParamNet(QDialog):
         self.ui.lbl_mask.setText(stat_inf.net_mask)
         self.ui.lbl_gateway.setText(stat_inf.net_gateway)
         self.ui.lbl_dns1.setText(stat_inf.net_dns[0])
-        self.ui.lbl_dns2.setText(stat_inf.net_dns[1])
+
+        if stat_inf.net_dns[1] == stat_inf.do_not_know:
+            self.ui.lbl_dns2.setText(stat_inf.not_selected)
+        else:
+            self.ui.lbl_dns2.setText(stat_inf.net_dns[1])
+
+        self.ui.btn_ok.clicked.connect(self.close)

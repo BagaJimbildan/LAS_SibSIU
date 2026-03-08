@@ -22,10 +22,10 @@ class Ui_DialogCreatePass(object):
     def setupUi(self, DialogCreatePass):
         if not DialogCreatePass.objectName():
             DialogCreatePass.setObjectName(u"DialogCreatePass")
-        DialogCreatePass.resize(464, 134)
+        DialogCreatePass.resize(541, 140)
         self.lb_info = QLabel(DialogCreatePass)
         self.lb_info.setObjectName(u"lb_info")
-        self.lb_info.setGeometry(QRect(20, 10, 441, 16))
+        self.lb_info.setGeometry(QRect(20, 10, 511, 16))
         self.lb_info_2 = QLabel(DialogCreatePass)
         self.lb_info_2.setObjectName(u"lb_info_2")
         self.lb_info_2.setGeometry(QRect(20, 40, 131, 16))
@@ -34,20 +34,23 @@ class Ui_DialogCreatePass(object):
         self.lb_info_3.setGeometry(QRect(20, 70, 131, 16))
         self.tb_pass1 = QLineEdit(DialogCreatePass)
         self.tb_pass1.setObjectName(u"tb_pass1")
-        self.tb_pass1.setGeometry(QRect(170, 40, 281, 22))
+        self.tb_pass1.setGeometry(QRect(170, 40, 361, 22))
         self.tb_pass1.setEchoMode(QLineEdit.EchoMode.Password)
         self.tb_pass2 = QLineEdit(DialogCreatePass)
         self.tb_pass2.setObjectName(u"tb_pass2")
-        self.tb_pass2.setGeometry(QRect(170, 70, 281, 22))
+        self.tb_pass2.setGeometry(QRect(170, 70, 361, 22))
         self.tb_pass2.setEchoMode(QLineEdit.EchoMode.Password)
         self.btn_ok = QPushButton(DialogCreatePass)
         self.btn_ok.setObjectName(u"btn_ok")
-        self.btn_ok.setGeometry(QRect(350, 110, 101, 24))
+        self.btn_ok.setGeometry(QRect(390, 110, 141, 24))
         self.btn_cancel = QPushButton(DialogCreatePass)
         self.btn_cancel.setObjectName(u"btn_cancel")
-        self.btn_cancel.setGeometry(QRect(242, 110, 101, 24))
+        self.btn_cancel.setGeometry(QRect(280, 110, 101, 24))
 
         self.retranslateUi(DialogCreatePass)
+
+        self.btn_ok.setDefault(True)
+
 
         QMetaObject.connectSlotsByName(DialogCreatePass)
     # setupUi

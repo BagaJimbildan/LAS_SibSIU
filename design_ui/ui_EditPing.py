@@ -22,27 +22,33 @@ class Ui_DialogEditPing(object):
     def setupUi(self, DialogEditPing):
         if not DialogEditPing.objectName():
             DialogEditPing.setObjectName(u"DialogEditPing")
-        DialogEditPing.resize(533, 99)
+        DialogEditPing.resize(570, 125)
         self.tb_hostname = QLineEdit(DialogEditPing)
         self.tb_hostname.setObjectName(u"tb_hostname")
-        self.tb_hostname.setGeometry(QRect(240, 30, 281, 22))
+        self.tb_hostname.setGeometry(QRect(240, 30, 311, 22))
         self.btn_save_ping = QPushButton(DialogEditPing)
         self.btn_save_ping.setObjectName(u"btn_save_ping")
-        self.btn_save_ping.setGeometry(QRect(300, 70, 221, 26))
+        self.btn_save_ping.setGeometry(QRect(270, 90, 291, 26))
         self.btn_save = QPushButton(DialogEditPing)
         self.btn_save.setObjectName(u"btn_save")
-        self.btn_save.setGeometry(QRect(200, 70, 91, 26))
+        self.btn_save.setGeometry(QRect(270, 60, 131, 26))
         self.btn_cancel = QPushButton(DialogEditPing)
         self.btn_cancel.setObjectName(u"btn_cancel")
-        self.btn_cancel.setGeometry(QRect(100, 70, 91, 26))
+        self.btn_cancel.setGeometry(QRect(170, 80, 91, 26))
         self.label = QLabel(DialogEditPing)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(30, 10, 171, 20))
+        self.label.setGeometry(QRect(30, 10, 181, 20))
         self.lbl_name_net = QLabel(DialogEditPing)
         self.lbl_name_net.setObjectName(u"lbl_name_net")
-        self.lbl_name_net.setGeometry(QRect(100, 30, 101, 20))
+        self.lbl_name_net.setGeometry(QRect(100, 30, 121, 20))
+        QWidget.setTabOrder(self.tb_hostname, self.btn_save)
+        QWidget.setTabOrder(self.btn_save, self.btn_save_ping)
+        QWidget.setTabOrder(self.btn_save_ping, self.btn_cancel)
 
         self.retranslateUi(DialogEditPing)
+
+        self.btn_save_ping.setDefault(True)
+
 
         QMetaObject.connectSlotsByName(DialogEditPing)
     # setupUi

@@ -51,7 +51,7 @@ class DialogEditPing(QDialog):
         # Проверка на IP-адрес
         try:
             ipaddress.ip_address(hostname)
-            return True
+            return [0,0]
         except ValueError:
             pass
 

@@ -22,19 +22,19 @@ class Ui_DialogDisableUser(object):
     def setupUi(self, DialogDisableUser):
         if not DialogDisableUser.objectName():
             DialogDisableUser.setObjectName(u"DialogDisableUser")
-        DialogDisableUser.resize(400, 168)
+        DialogDisableUser.resize(384, 145)
         self.tb_name = QLineEdit(DialogDisableUser)
         self.tb_name.setObjectName(u"tb_name")
-        self.tb_name.setGeometry(QRect(10, 40, 271, 31))
+        self.tb_name.setGeometry(QRect(50, 50, 291, 31))
         self.label = QLabel(DialogDisableUser)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(10, 20, 361, 16))
+        self.label.setGeometry(QRect(60, 20, 261, 16))
         self.btn_ok = QPushButton(DialogDisableUser)
         self.btn_ok.setObjectName(u"btn_ok")
-        self.btn_ok.setGeometry(QRect(290, 140, 81, 26))
+        self.btn_ok.setGeometry(QRect(240, 110, 131, 26))
         self.btn_cancel = QPushButton(DialogDisableUser)
         self.btn_cancel.setObjectName(u"btn_cancel")
-        self.btn_cancel.setGeometry(QRect(190, 140, 81, 26))
+        self.btn_cancel.setGeometry(QRect(120, 110, 111, 26))
 
         self.retranslateUi(DialogDisableUser)
 

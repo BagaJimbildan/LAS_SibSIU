@@ -22,14 +22,14 @@ class Ui_DialogError(object):
     def setupUi(self, DialogError):
         if not DialogError.objectName():
             DialogError.setObjectName(u"DialogError")
-        DialogError.resize(329, 211)
+        DialogError.resize(334, 223)
         self.tb_error = QTextEdit(DialogError)
         self.tb_error.setObjectName(u"tb_error")
         self.tb_error.setGeometry(QRect(10, 20, 311, 151))
         self.tb_error.setReadOnly(True)
         self.btn_close = QPushButton(DialogError)
         self.btn_close.setObjectName(u"btn_close")
-        self.btn_close.setGeometry(QRect(230, 180, 91, 31))
+        self.btn_close.setGeometry(QRect(190, 180, 111, 31))
 
         self.retranslateUi(DialogError)
 

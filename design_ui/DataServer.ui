@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>428</width>
-    <height>405</height>
+    <width>477</width>
+    <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,20 +16,20 @@
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>10</y>
-     <width>401</width>
-     <height>161</height>
+     <width>421</width>
+     <height>171</height>
     </rect>
    </property>
    <property name="title">
-    <string>Сервер</string>
+    <string>Информация о сервере</string>
    </property>
    <widget class="QLineEdit" name="tb_server">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>30</y>
+      <x>180</x>
+      <y>50</y>
       <width>221</width>
       <height>22</height>
      </rect>
@@ -38,8 +38,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
+      <x>20</x>
+      <y>110</y>
       <width>141</width>
       <height>16</height>
      </rect>
@@ -51,8 +51,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>30</y>
+      <x>20</x>
+      <y>50</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -64,8 +64,8 @@
    <widget class="QLineEdit" name="tb_username">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>90</y>
+      <x>180</x>
+      <y>110</y>
       <width>221</width>
       <height>22</height>
      </rect>
@@ -74,8 +74,8 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>120</y>
+      <x>20</x>
+      <y>140</y>
       <width>141</width>
       <height>16</height>
      </rect>
@@ -87,8 +87,8 @@
    <widget class="QLineEdit" name="tb_pass">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>120</y>
+      <x>180</x>
+      <y>140</y>
       <width>221</width>
       <height>22</height>
      </rect>
@@ -100,8 +100,8 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>60</y>
+      <x>20</x>
+      <y>80</y>
       <width>141</width>
       <height>16</height>
      </rect>
@@ -113,8 +113,8 @@
    <widget class="QLineEdit" name="tb_file_server">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>60</y>
+      <x>180</x>
+      <y>80</y>
       <width>221</width>
       <height>22</height>
      </rect>
@@ -124,46 +124,52 @@
   <widget class="QPushButton" name="btn_ok">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>370</y>
-     <width>81</width>
+     <x>320</x>
+     <y>410</y>
+     <width>141</width>
      <height>26</height>
     </rect>
    </property>
    <property name="text">
-    <string>OK</string>
+    <string>Подтвердить</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_cancel">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>370</y>
-     <width>211</width>
+     <x>20</x>
+     <y>410</y>
+     <width>291</width>
      <height>26</height>
     </rect>
    </property>
    <property name="text">
     <string>Не записывать действия на сервер</string>
    </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
   </widget>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>180</y>
-     <width>401</width>
-     <height>171</height>
+     <x>20</x>
+     <y>190</y>
+     <width>421</width>
+     <height>201</height>
     </rect>
    </property>
    <property name="title">
-    <string>Заявка</string>
+    <string>Информация о заявке</string>
    </property>
    <widget class="QLineEdit" name="tb_ticket">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>20</y>
+      <x>180</x>
+      <y>50</y>
       <width>221</width>
       <height>22</height>
      </rect>
@@ -172,8 +178,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
+      <x>30</x>
+      <y>50</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -185,8 +191,8 @@
    <widget class="QLineEdit" name="tb_owner">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>50</y>
+      <x>180</x>
+      <y>80</y>
       <width>221</width>
       <height>22</height>
      </rect>
@@ -195,8 +201,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>50</y>
+      <x>30</x>
+      <y>80</y>
       <width>141</width>
       <height>16</height>
      </rect>
@@ -208,8 +214,8 @@
    <widget class="QLineEdit" name="tb_room">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>110</y>
+      <x>180</x>
+      <y>140</y>
       <width>221</width>
       <height>22</height>
      </rect>
@@ -218,8 +224,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>80</y>
+      <x>30</x>
+      <y>110</y>
       <width>141</width>
       <height>16</height>
      </rect>
@@ -231,8 +237,8 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>140</y>
+      <x>30</x>
+      <y>170</y>
       <width>141</width>
       <height>16</height>
      </rect>
@@ -244,8 +250,8 @@
    <widget class="QLineEdit" name="tb_current_room">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>140</y>
+      <x>180</x>
+      <y>170</y>
       <width>221</width>
       <height>22</height>
      </rect>
@@ -254,8 +260,8 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>110</y>
+      <x>30</x>
+      <y>140</y>
       <width>141</width>
       <height>16</height>
      </rect>
@@ -267,8 +273,8 @@
    <widget class="QLineEdit" name="tb_subdivision">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>80</y>
+      <x>180</x>
+      <y>110</y>
       <width>221</width>
       <height>22</height>
      </rect>
@@ -276,6 +282,19 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>tb_server</tabstop>
+  <tabstop>tb_file_server</tabstop>
+  <tabstop>tb_username</tabstop>
+  <tabstop>tb_pass</tabstop>
+  <tabstop>tb_ticket</tabstop>
+  <tabstop>tb_owner</tabstop>
+  <tabstop>tb_subdivision</tabstop>
+  <tabstop>tb_room</tabstop>
+  <tabstop>tb_current_room</tabstop>
+  <tabstop>btn_ok</tabstop>
+  <tabstop>btn_cancel</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

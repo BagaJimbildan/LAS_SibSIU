@@ -2,6 +2,7 @@ from datetime import datetime
 import os
 import subprocess
 
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QPushButton
 from PySide6.QtWidgets import QMainWindow
 from openpyxl.pivot.fields import Boolean
@@ -335,6 +336,7 @@ class MainWindow(QMainWindow):
         self.dialogWriteServer = DialogYesNo()
         self.dialogWriteServer.setWindowTitle("Фиксировать изменения")
         self.dialogWriteServer.ui.tb_text.setText("Записывать изменения на сервере?")
+        self.dialogWriteServer.ui.tb_text.setAlignment(Qt.AlignCenter)
         self.dialogWriteServer.ui.btn_ok.setText("Да")
         self.dialogWriteServer.ui.btn_close.setText("Нет")
         self.dialogWriteServer.ui.btn_ok.clicked.connect(self.select_write_server_yes)

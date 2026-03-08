@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>399</width>
-    <height>395</height>
+    <width>417</width>
+    <height>355</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>351</width>
+     <width>381</width>
      <height>281</height>
     </rect>
    </property>
@@ -29,8 +29,8 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>30</y>
-      <width>261</width>
+      <y>40</y>
+      <width>331</width>
       <height>24</height>
      </rect>
     </property>
@@ -42,8 +42,8 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>60</y>
-      <width>311</width>
+      <y>70</y>
+      <width>351</width>
       <height>24</height>
      </rect>
     </property>
@@ -55,7 +55,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>90</y>
+      <y>100</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -68,7 +68,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>120</y>
+      <y>130</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -81,7 +81,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>150</y>
+      <y>160</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -94,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>180</y>
+      <y>190</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -107,7 +107,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>210</y>
+      <y>220</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -120,7 +120,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>240</y>
+      <y>250</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -133,21 +133,24 @@
   <widget class="QPushButton" name="btn_ok">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>370</y>
-     <width>101</width>
+     <x>280</x>
+     <y>320</y>
+     <width>121</width>
      <height>26</height>
     </rect>
    </property>
    <property name="text">
     <string>Выполнить</string>
    </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="btn_cancel">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>370</y>
+     <x>170</x>
+     <y>320</y>
      <width>101</width>
      <height>26</height>
     </rect>
@@ -157,6 +160,18 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>cb_admin</tabstop>
+  <tabstop>cb_pass_admin</tabstop>
+  <tabstop>cb_user</tabstop>
+  <tabstop>cb_windows</tabstop>
+  <tabstop>cb_office</tabstop>
+  <tabstop>cb_name_pc</tabstop>
+  <tabstop>cb_domain</tabstop>
+  <tabstop>cb_network</tabstop>
+  <tabstop>btn_ok</tabstop>
+  <tabstop>btn_cancel</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
