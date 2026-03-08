@@ -32,6 +32,8 @@ class DialogLoopFunction(QDialog):
 
         if stat_inf.activate == k_phras.activate_status[0]:
             self.ui.cb_windows.setEnabled(False)
+        if stat_inf.activate_office == k_phras.activate_status[0]:
+            self.ui.cb_office.setEnabled(False)
 
         if stat_inf.admin_active == k_phras.enabled[1]:
             self.ui.cb_admin.setEnabled(False)
