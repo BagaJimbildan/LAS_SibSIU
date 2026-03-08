@@ -10,6 +10,7 @@ platform = do_not_know
 domain = do_not_know
 activate = do_not_know # Активирована ли ОС (если windows)
 activate_office = do_not_know # Активирован ли MS Office в Windows 10
+office_installed = do_not_know  # Установлен ли вообще офис
 
 dhcp = do_not_know
 

@@ -74,6 +74,8 @@ class MainWindow(QMainWindow):
                 self.ui.btn_activate_office,
                 self.ui.btn_loop
             ]
+        if not stat_inf.office_installed or stat_inf.activate_office == k_phras.activate_status[0]:
+            self.ui.btn_activate_office.setEnabled(False)
 
         self.ui.lbl_os.setText(stat_inf.platform)
         self.ui.lbl_domen.setText(stat_inf.domain)

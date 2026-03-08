@@ -204,8 +204,10 @@ def check_activate_office():
 
         if ospp_path is None:
             stat_inf.activate_office = "Office не найден (или версия не поддерживается)"
+            stat_inf.office_installed = False
             return
 
+        stat_inf.office_installed = True
         result = subprocess.run(
             ["cscript", ospp_path, "/dstatus"],
             capture_output=True,

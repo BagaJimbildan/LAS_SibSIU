@@ -164,10 +164,11 @@ def activate_windows(error_server_show):
 
 
 def activate_office(error_server_show):
-    subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /sethst:10.252.253.10', shell=True)
-    subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /act"', shell=True)
+    if stat_inf.office_installed:
+        subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /sethst:10.252.253.10', shell=True)
+        subprocess.run(r'cscript "C:\Program Files (x86)\Microsoft Office\Office14\ospp.vbs" /act"', shell=True)
 
-    try_write_server(error_server_show, "активация Office")
+        try_write_server(error_server_show, "активация Office")
 
 def check_tb_null(text: str):
     if text is None or text.strip() == "":
