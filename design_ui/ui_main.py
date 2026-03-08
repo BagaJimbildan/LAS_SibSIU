@@ -171,11 +171,14 @@ class Ui_MainWindow(object):
         self.menu_programm.setObjectName(u"menu_programm")
         self.menu_server = QMenu(self.menubar)
         self.menu_server.setObjectName(u"menu_server")
+        self.menu = QMenu(self.menubar)
+        self.menu.setObjectName(u"menu")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.menubar.addAction(self.menu.menuAction())
         self.menubar.addAction(self.menu_programm.menuAction())
         self.menubar.addAction(self.menu_server.menuAction())
         self.menu_programm.addAction(self.add_path)
@@ -244,7 +247,8 @@ class Ui_MainWindow(object):
         self.lbl_local_net_time.setText(QCoreApplication.translate("MainWindow", u"\u0432\u0440\u0435\u043c\u044f 2", None))
         self.lbl_os_activate_office.setText(QCoreApplication.translate("MainWindow", u"???", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u0410\u043a\u0442\u0438\u0432\u0430\u0446\u0438\u044f \u043e\u0444\u0438\u0441\u0430:", None))
-        self.menu_programm.setTitle(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430", None))
+        self.menu_programm.setTitle(QCoreApplication.translate("MainWindow", u"\u041a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044f", None))
         self.menu_server.setTitle(QCoreApplication.translate("MainWindow", u"\u0421\u0435\u0440\u0432\u0435\u0440", None))
+        self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430", None))
     # retranslateUi
 

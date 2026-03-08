@@ -520,7 +520,7 @@
    </property>
    <widget class="QMenu" name="menu_programm">
     <property name="title">
-     <string>Программа</string>
+     <string>Конфигурация</string>
     </property>
     <addaction name="add_path"/>
     <addaction name="test_global"/>
@@ -537,6 +537,12 @@
     <addaction name="test_write"/>
     <addaction name="open_logs_server"/>
    </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Программа</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
    <addaction name="menu_programm"/>
    <addaction name="menu_server"/>
   </widget>
