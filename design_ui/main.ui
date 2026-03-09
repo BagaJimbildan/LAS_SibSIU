@@ -6,32 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>774</height>
+    <width>1254</width>
+    <height>681</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>LAS SibSIU</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="lbl_status_user">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>480</y>
-      <width>511</width>
+      <x>340</x>
+      <y>580</y>
+      <width>291</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>от админа или нет</string>
+     <string>программа запущена от когото</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_loop">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>440</y>
+      <x>340</x>
+      <y>540</y>
       <width>261</width>
       <height>26</height>
      </rect>
@@ -755,13 +758,32 @@
      </property>
     </widget>
    </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>370</y>
+      <width>651</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
+     <width>1254</width>
      <height>33</height>
     </rect>
    </property>

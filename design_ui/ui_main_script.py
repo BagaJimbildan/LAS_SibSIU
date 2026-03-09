@@ -4,6 +4,7 @@ import subprocess
 
 from PyQt6.QtCore import QDateTime
 from PySide6.QtCore import Qt, QTimer
+from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QPushButton
 from PySide6.QtWidgets import QMainWindow
 from openpyxl.pivot.fields import Boolean
@@ -135,6 +136,9 @@ class MainWindow(QMainWindow):
         self.ui.lbl_time_auto.setText(stat_inf.auto_set_time)
         self.ui.btn_sync_time.clicked.connect(self.sync_time)
 
+        self.ui.label_14.setPixmap(QPixmap(u"design_ui/images/logo.png"))
+
+
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
             self.ui.lbl_status_user.setText("Программа запущена НЕ от администратора")
@@ -167,6 +171,13 @@ class MainWindow(QMainWindow):
         # Проверка соединения
         self.update_network_status_global(True)
         self.update_network_status_local(True)
+
+        self.setStyleSheet("""
+            QPushButton:disabled {
+                color: gray;
+            }
+        """)
+
 
     def sync_time(self):
         status = create_standard.sync_time(self.dialog_error_server_show)
