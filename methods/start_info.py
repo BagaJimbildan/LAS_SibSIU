@@ -1,8 +1,10 @@
 import ctypes
+from datetime import datetime
 import os
 import platform
 import re
 import subprocess
+from tzlocal import get_localzone
 
 
 
@@ -233,4 +235,33 @@ def check_activate_office():
         else:
             stat_inf.activate_office = "не удалось определить статус активации"
 
+def check_hour_zone():
+    if stat_inf.os.lower() == "windows":
+        result = subprocess.run(['tzutil', '/g'], capture_output=True, text=True)
+        tz_id = result.stdout.strip()
+
+        key_path = r"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones"
+        try:
+            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, key_path) as key:
+                with winreg.OpenKey(key, tz_id) as subkey:
+                    display_name, _ = winreg.QueryValueEx(subkey, "Display")
+                    stat_inf.hour_zone = display_name
+        except FileNotFoundError:
+            stat_inf.hour_zone = tz_id
+
+def check_auto_set_time():
+    if stat_inf.os.lower() == "windows":
+        try:
+            key = winreg.OpenKey(
+                winreg.HKEY_LOCAL_MACHINE,
+                r"SYSTEM\CurrentControlSet\Services\W32Time\Parameters"
+            )
+            value, _ = winreg.QueryValueEx(key, "Type")
+            winreg.CloseKey(key)
+            if value == "NTP":
+                stat_inf.auto_set_time = k_phras.enabled[1]
+            else:
+                stat_inf.auto_set_time = k_phras.enabled_no[1]
+        except FileNotFoundError:
+            stat_inf.auto_set_time = k_phras.enabled_no[1]
 

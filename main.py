@@ -23,6 +23,8 @@ start_inf.check_dhcp()
 start_inf.check_network()
 start_inf.check_admin_on()
 start_inf.check_activate_office()
+start_inf.check_hour_zone()
+start_inf.check_auto_set_time()
 
 start_inf.check_status_current_user()
 

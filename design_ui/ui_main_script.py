@@ -2,7 +2,8 @@ from datetime import datetime
 import os
 import subprocess
 
-from PySide6.QtCore import Qt
+from PyQt6.QtCore import QDateTime
+from PySide6.QtCore import Qt, QTimer
 from PySide6.QtWidgets import QPushButton
 from PySide6.QtWidgets import QMainWindow
 from openpyxl.pivot.fields import Boolean
@@ -61,7 +62,8 @@ class MainWindow(QMainWindow):
             self.ui.btn_drivers,
             self.ui.btn_activate_windows,
             self.ui.btn_activate_office,
-            self.ui.btn_loop
+            self.ui.btn_loop,
+            self.ui.btn_set_time
         ]
 
         self.buttons_no_linux = \
@@ -77,7 +79,8 @@ class MainWindow(QMainWindow):
                 self.ui.info_server,
                 self.ui.btn_activate_windows,
                 self.ui.btn_activate_office,
-                self.ui.btn_loop
+                self.ui.btn_loop,
+                self.ui.btn_set_time
             ]
         if not stat_inf.office_installed or stat_inf.activate_office == k_phras.activate_status[0]:
             self.ui.btn_activate_office.setEnabled(False)
@@ -110,6 +113,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_ping_global.clicked.connect(self.update_network_status_global)
         self.ui.btn_ping_local.clicked.connect(self.update_network_status_local)
 
+        self.ui.btn_set_time.clicked.connect(self.set_time)
+
         self.ui.add_path.triggered.connect(self.addPath_window)
         self.ui.info_server.triggered.connect(self.status_connect_server_show)
         self.ui.disconnect.triggered.connect(self.connect_disconnect)
@@ -119,6 +124,16 @@ class MainWindow(QMainWindow):
         self.ui.test_local.triggered.connect(lambda: self.change_host_ping(True))
         self.ui.btn_open_local_logs.triggered.connect(self.open_local_file_logs)
         self.ui.btn_change_design.triggered.connect(self.change_design_show)
+        self.ui.btn_exit.triggered.connect(self.close)
+
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_time_lbl)
+        self.timer.start(1000)
+
+        self.update_time_lbl()
+        self.ui.lbl_hour_city.setText(stat_inf.hour_zone)
+        self.ui.lbl_time_auto.setText(stat_inf.auto_set_time)
+        self.ui.btn_sync_time.clicked.connect(self.sync_time)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -128,6 +143,12 @@ class MainWindow(QMainWindow):
 
         if stat_inf.os.lower() == "linux":
             self.unenable_buttons_linux()
+
+        if stat_inf.hour_zone == k_phras.hour_zone[1] and stat_inf.auto_set_time == k_phras.enabled[1]:
+            self.ui.btn_set_time.setEnabled(False)
+
+        if stat_inf.auto_set_time == k_phras.enabled_no[1]:
+            self.ui.btn_sync_time.setEnabled(False)
 
         if stat_inf.activate == k_phras.activate_status[0]:
             self.ui.btn_activate_windows.setEnabled(False)
@@ -147,8 +168,33 @@ class MainWindow(QMainWindow):
         self.update_network_status_global(True)
         self.update_network_status_local(True)
 
+    def sync_time(self):
+        status = create_standard.sync_time(self.dialog_error_server_show)
+        if status[0] == 0:
+            self.dialog_success_show("Время успешно синхронизировано")
+        elif status[0] == 1:
+            self.dialog_error_show(status[1])
 
+    def set_time(self):
+        status = create_standard.set_time(self.dialog_error_server_show)
+        if status[0] == 0:
+            self.dialog_success_show("Время успешно настроено")
+            start_inf.check_hour_zone()
+            start_inf.check_auto_set_time()
+            self.ui.lbl_hour_city.setText(stat_inf.hour_zone)
+            self.ui.lbl_time_auto.setText(stat_inf.auto_set_time)
+            self.ui.btn_set_time.setEnabled(False)
+            self.ui.btn_sync_time.setEnabled(True)
+        elif status[0] == 1:
+            self.dialog_error_show(status[1])
 
+    def update_time_lbl(self):
+        now = QDateTime.currentDateTime()
+
+        formatted_d = now.toString("dd.MM.yyyy")
+        formatted_t = now.toString("hh:mm:ss")
+        self.ui.lbl_date.setText(formatted_d)
+        self.ui.lbl_time.setText(formatted_t)
 
     def change_design_show(self):
         self.change_design_dialog = DialogChangeDesign(self.change_design)
@@ -224,7 +270,9 @@ class MainWindow(QMainWindow):
                 self.ui.btn_activate_windows.setEnabled(False)
 
     def loop_function_show(self):
-        self.dialog_loop = DialogLoopFunction(self.enable_admin_param,
+        self.dialog_loop = DialogLoopFunction(self.set_time,
+                                              self.sync_time,
+                                              self.enable_admin_param,
                                               self.open_window_password,
                                               self.disable_user,
                                               self.activate_windows,

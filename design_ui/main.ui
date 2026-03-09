@@ -508,6 +508,136 @@
      <string>Активация офиса:</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>150</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Часовой пояс:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_hour_city">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>150</y>
+      <width>221</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>какой то город</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>170</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Дата:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_date">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>170</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>08.08.2004</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_time">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>190</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>21:12:43</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>190</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Время:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_set_time">
+    <property name="geometry">
+     <rect>
+      <x>1040</x>
+      <y>250</y>
+      <width>181</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Настроить время</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>220</y>
+      <width>201</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Автоматическая синхронизация:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_time_auto">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>220</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>не знаю</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_sync_time">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>250</y>
+      <width>181</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Синхронизировать</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -542,6 +672,8 @@
      <string>Программа</string>
     </property>
     <addaction name="btn_change_design"/>
+    <addaction name="btn_spravka"/>
+    <addaction name="btn_exit"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_programm"/>
@@ -606,6 +738,16 @@
   <action name="btn_change_design">
    <property name="text">
     <string>Изменить тему</string>
+   </property>
+  </action>
+  <action name="btn_spravka">
+   <property name="text">
+    <string>Справка</string>
+   </property>
+  </action>
+  <action name="btn_exit">
+   <property name="text">
+    <string>Выход</string>
    </property>
   </action>
  </widget>

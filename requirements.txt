@@ -1,3 +1,4 @@
+tzlocal
 qt-material
 openpyxl
 pyside6

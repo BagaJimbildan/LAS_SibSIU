@@ -198,3 +198,49 @@ def try_write_server(dialog_error_server_show, action: str, note = None):
 def update_info_activation(error_server_show, method_update, is_office):
     method_update()
     try_write_server(error_server_show, "активация Office" if is_office else "активация Windows")
+
+def sync_time(error_server_show = None):
+    ok, err = run_cmd(['w32tm', '/resync'])
+    if not ok:
+        return [1, f"Ошибка синхронизации времени: {err}"]
+
+    if error_server_show is not None:
+        try_write_server(error_server_show, "Синхронизация времени")
+    return [0, 0]
+
+def set_time(error_server_show):
+    # 1. Установка часового пояса
+    ok, err = run_cmd(['tzutil', '/s', k_phras.hour_zone[0]])
+    if not ok:
+        return [1, f"Ошибка установки часового пояса: {err}"]
+
+    # 2. Настройка службы времени
+    ok, err = run_cmd(['sc', 'config', 'w32time', 'start=', 'auto'])
+    if not ok:
+        return [1, f"Ошибка настройки службы: {err}"]
+
+    # Запуск службы (если уже запущена – ошибка игнорируется)
+    subprocess.run(['net', 'start', 'w32time'], capture_output=True)
+
+    # 3. Установка NTP-серверов
+    ok, err = run_cmd(['w32tm', '/config', '/syncfromflags:manual', '/manualpeerlist:pool.ntp.org', '/update'])
+    if not ok:
+        return [1, f"Ошибка настройки NTP: {err}"]
+
+    # 4. Принудительная синхронизация
+    status = sync_time()
+    if status[0] == 1:
+        return [1, status[1]]
+
+    # Всё выполнено успешно
+    try_write_server(error_server_show, "Настройка времени")
+    return [0,0]
+
+
+# Хороший метод для выполнения всех запуска cmd, но пока используется только для времени
+def run_cmd(command):
+    try:
+        subprocess.run(command, check=True, capture_output=True, text=True, encoding='cp866')
+        return True, None
+    except subprocess.CalledProcessError as e:
+        return False, e.stderr.strip() or str(e)

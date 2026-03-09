@@ -7,6 +7,8 @@ from design_ui.ui_LoopFunction import Ui_DialogLoopFunction
 
 class DialogLoopFunction(QDialog):
     def __init__(self,
+                 set_time,
+                 sync_time,
                  admin_activate,
                  admin_pass,
                  start_admin_disable,
@@ -20,6 +22,8 @@ class DialogLoopFunction(QDialog):
         self.ui.setupUi(self)
 
         # список функции
+        self.set_time = set_time
+        self.sync_time = sync_time
         self.admin_active = admin_activate
         self.admin_pass = admin_pass
         self.start_admin_disable = start_admin_disable
@@ -38,10 +42,20 @@ class DialogLoopFunction(QDialog):
         if stat_inf.admin_active == k_phras.enabled[1]:
             self.ui.cb_admin.setEnabled(False)
 
+        if stat_inf.hour_zone == k_phras.hour_zone[1] and stat_inf.auto_set_time == k_phras.enabled[1]:
+            self.ui.cb_set_time.setEnabled(False)
+
+        if stat_inf.auto_set_time == k_phras.enabled_no[1]:
+            self.ui.cb_sync_time.setEnabled(False)
+
         self.ui.btn_cancel.clicked.connect(self.close)
         self.ui.btn_ok.clicked.connect(self.start_loop)
 
     def start_loop(self):
+        if self.ui.cb_set_time.isChecked():
+            self.set_time()
+        if self.ui.cb_sync_time.isChecked():
+            self.sync_time()
         if self.ui.cb_admin.isChecked():
             self.admin_active()
         if self.ui.cb_pass_admin.isChecked():

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>417</width>
-    <height>355</height>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>20</x>
      <y>20</y>
      <width>381</width>
-     <height>281</height>
+     <height>341</height>
     </rect>
    </property>
    <property name="title">
@@ -29,7 +29,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>40</y>
+      <y>100</y>
       <width>331</width>
       <height>24</height>
      </rect>
@@ -42,7 +42,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>70</y>
+      <y>130</y>
       <width>351</width>
       <height>24</height>
      </rect>
@@ -55,7 +55,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>100</y>
+      <y>160</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -68,7 +68,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>130</y>
+      <y>190</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -81,7 +81,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>160</y>
+      <y>220</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -94,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>190</y>
+      <y>250</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -107,7 +107,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>220</y>
+      <y>280</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -120,7 +120,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>250</y>
+      <y>310</y>
       <width>311</width>
       <height>24</height>
      </rect>
@@ -129,12 +129,38 @@
      <string>Изменение параметров сети</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="cb_set_time">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>331</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Настройка времени</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_sync_time">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>351</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Синхронизация времени</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QPushButton" name="btn_ok">
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>320</y>
+     <y>380</y>
      <width>121</width>
      <height>26</height>
     </rect>
@@ -150,7 +176,7 @@
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>320</y>
+     <y>380</y>
      <width>101</width>
      <height>26</height>
     </rect>

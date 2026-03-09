@@ -22,7 +22,7 @@ class Ui_DialogEditNetwork(object):
     def setupUi(self, DialogEditNetwork):
         if not DialogEditNetwork.objectName():
             DialogEditNetwork.setObjectName(u"DialogEditNetwork")
-        DialogEditNetwork.resize(363, 155)
+        DialogEditNetwork.resize(376, 155)
         self.lbl_name_is_standart = QLabel(DialogEditNetwork)
         self.lbl_name_is_standart.setObjectName(u"lbl_name_is_standart")
         self.lbl_name_is_standart.setGeometry(QRect(110, 10, 141, 16))
@@ -58,13 +58,13 @@ class Ui_DialogEditNetwork(object):
         self.tb_ip4.setMaxLength(3)
         self.btn_ok = QPushButton(DialogEditNetwork)
         self.btn_ok.setObjectName(u"btn_ok")
-        self.btn_ok.setGeometry(QRect(220, 120, 131, 24))
+        self.btn_ok.setGeometry(QRect(220, 120, 141, 24))
         self.btn_cancel = QPushButton(DialogEditNetwork)
         self.btn_cancel.setObjectName(u"btn_cancel")
         self.btn_cancel.setGeometry(QRect(120, 120, 91, 24))
         self.lbl_name_is_standart_5 = QLabel(DialogEditNetwork)
         self.lbl_name_is_standart_5.setObjectName(u"lbl_name_is_standart_5")
-        self.lbl_name_is_standart_5.setGeometry(QRect(40, 80, 301, 20))
+        self.lbl_name_is_standart_5.setGeometry(QRect(40, 80, 311, 20))
 
         self.retranslateUi(DialogEditNetwork)
 
