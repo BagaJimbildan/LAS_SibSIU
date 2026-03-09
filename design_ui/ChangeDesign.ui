@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogChangeDesign</class>
+ <widget class="QDialog" name="DialogChangeDesign">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>594</width>
+    <height>324</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Изменить тему программы</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>141</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Тема</string>
+   </property>
+   <widget class="QRadioButton" name="rb_dark">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>121</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Темная</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_white">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>121</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Светлая</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>20</y>
+     <width>391</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Цвет</string>
+   </property>
+   <widget class="QRadioButton" name="rb_teal">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>151</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Сине-зеленый</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_amber">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>151</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Янтарный</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_blue">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>151</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Синий</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_cyan">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>160</y>
+      <width>151</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Циан</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_lightgreen">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>200</y>
+      <width>151</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Светло-зеленый</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_pink">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>40</y>
+      <width>151</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Розовый</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_red">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>120</y>
+      <width>151</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Красный</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_yellow">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>160</y>
+      <width>151</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Желтый</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb_purple">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>80</y>
+      <width>151</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Фиолетовый</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="btn_ok">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>280</y>
+     <width>127</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Применить</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_cancel">
+   <property name="geometry">
+    <rect>
+     <x>306</x>
+     <y>280</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Выйти</string>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>rb_white</tabstop>
+  <tabstop>rb_dark</tabstop>
+  <tabstop>rb_teal</tabstop>
+  <tabstop>rb_amber</tabstop>
+  <tabstop>rb_blue</tabstop>
+  <tabstop>rb_cyan</tabstop>
+  <tabstop>rb_lightgreen</tabstop>
+  <tabstop>rb_pink</tabstop>
+  <tabstop>rb_purple</tabstop>
+  <tabstop>rb_red</tabstop>
+  <tabstop>rb_yellow</tabstop>
+  <tabstop>btn_ok</tabstop>
+  <tabstop>btn_cancel</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

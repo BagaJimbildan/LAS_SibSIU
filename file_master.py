@@ -30,8 +30,12 @@ def get_current_dir():
 def check_info_app():
     return os.path.exists(data_path)
 
-def create_info_app():
+def create_info_app(def_theme, def_color):
     with open(data_path, 'w', encoding='utf-8') as f:
+
+        f.write(user_inf.design_theme[0]+"="+def_theme+'\n')
+        f.write(user_inf.design_color[0] +"="+def_color+'\n')
+
         f.write(user_inf.ip_server[0]+"="+'\n')
         f.write(user_inf.file_server[0] + "=" + '\n')
         f.write(user_inf.username[0] + "=" + '\n')

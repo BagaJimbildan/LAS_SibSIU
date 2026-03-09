@@ -19,6 +19,7 @@ import methods.server_logs as serv_log
 import methods.other as other
 
 import methods.create_standart as create_standard
+from design_ui.ui_ChangeDesign_script import DialogChangeDesign
 from design_ui.ui_CreatePass_script import DialogCreatePass
 from design_ui.ui_DataServer_script import DialogDataServer
 from design_ui.ui_DisableUser_script import DialogDisableUser
@@ -41,10 +42,12 @@ class MainWindow(QMainWindow):
     buttons_admin: list[QPushButton]  # кнопки, которые доступны только админу
 
 
-    def __init__(self):
+    def __init__(self, change_design):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.change_design = change_design
 
         self.buttons_admin = \
         [
@@ -115,6 +118,7 @@ class MainWindow(QMainWindow):
         self.ui.test_global.triggered.connect(lambda: self.change_host_ping(False))
         self.ui.test_local.triggered.connect(lambda: self.change_host_ping(True))
         self.ui.btn_open_local_logs.triggered.connect(self.open_local_file_logs)
+        self.ui.btn_change_design.triggered.connect(self.change_design_show)
 
         if stat_inf.admin_current_user == 0:
             self.unenable_buttons_admin()
@@ -144,6 +148,11 @@ class MainWindow(QMainWindow):
         self.update_network_status_local(True)
 
 
+
+
+    def change_design_show(self):
+        self.change_design_dialog = DialogChangeDesign(self.change_design)
+        self.change_design_dialog.exec()
 
     def change_host_ping(self, local: bool):
         if local: param = [self.ui.lbl_local_net_name, self.ui.lbl_local_net_time, self.ui.lbl_local_net_status]

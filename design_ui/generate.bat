@@ -14,3 +14,4 @@ pyside6-uic Programs.ui -o ui_Programs.py
 pyside6-uic EditPath.ui -o ui_EditPath.py
 pyside6-uic LoopFunction.ui -o ui_LoopFunction.py
 pyside6-uic EditPing.ui -o ui_EditPing.py
+pyside6-uic ChangeDesign.ui -o ui_ChangeDesign.py

@@ -1,0 +1,12 @@
+th_light = "light"
+th_dark = "dark"
+
+c_teal = "teal"
+c_amber = "amber"
+c_blue = "blue"
+c_cyan = "cyan"
+c_lightgreen = "lightgreen"
+c_pink = "pink"
+c_purple = "purple"
+c_red = "red"
+c_yellow = "yellow"

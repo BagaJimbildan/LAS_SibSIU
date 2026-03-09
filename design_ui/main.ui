@@ -541,6 +541,7 @@
     <property name="title">
      <string>Программа</string>
     </property>
+    <addaction name="btn_change_design"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_programm"/>
@@ -600,6 +601,11 @@
   <action name="btn_open_local_logs">
    <property name="text">
     <string>Открыть локальный файл логов</string>
+   </property>
+  </action>
+  <action name="btn_change_design">
+   <property name="text">
+    <string>Изменить тему</string>
    </property>
   </action>
  </widget>

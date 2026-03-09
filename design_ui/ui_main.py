@@ -47,6 +47,8 @@ class Ui_MainWindow(object):
         self.test_local.setObjectName(u"test_local")
         self.btn_open_local_logs = QAction(MainWindow)
         self.btn_open_local_logs.setObjectName(u"btn_open_local_logs")
+        self.btn_change_design = QAction(MainWindow)
+        self.btn_change_design.setObjectName(u"btn_change_design")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.label = QLabel(self.centralwidget)
@@ -190,6 +192,7 @@ class Ui_MainWindow(object):
         self.menu_server.addAction(self.disconnect)
         self.menu_server.addAction(self.test_write)
         self.menu_server.addAction(self.open_logs_server)
+        self.menu.addAction(self.btn_change_design)
 
         self.retranslateUi(MainWindow)
 
@@ -209,6 +212,7 @@ class Ui_MainWindow(object):
         self.test_global.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u0440\u043e\u0432\u0435\u0440\u043e\u0447\u043d\u044b\u0439 \u0430\u0434\u0440\u0435\u0441 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e\u0439 \u0441\u0435\u0442\u0438", None))
         self.test_local.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u0440\u043e\u0432\u0435\u0440\u043e\u0447\u043d\u044b\u0439 \u0430\u0434\u0440\u0435\u0441 \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e\u0439 \u0441\u0435\u0442\u0438", None))
         self.btn_open_local_logs.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u044b\u0439 \u0444\u0430\u0439\u043b \u043b\u043e\u0433\u043e\u0432", None))
+        self.btn_change_design.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0442\u0435\u043c\u0443", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043c\u0435\u043d: ", None))
         self.lbl_domen.setText(QCoreApplication.translate("MainWindow", u"???", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0421:", None))
