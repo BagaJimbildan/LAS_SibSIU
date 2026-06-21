@@ -1,7 +1,7 @@
 import ipaddress
 import re
 
-from PyQt6.QtWidgets import QLabel
+from PySide6.QtWidgets import QLabel
 from PySide6.QtWidgets import QDialog
 import file_master as file_m
 import user_info as user_inf

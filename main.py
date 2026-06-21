@@ -3,6 +3,8 @@ import subprocess
 import sys
 
 from PySide6.QtWidgets import QApplication
+from openpyxl.writer import theme
+
 from design_ui.ui_main_script import MainWindow
 from qt_material import apply_stylesheet
 
@@ -12,6 +14,7 @@ import file_master as file_m
 import app_info as app_inf
 import server_setting as serv_set
 import user_info as user_inf
+import resources_rc
 
 
 start_inf.check_system()
@@ -33,7 +36,15 @@ file_m.get_current_dir()  # определение директории прог
 
 app = QApplication(sys.argv)
 
-change_design = lambda theme,color: apply_stylesheet(app, f"{theme}_{color}.xml")
+
+def change_design(theme, color):
+    apply_stylesheet(app, f"{theme}_{color}.xml")
+    if theme == "light":
+        app.setStyleSheet(app.styleSheet() + """
+            QWidget QGroupBox::title {
+                color: black !important;
+            }
+            """)
 
 if file_m.check_info_app():  # если есть файл с информацией о данном экземпляре программы
     app_inf.is_first = False
@@ -44,7 +55,6 @@ else:
     file_m.create_info_app(def_theme, def_color)  # создание файла с информацией, в параметрах стандартная тема, цвет
     user_inf.design_theme[1] = def_theme
     user_inf.design_color[1] = def_color
-    change_design(def_theme, def_color)
 
 # Создание файлы логов текущей сессии
 file_m.create_or_replace_excel()

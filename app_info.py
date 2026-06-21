@@ -13,7 +13,6 @@ def start_info_app(data_path, change_design):  # чтение информаци
     user_inf.design_theme[1] = get_value(lines[0])
     user_inf.design_color[1] = get_value(lines[1])
 
-    change_design(user_inf.design_theme[1], user_inf.design_color[1])
 
     user_inf.ip_server[1] = get_value(lines[2])
     user_inf.file_server[1] = get_value(lines[3])

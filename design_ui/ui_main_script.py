@@ -2,7 +2,7 @@ from datetime import datetime
 import os
 import subprocess
 
-from PyQt6.QtCore import QDateTime
+from PySide6.QtCore import QDateTime
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QPushButton
@@ -50,6 +50,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         self.change_design = change_design
+        change_design(user_inf.design_theme[1], user_inf.design_color[1])
 
         self.buttons_admin = \
         [
@@ -136,7 +137,6 @@ class MainWindow(QMainWindow):
         self.ui.lbl_time_auto.setText(stat_inf.auto_set_time)
         self.ui.btn_sync_time.clicked.connect(self.sync_time)
 
-        self.ui.label_14.setPixmap(QPixmap(u"design_ui/images/logo.png"))
 
 
         if stat_inf.admin_current_user == 0:

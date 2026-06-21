@@ -3,7 +3,7 @@ from pathlib import Path
 
 import methods.server_logs as serv_log
 
-from PyQt6.QtGui import QAction
+from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QDialog
 import file_master as file_m
 import user_info as user_inf

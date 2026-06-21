@@ -1,6 +1,6 @@
 import re
 
-from PyQt6.QtWidgets import QLabel
+from PySide6.QtWidgets import QLabel
 from PySide6.QtWidgets import QDialog
 
 import static_info as stat_inf

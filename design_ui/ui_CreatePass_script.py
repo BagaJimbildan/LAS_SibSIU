@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QLineEdit, QCheckBox
+from PySide6.QtWidgets import QLineEdit, QCheckBox
 from PySide6.QtWidgets import QDialog
 
 from design_ui.ui_CreatePass import Ui_DialogCreatePass

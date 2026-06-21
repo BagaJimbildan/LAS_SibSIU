@@ -1,7 +1,7 @@
 import subprocess
 import threading
 
-from PyQt6.QtWidgets import QPushButton, QLabel, QLineEdit
+from PySide6.QtWidgets import QPushButton, QLabel, QLineEdit
 
 import static_info as stat_inf
 import methods.server_logs as serv_log

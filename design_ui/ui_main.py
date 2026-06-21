@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
         self.label_14 = QLabel(self.centralwidget)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setGeometry(QRect(590, 370, 651, 301))
-        self.label_14.setPixmap(QPixmap(u"images/logo.png"))
+        self.label_14.setPixmap(QPixmap(":/design_ui/images/logo.png"))
         self.label_14.setScaledContents(False)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
